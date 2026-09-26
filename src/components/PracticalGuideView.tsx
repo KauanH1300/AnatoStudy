@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { practicalGuideTopics } from '../data/practicalGuideData';
 import { examStationsUfpb, PracticalExamStation } from '../data/examStationsData';
+import { getIllustrationForStation, AnatomicalImageRef } from '../data/anatomicalImagesData';
+import { AnatomicalImageViewer } from './AnatomicalImageViewer';
+import { AnatomicalSvgDiagram } from './AnatomicalSvgDiagram';
 import {
   BookOpen,
   AlertTriangle,
@@ -19,7 +22,11 @@ import {
   Filter,
   Check,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Image as ImageIcon,
+  ExternalLink,
+  Maximize2,
+  X
 } from 'lucide-react';
 
 export const PracticalGuideView: React.FC = () => {
@@ -33,6 +40,7 @@ export const PracticalGuideView: React.FC = () => {
   const [selectedStationCategory, setSelectedStationCategory] = useState<string>('todas');
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [expandedStation, setExpandedStation] = useState<number | null>(1);
+  const [modalIllustration, setModalIllustration] = useState<AnatomicalImageRef | null>(null);
 
   const currentTopic = practicalGuideTopics.find((t) => t.id === selectedTopicId) || practicalGuideTopics[0];
 
@@ -151,6 +159,7 @@ export const PracticalGuideView: React.FC = () => {
           <div className="space-y-3">
             {filteredStations.map((station) => {
               const isExpanded = expandedStation === station.numero;
+              const illustration = getIllustrationForStation(station.numero);
 
               return (
                 <div
@@ -187,6 +196,12 @@ export const PracticalGuideView: React.FC = () => {
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
+                      {illustration && (
+                        <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-[11px] font-medium border border-slate-200/80">
+                          <ImageIcon className="w-3.5 h-3.5 text-rose-600" />
+                          <span>Ilustração</span>
+                        </div>
+                      )}
                       <span className="hidden sm:inline-block text-xs font-semibold text-rose-600">
                         {isExpanded ? 'Ocultar detalhes' : 'Ver dicas de bancada'}
                       </span>
@@ -201,6 +216,20 @@ export const PracticalGuideView: React.FC = () => {
                   {/* Expanded Station Details */}
                   {isExpanded && (
                     <div className="border-t border-slate-100 p-5 sm:p-6 bg-slate-50/40 space-y-5 text-xs sm:text-sm">
+                      {/* Anatomical Image / Dissection Reference (SVG + Atlas Fallback) */}
+                      <AnatomicalImageViewer
+                        structureId={String(station.numero)}
+                        structureName={station.estrutura}
+                        subtitulo={illustration?.subtitulo || `Estação #${station.numero} · ${station.ondeOAlfineteEspeta}`}
+                        imageUrl={illustration?.imageUrl}
+                        fonte={illustration?.autorOuFonte}
+                        legendaPontos={illustration?.legendaPontos || station.comoReconhecerSemTocar.slice(0, 3)}
+                        tipo={station.regiao.toLowerCase().includes('vaso') ? 'artéria' : 'misto'}
+                        mode="card"
+                        defaultView="svg"
+                        onExpand={illustration ? () => setModalIllustration(illustration) : undefined}
+                      />
+
                       {/* Where probe is located */}
                       <div className="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200 text-amber-950 flex items-start gap-3">
                         <Pin className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
@@ -505,6 +534,93 @@ export const PracticalGuideView: React.FC = () => {
             <p className="text-xs sm:text-sm text-emerald-950 leading-relaxed">
               {currentTopic.relevanciaFisioterapia}
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Lightbox for Full-Res Image Viewing */}
+      {modalIllustration && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6"
+          onClick={() => setModalIllustration(null)}
+        >
+          <div
+            className="bg-slate-900 border border-slate-700 rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="p-4 border-b border-slate-800 flex items-center justify-between text-white">
+              <div>
+                <h4 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
+                  <ImageIcon className="w-4 h-4 text-rose-400" />
+                  {modalIllustration.titulo}
+                </h4>
+                <p className="text-xs text-slate-400">{modalIllustration.subtitulo}</p>
+              </div>
+              <button
+                onClick={() => setModalIllustration(null)}
+                className="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Image Area */}
+            <div className="relative flex-1 min-h-[300px] max-h-[55vh] bg-black flex items-center justify-center p-2 sm:p-4 overflow-hidden">
+              <img
+                src={modalIllustration.imageUrl}
+                alt={modalIllustration.titulo}
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  (e.target as HTMLElement).style.display = 'none';
+                  const svgElem = document.getElementById('modal-svg-fallback');
+                  if (svgElem) svgElem.style.display = 'flex';
+                }}
+                className="max-h-full max-w-full object-contain rounded-lg"
+              />
+              <div id="modal-svg-fallback" className="w-full max-w-xl h-full hidden items-center justify-center">
+                <AnatomicalSvgDiagram
+                  structureId={modalIllustration.id}
+                  structureName={modalIllustration.titulo}
+                  className="w-full h-full"
+                  showPin={true}
+                />
+              </div>
+            </div>
+
+            {/* Modal Footer / Details */}
+            <div className="p-4 bg-slate-900 border-t border-slate-800 space-y-3">
+              <div className="space-y-1.5">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-rose-400 block">
+                  Pontos e Acidentes Visuais na Peça:
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                  {modalIllustration.legendaPontos.map((ponto, pIdx) => (
+                    <div key={pIdx} className="flex items-start gap-2 bg-slate-800/60 p-2 rounded-lg border border-slate-700/50">
+                      <span className="w-1.5 h-1.5 rounded-full bg-rose-400 mt-1.5 shrink-0" />
+                      <span>{ponto}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between pt-2 border-t border-slate-800 text-xs">
+                <span className="text-slate-400 text-[11px]">
+                  Fonte / Créditos: {modalIllustration.autorOuFonte}
+                </span>
+                <a
+                  href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(
+                    modalIllustration.titulo + ' anatomia'
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium transition-colors"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Mais Fotos no Google</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       )}

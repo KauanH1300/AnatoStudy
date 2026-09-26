@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { bloodVesselsData, BloodVessel } from '../data/bloodVesselsData';
+import { anatomicalIllustrations, AnatomicalImageRef } from '../data/anatomicalImagesData';
+import { AnatomicalImageViewer } from './AnatomicalImageViewer';
 import {
   GitBranch,
   Search,
@@ -16,7 +18,10 @@ import {
   ChevronUp,
   MapPin,
   CheckCircle2,
-  Compass
+  Compass,
+  Image as ImageIcon,
+  ExternalLink,
+  ZoomIn
 } from 'lucide-react';
 
 export const VesselsEncyclopediaView: React.FC = () => {
@@ -24,6 +29,7 @@ export const VesselsEncyclopediaView: React.FC = () => {
   const [selectedType, setSelectedType] = useState<'todos' | 'artéria' | 'veia'>('todos');
   const [selectedTerritory, setSelectedTerritory] = useState<string>('todos');
   const [expandedVesselId, setExpandedVesselId] = useState<string | null>(bloodVesselsData[0].id);
+  const [selectedModalImage, setSelectedModalImage] = useState<AnatomicalImageRef | null>(null);
 
   // Filter logic
   const filteredVessels = bloodVesselsData.filter((vessel) => {
@@ -46,13 +52,13 @@ export const VesselsEncyclopediaView: React.FC = () => {
       {/* Header */}
       <div className="space-y-2">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-50 border border-rose-200/80 text-rose-700 text-xs font-semibold">
-          <GitBranch className="w-3.5 h-3.5" /> Compêndio de Angiologia Anatômica · UFPB
+          <ImageIcon className="w-3.5 h-3.5" /> Atlas Fotográfico & Angiologia Ilustrada · UFPB
         </div>
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 font-display">
-          Guia Completo de Veias & Artérias
+          Guia Ilustrado de Veias & Artérias
         </h1>
         <p className="text-sm text-slate-500 max-w-3xl leading-relaxed">
-          Trajeto detalhado de cada vaso: <strong>de onde vem</strong>, <strong>até onde vai</strong>, <strong>por qual território é responsável</strong>, <strong>se e como se ramifica</strong>, características parietais, relações sintópicas e aplicação prática em fisioterapia.
+          Trajeto detalhado de cada vaso acompanhado de <strong>ilustrações anatômicas e lâminas de atlas médico</strong>: de onde vem, até onde vai, por qual território é responsável, se e como se ramifica e como reconhecer no cadáver.
         </p>
       </div>
 
@@ -81,7 +87,7 @@ export const VesselsEncyclopediaView: React.FC = () => {
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
-              Todos os Vasos ({bloodVesselsData.length})
+              Todos ({bloodVesselsData.length})
             </button>
 
             <button
@@ -136,8 +142,8 @@ export const VesselsEncyclopediaView: React.FC = () => {
         </div>
 
         <div className="flex items-center justify-between text-xs text-slate-500 pt-1">
-          <span>Mostrando <strong>{filteredVessels.length}</strong> vasos catalogados</span>
-          <span className="text-[11px] text-rose-600 font-medium">Clique no card para abrir o raio-x completo de trajeto</span>
+          <span>Mostrando <strong>{filteredVessels.length}</strong> vasos catalogados com ilustrações dedicadas</span>
+          <span className="text-[11px] text-rose-600 font-medium">Toque na imagem para ampliar em alta resolução</span>
         </div>
       </div>
 
@@ -146,6 +152,7 @@ export const VesselsEncyclopediaView: React.FC = () => {
         {filteredVessels.map((vessel) => {
           const isExpanded = expandedVesselId === vessel.id;
           const isArtery = vessel.tipo === 'artéria';
+          const imgRef = anatomicalIllustrations[vessel.id];
 
           return (
             <div
@@ -164,15 +171,15 @@ export const VesselsEncyclopediaView: React.FC = () => {
                 className="p-4 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none"
               >
                 <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-                  <div
-                    className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 border font-bold text-sm ${
-                      isArtery
-                        ? 'bg-rose-50 text-rose-700 border-rose-200'
-                        : 'bg-blue-50 text-blue-700 border-blue-200'
-                    }`}
-                  >
-                    {isArtery ? 'Art.' : 'V.'}
-                  </div>
+                  {/* Miniature Image / SVG Thumbnail */}
+                  <AnatomicalImageViewer
+                    structureId={vessel.id}
+                    structureName={vessel.nome}
+                    imageUrl={imgRef?.imageUrl}
+                    tipo={vessel.tipo}
+                    mode="compact"
+                    className="w-12 h-12"
+                  />
 
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
@@ -201,7 +208,7 @@ export const VesselsEncyclopediaView: React.FC = () => {
 
                 <div className="flex items-center gap-2 shrink-0">
                   <span className="hidden sm:inline-block text-xs font-semibold text-slate-500">
-                    {isExpanded ? 'Ocultar raio-x' : 'Ver trajeto & ramos'}
+                    {isExpanded ? 'Ocultar detalhes' : 'Ver imagem & trajeto'}
                   </span>
                   {isExpanded ? (
                     <ChevronUp className="w-5 h-5 text-slate-400" />
@@ -214,6 +221,19 @@ export const VesselsEncyclopediaView: React.FC = () => {
               {/* Expanded Vessel Anatomy Details */}
               {isExpanded && (
                 <div className="border-t border-slate-100 p-5 sm:p-7 bg-slate-50/40 space-y-6 text-xs sm:text-sm">
+                  {/* ANATOMICAL ATLAS IMAGE & REFERENCE CARD (SVG + Atlas Fallback) */}
+                  <AnatomicalImageViewer
+                    structureId={vessel.id}
+                    structureName={vessel.nome}
+                    subtitulo={imgRef?.subtitulo || `${vessel.deOndeVem} ➔ ${vessel.ateOndeVai}`}
+                    imageUrl={imgRef?.imageUrl}
+                    fonte={imgRef?.autorOuFonte}
+                    legendaPontos={imgRef?.legendaPontos || vessel.ramificacoesPrincipais.slice(0, 3)}
+                    tipo={vessel.tipo}
+                    mode="card"
+                    defaultView="svg"
+                  />
+
                   {/* Origin to Destination Route Banner */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {/* Origin (De onde vem) */}
@@ -328,6 +348,59 @@ export const VesselsEncyclopediaView: React.FC = () => {
           </div>
         )}
       </div>
+
+      {/* FULLSCREEN IMAGE MODAL */}
+      {selectedModalImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xs flex items-center justify-center p-4"
+          onClick={() => setSelectedModalImage(null)}
+        >
+          <div
+            className="bg-slate-900 rounded-2xl border border-slate-700 max-w-4xl w-full overflow-hidden shadow-2xl space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between text-white">
+              <div>
+                <h3 className="text-base font-bold">{selectedModalImage.titulo}</h3>
+                <p className="text-xs text-slate-400">{selectedModalImage.subtitulo}</p>
+              </div>
+              <button
+                onClick={() => setSelectedModalImage(null)}
+                className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold"
+              >
+                ✕ Fechar
+              </button>
+            </div>
+
+            {/* Modal Image display */}
+            <div className="p-4 flex items-center justify-center max-h-[70vh] overflow-auto">
+              <img
+                src={selectedModalImage.imageUrl}
+                alt={selectedModalImage.titulo}
+                referrerPolicy="no-referrer"
+                className="max-h-[60vh] w-auto object-contain rounded-lg drop-shadow-xl"
+              />
+            </div>
+
+            {/* Modal Footer with key landmarks */}
+            <div className="p-4 bg-slate-950 border-t border-slate-800 space-y-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-rose-400 block">
+                Marcos Anatômicos Guias:
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                {selectedModalImage.legendaPontos.map((pt, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-rose-500 shrink-0"></span>
+                    <span>{pt}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-[11px] text-slate-500 pt-1">Fonte da Imagem: {selectedModalImage.autorOuFonte}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

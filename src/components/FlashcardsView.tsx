@@ -13,9 +13,11 @@ import {
   MapPin,
   Activity,
   HeartPulse,
-  Eye
+  Eye,
+  ExternalLink
 } from 'lucide-react';
 import { playHeartSound } from '../utils/audioSimulator';
+import { AnatomicalSvgDiagram } from './AnatomicalSvgDiagram';
 
 interface FlashcardsViewProps {
   cards: Flashcard[];
@@ -366,6 +368,34 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
                       </p>
                     </div>
                   )}
+
+                  {/* Anatomical Schematic Illustration */}
+                  <div className="rounded-xl overflow-hidden bg-slate-950 border border-slate-800 p-2 max-h-44 flex items-center justify-center">
+                    <AnatomicalSvgDiagram
+                      structureId={currentCard.resposta}
+                      structureName={currentCard.resposta}
+                      className="max-h-40 w-full"
+                      showPin={true}
+                    />
+                  </div>
+
+                  {/* Google Images Action */}
+                  <div className="pt-1 flex items-center justify-between">
+                    <span className="text-[11px] text-slate-400 font-medium">Esquema anatômico com destaque da peça</span>
+                    <a
+                      href={`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(
+                        currentCard.resposta + ' anatomia'
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-100 border border-sky-200 text-sky-700 text-xs font-semibold transition-colors"
+                      title="Abrir fotos reais desta estrutura no Google Imagens"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5 text-sky-600" />
+                      <span>Mais Fotos no Google</span>
+                    </a>
+                  </div>
                 </div>
 
                 <div className="border-t border-slate-100 pt-3 flex items-center justify-between text-xs text-slate-400">
