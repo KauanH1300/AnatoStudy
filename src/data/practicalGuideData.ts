@@ -24,7 +24,7 @@ export const practicalGuideTopics: PracticalGuideTopic[] = [
         criterio: 'Coloração na Peça Formalizada',
         estruturaA: 'Artéria: Tende ao bege-claro, branco-amarelado ou rosado-pálido.',
         estruturaB: 'Veia: Frequentemente arroxeada, azul-escura ou enegrecida devido aos coágulos residuais de sangue venoso fixados.',
-        comoAvaliarNoCadaver: 'Inspecione visualmente o trajeto sob a luz da bancada. Atenção: se o cadáver foi injetado com látex colorido, artéria é vermelha e veia é azul.'
+        comoAvaliarNoCadaver: 'Inspecione visualmente o trajeto sob a luz da bancada. Em peças com látex, artéria é vermelha e veia é azul.'
       },
       {
         criterio: 'Presença de Válvulas Internas',
@@ -34,229 +34,378 @@ export const practicalGuideTopics: PracticalGuideTopic[] = [
       }
     ],
     passoAPassoIdentificacao: [
-      'Passo 1: Aproxime a pinça e pressione a parede do vaso com delicadeza.',
-      'Passo 2: Verifique se o vaso "volta" à forma arredondada após a pressão (Artéria) ou se fica murcho e amassado (Veia).',
-      'Passo 3: Observe a relação satélite nos membros: geralmente há 1 artéria ladeada por 2 veias satélites profundas na mesma bainha fascial.',
-      'Passo 4: Verifique a direção: se está divergindo/ramificando para a periferia é artéria; se converge recebendo tributárias é veia.'
+      'Passo 1: Aproxime a pinça e verifique se o vaso mantém luz aberta circular patente (Artéria) ou se está colabado e escuro (Veia).',
+      'Passo 2: Verifique a relação satélite nos membros: geralmente há 1 artéria elástica ladeada por 2 veias braquiais ou tibiais satélites.',
+      'Passo 3: Se houver nervo no feixe, lembre-se: nervo é um cordão MACIÇO sem furo central e com estrias fasciculares brancas.',
+      'Passo 4: Verifique a direção do vaso: artéria ramifica-se para a periferia; veia recebe tributárias em direção ao tronco.'
     ],
     pontosDeConfusao: [
       {
-        armadilha: 'Confundir um nervo periférico com uma artéria muscular fina (ex: nervo mediano com artéria braquial ou nervo ulnar com artéria ulnar).',
-        comoDesatar: 'O nervo é um cordão MACIÇO, não oco, sem luz interna, estriado longitudinalmente por fascículos e brilhante nacarado. A artéria é um TUBO OCO com lúmen central visível.'
+        armadilha: 'Confundir um nervo periférico com uma artéria muscular fina (ex: nervo mediano com artéria braquial).',
+        comoDesatar: 'O nervo é maciço, rígido, sem orifício central e estriado longitudinalmente por fascículos. A artéria é um tubo oco com luz aberta.'
       },
       {
-        armadilha: 'Confundir Veia Safena Magna dissecada com um tendão (ex: tendão do grácil ou sartório).',
-        comoDesatar: 'O tendão se insere firmemente no osso (pata de ganso na tíbia) e é extremamente duro e nacarado. A veia safena é elástica, oca e deságua na veia femoral no hiato safeno.'
+        armadilha: 'Confundir a Veia Safena Magna com tendão na face medial do joelho/perna.',
+        comoDesatar: 'O tendão se insere firmemente no osso e é extremamente duro e nacarado. A veia safena é elástica, oca e desemboca na veia femoral no hiato safeno.'
       }
     ],
-    relevanciaFisioterapia: 'Crucial na avaliação de pulsos, na drenagem linfática manual (DLM), na identificação de trombose venosa profunda (TVP) e na aplicação segura de técnicas de liberação miofascial sem traumatizar vasos profundos.'
+    relevanciaFisioterapia: 'Crucial na avaliação de pulsos, na drenagem linfática manual (DLM), na identificação de trombose venosa profunda (TVP) e na aplicação segura de técnicas miofasciais.'
   },
   {
-    id: 've-vs-vd',
-    titulo: 'Ventrículo Esquerdo vs. Ventrículo Direito',
-    subtitulo: 'Como reconhecer as câmaras ventriculares em peças inteiras ou cortes transversais',
-    categoria: 'Coração',
-    conceitoChave: 'A espessura da parede (relação 3:1), o formato da cavidade no corte e o número de músculos papilares são infalíveis.',
+    id: 'aorta-ascendente-vs-descendente',
+    titulo: 'Aorta Ascendente vs. Aorta Descendente Torácica',
+    subtitulo: 'Diferenciação topográfica dos dois grandes segmentos da aorta torácica',
+    categoria: 'Grandes Vasos',
+    conceitoChave: 'A aorta ascendente situa-se no mediastino médio dentro do saco pericárdico; a aorta descendente situa-se no mediastino posterior colada às vértebras T4-T12.',
     diferenciaisBancada: [
       {
-        criterio: 'Espessura Miocárdica',
-        estruturaA: 'Ventrículo Esquerdo: Parede maciça, grossa e densa (8 a 12 mm de espessura no adulto).',
-        estruturaB: 'Ventrículo Direito: Parede delgada e fina (3 a 5 mm de espessura).',
-        comoAvaliarNoCadaver: 'Em cortes axiais, a parede do VE é 3 vezes mais grossa do que a parede do VD.'
+        criterio: 'Localização e Mediastino',
+        estruturaA: 'Aorta Ascendente: Mediastino médio, envolta pelo saco pericárdico fibroso na base do coração.',
+        estruturaB: 'Aorta Descendente Torácica: Mediastino posterior, fora do saco pericárdico, colada à face lateral esquerda dos corpos vertebrais T4-T12.',
+        comoAvaliarNoCadaver: 'Se o vaso sai diretamente de cima dos ventrículos entre as aurículas = Ascendente. Se desce verticalmente como um tubo longo ao lado da coluna = Descendente.'
       },
       {
-        criterio: 'Formato da Cavidade (Corte Transversal)',
-        estruturaA: 'Ventrículo Esquerdo: Cavidade perfeitamente circular ou cilíndrica central.',
-        estruturaB: 'Ventrículo Direito: Cavidade em forma de crescente ou semilunar, que contorna e "abraça" a curvatura do VE.',
-        comoAvaliarNoCadaver: 'Coloque a secção transversal sobre a bancada: o VE parece uma rosquinha grossa e redonda no meio; o VD é uma aba lateral em meia-lua.'
+        criterio: 'Ramos Emitidos',
+        estruturaA: 'Aorta Ascendente: Emite EXCLUSIVAMENTE as Artérias Coronárias Direita e Esquerda no bulbo aórtico.',
+        estruturaB: 'Aorta Descendente: Emite 9 pares de Artérias Intercostais Posteriores, artérias bronquiais, esofágicas e mediastinais.',
+        comoAvaliarNoCadaver: 'Procure raminhos colaterais: se saem pares horizontais para os espaços intercostais entre as costelas = Aorta Descendente!'
       },
       {
-        criterio: 'Músculos Papilares',
-        estruturaA: 'Ventrículo Esquerdo: 2 músculos papilares volumosos (anterior e posterior).',
-        estruturaB: 'Ventrículo Direito: 3 músculos papilares menores (anterior, posterior e septal).',
-        comoAvaliarNoCadaver: 'Abra a câmara e conte os corpos carnosos de onde partem as cordas tendíneas: 2 gigantes = VE; 3 menores = VD.'
-      },
-      {
-        criterio: 'Trabécula Septomarginal (Banda Moderadora)',
-        estruturaA: 'Ventrículo Esquerdo: AUSENTE.',
-        estruturaB: 'Ventrículo Direito: PRESENTE (ponte muscular suspensa que liga o septo ao músculo papilar anterior).',
-        comoAvaliarNoCadaver: 'Se houver uma "alça/ponte" muscular cruzando o meio da cavidade como uma corda suspensa, a peça é o VD com certeza.'
-      },
-      {
-        criterio: 'Formação do Ápice Cardíaco',
-        estruturaA: 'Ventrículo Esquerdo: Forma 100% do ápice pontiagudo do coração.',
-        estruturaB: 'Ventrículo Direito: Termina cerca de 1,5 a 2 cm antes de atingir o ápice.',
-        comoAvaliarNoCadaver: 'A ponta cônica do coração pertence inteiramente ao ventrículo esquerdo.'
+        criterio: 'Relações Anatômicas Imediatas',
+        estruturaA: 'Aorta Ascendente: Anterior à artéria pulmonar direita e átrio esquerdo; medial à aurícula direita e VCS.',
+        estruturaB: 'Aorta Descendente: Posterior ao hilo pulmonar esquerdo, coração e esôfago; anterior à coluna torácica.',
+        comoAvaliarNoCadaver: 'Localize a coluna vertebral torácica: o tubo espesso colado à esquerda dos corpos vertebrais é a aorta torácica descendente.'
       }
     ],
     passoAPassoIdentificacao: [
-      'Passo 1: Encontre o ápice pontudo do coração. Ele é o marco do Ventrículo Esquerdo.',
-      'Passo 2: Posicione o coração com a face anterior convexa para frente: o VD está imediatamente atrás do esterno (anterior); o VE fica à esquerda e posterior.',
-      'Passo 3: Se houver corte, meça com o dedo a espessura da parede livre: 1 dedo grosso de miocárdio = VE; parede fina como papelão = VD.',
-      'Passo 4: Abra a cavidade e inspecione os músculos papilares: 2 corpos robustos = VE; 3 corpos com banda moderadora suspensa = VD.'
+      'Passo 1: Identifique a raiz do coração. O segmento inicial de 5 cm que parte do VE e termina no ângulo de Louis (T4) é a Aorta Ascendente.',
+      'Passo 2: Após a saída da artéria subclávia esquerda, o vaso curva-se para baixo no mediastino posterior como Aorta Descendente Torácica.',
+      'Passo 3: Observe a terminação: a aorta descendente torácica perfura o diafragma pelo hiato aórtico ao nível de T12.',
+      'Passo 4: Verifique a espessura da parede: ambas possuem parede muito espessa (túnica média elástica de Windkessel).'
     ],
     pontosDeConfusao: [
       {
-        armadilha: 'Achar que o septo interventricular pertence ao ventrículo direito.',
-        comoDesatar: 'O septo interventricular é abaulado em direção à cavidade do VD (por causa da maior pressão do VE) e funcionalmente faz parte da unidade contrátil do ventrículo esquerdo.'
+        armadilha: 'Achar que os 3 ramos da cabeça e braços saem da aorta ascendente.',
+        comoDesatar: 'O tronco braquiocefálico, carótida comum esquerda e subclávia esquerda saem do ARCO DA AORTA, nunca da aorta ascendente nem descendente.'
       },
       {
-        armadilha: 'Confundir o cone arterial (infundíbulo do VD) com a raiz da aorta.',
-        comoDesatar: 'O cone arterial é liso, tem formato de funil anterior e dá origem ao Tronco Pulmonar. A raiz aórtica é central, mais profunda e posterior ao tronco pulmonar.'
+        armadilha: 'Confundir a veia ázigos com a aorta descendente.',
+        comoDesatar: 'A veia ázigos fica à DIREITA da coluna vertebral e é uma veia fina e azulada; a aorta descendente fica à ESQUERDA e é uma artéria grossa vermelha/bege.'
       }
     ],
-    relevanciaFisioterapia: 'Indispensável para entender hipertrofias ventriculares: sobrecarga de pressão sistêmica gera hipertrofia concêntrica de VE; sobrecarga pulmonar (DPOC/Cor Pulmonale) gera hipertrofia e dilatação de VD com insuficiência tricúspide.'
+    relevanciaFisioterapia: 'Coarctação da aorta descendente provoca diferença de pressão arterial e amplitude de pulsos entre membros superiores e inferiores; aneurismas torácicos comprimem o esôfago gerando disfagia e tosse.'
   },
   {
-    id: 'diferenciacao-valvas',
-    titulo: 'Como Localizar e Diferenciar as 4 Valvas Cardíacas',
-    subtitulo: 'Reconhecimento das valvas atrioventriculares e semilunares em coração aberto ou corte de base',
-    categoria: 'Valvas',
-    conceitoChave: 'A presença de cordas tendíneas define valvas AV; a ausência de cordas e presença de bolsas em ninho define valvas semilunares.',
+    id: 'pericardio-fibroso-vs-seroso-epicardio',
+    titulo: 'Pericárdio Fibroso vs. Seroso (Parietal e Visceral / Epicárdio)',
+    subtitulo: 'As camadas anatômicas do saco pericárdico e a parede externa cardíaca',
+    categoria: 'Pericárdio & Camadas',
+    conceitoChave: 'O pericárdio fibroso é a bolsa externa opaca inelástica; o pericárdio seroso tem lâmina parietal interna e visceral (epicárdio) colada no miocárdio.',
     diferenciaisBancada: [
       {
-        criterio: 'Valva Mitral (Bicúspide / AV Esquerda)',
-        estruturaA: '2 cúspides amplas (anterior e posterior).',
-        estruturaB: 'Ancorada a 2 músculos papilares do VE por cordas tendíneas densas.',
-        comoAvaliarNoCadaver: 'Comunica o átrio esquerdo ao ventrículo esquerdo. A cúspide anterior é ampla e fica em continuidade fibrosa com a raiz aórtica.'
+        criterio: 'Aspecto Visual e Espessura',
+        estruturaA: 'Pericárdio Fibroso: Saco externo espesso, esbranquiçado, fibroso, opaco e resistente.',
+        estruturaB: 'Epicárdio (Lâmina Visceral Serosa): Membrana fina, transparente, brilhante e aderida diretamente sobre a gordura do miocárdio.',
+        comoAvaliarNoCadaver: 'Se a peça tiver uma bolsa de couro solta por fora cobrindo tudo = Fibroso. Se o alfinete estiver na superfície brilhante do próprio coração = Epicárdio.'
       },
       {
-        criterio: 'Valva Tricúspide (AV Direita)',
-        estruturaA: '3 cúspides (anterior, posterior e septal).',
-        estruturaB: 'Ancorada a 3 músculos papilares do VD por cordas tendíneas.',
-        comoAvaliarNoCadaver: 'Comunica o átrio direito ao ventrículo direito. A cúspide septal fica inserida diretamente no septo interventricular membranoso.'
+        criterio: 'Lâmina Parietal vs Lâmina Visceral',
+        estruturaA: 'Lâmina Parietal do Seroso: Superfície interna lisa que forra a face interna da "bolsa" do pericárdio fibroso.',
+        estruturaB: 'Lâmina Visceral do Seroso (Epicárdio): Superfície externa lisa que forra a massa muscular do miocárdio.',
+        comoAvaliarNoCadaver: 'Se o professor abrir o saco fibroso e espetar a face interna da tampa = Lâmina Parietal. Se espetar no coração = Lâmina Visceral (Epicárdio).'
       },
       {
-        criterio: 'Valva do Tronco Pulmonar (Semilunar)',
-        estruturaA: '3 válvulas semilunares em bolsa: anterior, direita e esquerda.',
-        estruturaB: 'NÃO possui cordas tendíneas nem músculos papilares. É a valva MAIS ANTERIOR da base do coração.',
-        comoAvaliarNoCadaver: 'Fica na raiz do tronco pulmonar, imediatamente à frente da valva da aorta.'
-      },
-      {
-        criterio: 'Valva da Aorta (Semilunar)',
-        estruturaA: '3 válvulas semilunares em bolsa: direita, esquerda e posterior.',
-        estruturaB: 'NÃO possui cordas tendíneas. Contém os ÓSTIOS CORONARIANOS dentro de seus seios valvares.',
-        comoAvaliarNoCadaver: 'Fica no centro exato da base do coração. Ao olhar dentro dos bolsos, você vê os furos de onde saem as coronárias direita e esquerda!'
+        criterio: 'Cavidade Pericárdica',
+        estruturaA: 'Localização: Espaço virtual interposto EXCLUSIVAMENTE entre a Lâmina Parietal e a Lâmina Visceral do pericárdio seroso.',
+        estruturaB: 'Conteúdo: Contém normalmente de 15 a 50 mL de líquido pericárdico seroso lubrificante.',
+        comoAvaliarNoCadaver: 'Não existe espaço entre o fibroso e a parietal (estão fundidos). O espaço livre com líquido fica entre parietal e visceral.'
       }
     ],
     passoAPassoIdentificacao: [
-      'Passo 1: No corte da base cardíaca com os átrios removidos, localize a valva MAIS ANTERIOR: ela é sempre a Valva do Tronco Pulmonar.',
-      'Passo 2: Imediatamente atrás dela, no centro geométrico do esqueleto fibroso, está a Valva da Aorta.',
-      'Passo 3: Abaixo e à esquerda da aorta está a Valva Mitral (com 2 grandes cúspides).',
-      'Passo 4: Abaixo e à direita da aorta está a Valva Tricúspide (com 3 cúspides).'
+      'Passo 1: Observe a peça por fora: se ainda houver o invólucro membranoso fechado = Pericárdio Fibroso.',
+      'Passo 2: Abra o invólucro: a face brilhante interna da parede aberta é a Lâmina Parietal do Pericárdio Seroso.',
+      'Passo 3: Olhe para a superfície muscular do coração exposto: a película transparente que cobre a gordura amarela e os vasos coronários é o Epicárdio (Lâmina Visceral).',
+      'Passo 4: Verifique as inserções do saco fibroso: inferiormente no centro tendíneo do diafragma e superiormente na raiz dos grandes vasos.'
     ],
     pontosDeConfusao: [
       {
-        armadilha: 'Chamar cúspide de valva na prova prática.',
-        comoDesatar: 'O professor cobra rigor: a VALVA é todo o complexo anatômico com o anel fibroso. CÚSPIDE (ou válvula) é cada uma das folhas/lâminas que se fecham.'
+        armadilha: 'Dizer que a cavidade pericárdica fica entre o pericárdio fibroso e o seroso.',
+        comoDesatar: 'Erro clássico de prova! A cavidade fica ENTRE as duas lâminas (parietal e visceral) do Pericárdio Seroso.'
       },
       {
-        armadilha: 'Procurar cordas tendíneas na valva aórtica ou pulmonar.',
-        comoDesatar: 'Valvas semilunares NUNCA possuem cordas tendíneas. Se tiver cordas brancas esticadas, obrigatoriamente é Mitral ou Tricúspide!'
+        armadilha: 'Confundir Epicárdio com Endocárdio.',
+        comoDesatar: 'O Epicárdio reveste o coração por FORA (lâmina visceral). O Endocárdio reveste as câmaras por DENTRO (luz dos átrios e ventrículos).'
       }
     ],
-    relevanciaFisioterapia: 'Origem direta das bulhas cardíacas B1 (fechamento de Mitral e Tricúspide) e B2 (fechamento de Aórtica e Pulmonar). Essencial para localizar o estetoscópio nos focos e detectar sopros de regurgitação ou estenose valvar.'
+    relevanciaFisioterapia: 'No derrame pericárdico e tamponamento cardíaco agudo, a inelasticidade do pericárdio fibroso restringe o enchimento diastólico do ventrículo direito, gerando tríade de Beck (hipotensão, turgência jugular e bulhas hipofonéticas).'
   },
   {
-    id: 'vasos-base-identificacao',
-    titulo: 'Reconhecimento dos Vasos da Base no Coração Isolado',
-    subtitulo: 'Regra espacial para nunca inverter Aorta, Tronco Pulmonar, Cavas e Veias Pulmonares',
+    id: 'ostio-av-direito-vs-esquerdo',
+    titulo: 'Óstio Átrio Ventricular Direito vs. Esquerdo & Músculos',
+    subtitulo: 'Diferenciação dos orifícios atrioventriculares, valvas e músculos pectíneos vs papilares',
+    categoria: 'Morfologia Interna',
+    conceitoChave: 'Óstio AV Direito possui a valva tricúspide (3 cúspides) e relaciona-se a músculos pectíneos no AD; Óstio AV Esquerdo possui a valva mitral (2 cúspides) e relaciona-se a 2 papilares gigantes no VE.',
+    diferenciaisBancada: [
+      {
+        criterio: 'Valva e Número de Cúspides',
+        estruturaA: 'Óstio AV Direito: Guarnecido pela Valva Tricúspide (3 cúspides: anterior, posterior e septal).',
+        estruturaB: 'Óstio AV Esquerdo: Guarnecido pela Valva Mitral (2 cúspides: anterior e posterior).',
+        comoAvaliarNoCadaver: 'Conte os folhetos valvares no anel: 3 cúspides com uma presa no septo = Óstio AV Direito; 2 cúspides amplas = Óstio AV Esquerdo.'
+      },
+      {
+        criterio: 'Músculo Pectíneo vs Músculo Papilar',
+        estruturaA: 'Músculo Pectíneo: Cristas musculares em dente de pente na parede anterior do ÁTRIO e no interior das aurículas.',
+        estruturaB: 'Músculo Papilar: Colunas carnosas cônicas volumosas que nascem no miocárdio do VENTRÍCULO e emitem cordas tendíneas.',
+        comoAvaliarNoCadaver: 'Se estiver no ÁTRIO em forma de pente raso = Músculo Pectíneo. Se estiver no VENTRÍCULO com fios brancos saindo da ponta = Músculo Papilar.'
+      },
+      {
+        criterio: 'Câmara e Pressões',
+        estruturaA: 'Óstio AV Direito: Comunica o AD de parede delgada com o VD de baixa pressão (~25 mmHg).',
+        estruturaB: 'Óstio AV Esquerdo: Comunica o AE com o VE de parede espessa e alta pressão (~120 mmHg).',
+        comoAvaliarNoCadaver: 'Verifique a espessura da parede da câmara adjacente: o anel mitral está em contato direto com a parede grossa de 8-12 mm do VE.'
+      }
+    ],
+    passoAPassoIdentificacao: [
+      'Passo 1: Identifique se a câmara aberta é átrio ou ventrículo.',
+      'Passo 2: No assoalho do átrio direito, localize a abertura circular ampla que conduz ao VD através da valva tricúspide = Óstio AV Direito.',
+      'Passo 3: No assoalho do átrio esquerdo, localize a abertura elíptica cercada pelas 4 veias pulmonares que conduz ao VE = Óstio AV Esquerdo.',
+      'Passo 4: Verifique as cordas tendíneas: elas ancoram as cúspides valvares aos músculos papilares correspondentes.'
+    ],
+    pontosDeConfusao: [
+      {
+        armadilha: 'Confundir Fossa Oval com Óstio Atrioventricular Direito.',
+        comoDesatar: 'A Fossa Oval é uma depressão rasa e fechada no septo medial. O Óstio AV é um túnel largo aberto no assoalho que dá acesso ao ventrículo.'
+      },
+      {
+        armadilha: 'Achar que os músculos papilares abrem as valvas atrioventriculares.',
+        comoDesatar: 'Eles nunca abrem as valvas! Eles se contraem na sístole apenas para travar as cúspides e impedir prolapso para dentro dos átrios.'
+      }
+    ],
+    relevanciaFisioterapia: 'Estenose mitral produz estalido de abertura e ruflar diastólico audível no foco mitral (5º EICE na LMC); insuficiência tricúspide produz sopro holossistólico que aumenta na inspiração profunda (Rivero-Carvallo).'
+  },
+  {
+    id: 'carotidas-comum-externa-interna',
+    titulo: 'Artérias Carótidas Comum, Externa e Interna',
+    subtitulo: 'Trajeto cervical, nível da bifurcação em C4 e diferenciação anatômica dos ramos',
+    categoria: 'Cabeça & Pescoço',
+    conceitoChave: 'A Carótida Comum não emite ramos no pescoço; em C4 bifurca-se em Carótida Externa (que emite múltiplos ramos para face/pescoço) e Carótida Interna (que sobe lisa sem ramos cervicais para o crânio).',
+    diferenciaisBancada: [
+      {
+        criterio: 'Emissão de Ramos Cervicais',
+        estruturaA: 'Artéria Carótida Externa: Emite 8 ramos imediatos no pescoço (A. tireóidea superior, lingual, facial, occipital, auricular posterior, etc.).',
+        estruturaB: 'Artéria Carótida Interna: NÃO emite nenhum ramo no pescoço; ascende lisa e penetra diretamente no canal carotídeo da base do crânio.',
+        comoAvaliarNoCadaver: 'Olhe a bifurcação em C4: o vaso que se ramifica no pescoço é a Carótida EXTERNA; o vaso que sobe sem ramos é a Carótida INTERNA!'
+      },
+      {
+        criterio: 'Posição Espacial e Seio Carotídeo',
+        estruturaA: 'Carótida Externa: Posiciona-se mais ântero-medialmente na bifurcação.',
+        estruturaB: 'Carótida Interna: Posiciona-se mais póstero-lateralmente e possui dilatação na raiz (Seio Carotídeo).',
+        comoAvaliarNoCadaver: 'A dilatação globosa de parede fina na raiz do ramo posterior é o Seio Carotídeo (barorreceptor).'
+      },
+      {
+        criterio: 'Artéria Carótida Comum',
+        estruturaA: 'Origem: À direita nasce do Tronco Braquiocefálico; à esquerda nasce DIRETO da convexidade do Arco da Aorta.',
+        estruturaB: 'Bainha Carotídea: Corre medialmente à Veia Jugular Interna e anteriormente ao Nervo Vago.',
+        comoAvaliarNoCadaver: 'Tubo arterial grosso retilíneo que sobe verticalmente ao lado da traqueia sem nenhum ramo lateral.'
+      }
+    ],
+    passoAPassoIdentificacao: [
+      'Passo 1: Encontre o pomo de adão / margem superior da cartilagem tireóidea (nível C4). Esse é o ponto exato da bifurcação carotídea.',
+      'Passo 2: Abaixo desse nível, o vaso arterial calibroso único é a Artéria Carótida Comum.',
+      'Passo 3: No ponto de bifurcação, observe os dois ramos terminais: o ramo anterior que dá galhos é a Artéria Carótida Externa.',
+      'Passo 4: O ramo posterior dilatado na raiz que sobe liso para a base da cabeça é a Artéria Carótida Interna.'
+    ],
+    pontosDeConfusao: [
+      {
+        armadilha: 'Achar que a carótida interna fica mais para a frente por ser mais importante.',
+        comoDesatar: 'Na bifurcação em C4, a carótida EXTERNA fica anterior/medial para irrigar a face; a INTERNA fica posterior/lateral para mergulhar no crânio.'
+      },
+      {
+        armadilha: 'Palpar as duas carótidas comuns simultaneamente no paciente.',
+        comoDesatar: 'Contraindicação formal na semiologia! Comprimir ambos os seios carotídeos causa bradicardia severa, queda abrupta do fluxo cerebral e síncope reflexa.'
+      }
+    ],
+    relevanciaFisioterapia: 'Pulso carotídeo é o pulso central padrão em emergências (RCP); placas ateroscleróticas na bifurcação carotídea geram sopros carotídeos e risco de AVC isquêmico embólico.'
+  },
+  {
+    id: 'iliacas-comum-interna-externa',
+    titulo: 'Artérias Ilíacas Comum, Interna e Externa',
+    subtitulo: 'Bifurcação aórtica em L4 e transição pélvico-femoral sob o ligamento inguinal',
+    categoria: 'Abdome & Pelve',
+    conceitoChave: 'A Aorta bifurca-se em L4 nas Ilíacas Comuns; em L5-S1 a Ilíaca Comum bifurca-se em Ilíaca Interna (mergulha na pelve menor) e Externa (segue para a coxa como Artéria Femoral).',
+    diferenciaisBancada: [
+      {
+        criterio: 'Destino dos Ramos Ilíacos',
+        estruturaA: 'Artéria Ilíaca Interna: Mergulha profundamente para dentro da cavidade da pelve menor para irrigar as vísceras pélvicas e períneo.',
+        estruturaB: 'Artéria Ilíaca Externa: Continua superficialmente ao longo do músculo psoas e passa sob o ligamento inguinal para virar Artéria Femoral.',
+        comoAvaliarNoCadaver: 'Olhe a direção na bifurcação: se o vaso afunda no buraco da bacia = Ilíaca INTERNA. Se segue rente à borda para a perna = Ilíaca EXTERNA.'
+      },
+      {
+        criterio: 'Nível Vertebral da Bifurcação',
+        estruturaA: 'Bifurcação da Aorta em Ilíacas Comuns: Nível da 4ª vértebra lombar (L4 - cristas ilíacas).',
+        estruturaB: 'Bifurcação da Ilíaca Comum em Externa e Interna: Nível da articulação sacroilíaca / disco L5-S1.',
+        comoAvaliarNoCadaver: 'A bifurcação alta na coluna lombar é da Aorta; a bifurcação baixa na entrada da bacia é da Ilíaca Comum.'
+      }
+    ],
+    passoAPassoIdentificacao: [
+      'Passo 1: Trace a linha bi-ilíaca no abdômen posterior: ao nível de L4, a aorta abdominal termina bifurcando-se em Artérias Ilíacas Comuns D e E.',
+      'Passo 2: Acompanhe a artéria ilíaca comum por cerca de 4 cm ao longo do bordo medial do músculo psoas maior.',
+      'Passo 3: Na altura de L5-S1, veja o vaso que mergulha no estreito superior da pelve: é a Artéria Ilíaca Interna (hipogástrica).',
+      'Passo 4: Veja o vaso que continua contornando a margem óssea e passa debaixo do ligamento inguinal: é a Artéria Ilíaca Externa (que vira Artéria Femoral).'
+    ],
+    pontosDeConfusao: [
+      {
+        armadilha: 'Confundir Artéria Ilíaca Comum com a Veia Cava Inferior.',
+        comoDesatar: 'A VCI é um tronco venoso único, volumoso e azulado localizado à direita da coluna; as ilíacas comuns são duas artérias divergentes em "Y" com paredes espessas.'
+      }
+    ],
+    relevanciaFisioterapia: 'Fundamental na Fisioterapia Pélvica e Obstétrica: a artéria ilíaca interna irriga a musculatura do assoalho pélvico (ramos pudendos internos), enquanto a artéria ilíaca externa supre o membro inferior.'
+  },
+  {
+    id: 'safena-magna-vs-parva',
+    titulo: 'Veia Safena Magna vs. Veia Safena Parva',
+    subtitulo: 'Regra infalível dos maléolos do tornozelo e pontos de desembocadura',
+    categoria: 'Membro Inferior',
+    conceitoChave: 'A Safena Magna passa ANTERIOR ao maléolo medial e desemboca na Veia Femoral; a Safena Parva passa POSTERIOR ao maléolo lateral e desemboca na Veia Poplítea.',
+    diferenciaisBancada: [
+      {
+        criterio: 'Relação Obrigatória com os Maléolos',
+        estruturaA: 'Veia Safena Magna: Passa 1 a 2 cm ANTERIORMENTE ao Maléolo Medial (osso de dentro do tornozelo).',
+        estruturaB: 'Veia Safena Parva: Passa POSTERIORMENTE ao Maléolo Lateral (osso de fora do tornozelo).',
+        comoAvaliarNoCadaver: 'Critério número 1 de prova: olhe o osso do tornozelo. Passou pela frente do maléolo de dentro = Magna. Passou por trás do maléolo de fora = Parva!'
+      },
+      {
+        criterio: 'Trajeto na Perna e Deságue Profundo',
+        estruturaA: 'Veia Safena Magna: Sobe pela face medial da perna e coxa e perfura o Hiato Safeno para desembocar na Veia Femoral.',
+        estruturaB: 'Veia Safena Parva: Sobe na linha média da panturrilha entre os gastrocnêmios e perfura a fáscia poplítea para desembocar na Veia Poplítea.',
+        comoAvaliarNoCadaver: 'Se o vaso venoso superficial estiver na face medial = Safena Magna. Se estiver no meio da panturrilha por trás = Safena Parva.'
+      },
+      {
+        criterio: 'Nervos Acompanhantes',
+        estruturaA: 'Veia Safena Magna: Acompanhada pelo Nervo Safeno na perna.',
+        estruturaB: 'Veia Safena Parva: Acompanhada pelo Nervo Sural na face posterior da perna.',
+        comoAvaliarNoCadaver: 'Identifique o filete nervoso amarelo ao lado da veia superficial: nervo sural acompanha a parva; nervo safeno acompanha a magna.'
+      }
+    ],
+    passoAPassoIdentificacao: [
+      'Passo 1: Identifique a face do membro inferior: se for face MEDIAL, procure a Veia Safena Magna.',
+      'Passo 2: Verifique o maléolo medial da tíbia: a veia safena magna sobe 1 a 2 cm à frente da sua proeminência óssea.',
+      'Passo 3: Se a perna estiver dissecada posteriormente (panturrilha), localize a veia na linha média entre as cabeças do gastrocnêmio: é a Veia Safena Parva.',
+      'Passo 4: Siga a safena parva até a dobra do joelho: ela mergulha na fáscia poplítea para entrar na veia poplítea profunda.'
+    ],
+    pontosDeConfusao: [
+      {
+        armadilha: 'Inverter os maléolos na prova sem tocar.',
+        comoDesatar: 'Regra mnemônica: "M"édio com "M"agna (Maléolo Medial = Safena Magna). O maléolo lateral fica com a Safena Parva!'
+      },
+      {
+        armadilha: 'Achar que a safena parva sobe até a virilha.',
+        comoDesatar: 'A safena parva termina no joelho (deságua na veia poplítea). Apenas a safena magna sobe até a virilha (trígono femoral).'
+      }
+    ],
+    relevanciaFisioterapia: 'A safena magna é o enxerto vascular mais utilizado na cirurgia cardíaca (ponte de safena); o membro doador desenvolve edema residual tratado com drenagem linfática manual e cinesioterapia vascular.'
+  },
+  {
+    id: 'mmss-axilar-braquial-radial-arcos',
+    titulo: 'Artérias do Membro Superior: Axilar, Braquial, Radial e Arcos',
+    subtitulo: 'A continuidade arterial desde o desfiladeiro axilar até a palma da mão',
+    categoria: 'Membro Superior',
+    conceitoChave: 'A mesma artéria muda de nome pelos limites ósseos: Subclávia (1ª costela) -> Axilar (redondo maior) -> Braquial (colo do rádio) -> Radial e Ulnar -> Arcos Palmares.',
+    diferenciaisBancada: [
+      {
+        criterio: 'Limites Anatômicos de Transição',
+        estruturaA: 'Artéria Axilar: Da margem lateral da 1ª costela até a margem inferior do tendão do músculo redondo maior.',
+        estruturaB: 'Artéria Braquial: Da margem inferior do redondo maior até a bifurcação no colo do rádio na fossa cubital.',
+        comoAvaliarNoCadaver: 'Se estiver no oco axilar abraçada pelo plexo = Axilar. Se estiver descendo no braço medial ao bíceps = Braquial.'
+      },
+      {
+        criterio: 'Artéria Radial na Goteira do Pulso',
+        estruturaA: 'Localização: Face anterior lateral do punho, entre os tendões do braquiorradial e flexor radial do carpo.',
+        estruturaB: 'Arco Palmar: Anastomose curva na palma da mão emitindo artérias digitais comuns.',
+        comoAvaliarNoCadaver: 'No punho lateral = Artéria Radial. Na palma da mão = Arco Palmar Superficial.'
+      }
+    ],
+    passoAPassoIdentificacao: [
+      'Passo 1: No ápice do membro superior, localize o feixe vasculonervoso axilar com o músculo peitoral menor: é a Artéria Axilar.',
+      'Passo 2: No braço, siga pelo sulco bicipital medial com o nervo mediano e as 2 veias braquiais satélites: é a Artéria Braquial.',
+      'Passo 3: No punho, olhe para o lado do polegar na goteira radial: é a Artéria Radial.',
+      'Passo 4: Na palma da mão, sob a aponeurose palmar, identifique a alça arterial curva que vasculariza os dedos: é o Arco Palmar Superficial.'
+    ],
+    pontosDeConfusao: [
+      {
+        armadilha: 'Confundir Artéria Braquial com o Nervo Mediano na fossa cubital.',
+        comoDesatar: 'O nervo mediano é maciço e fibroso; a artéria braquial tem luz aberta e fica imediatamente medial ao tendão do bíceps.'
+      }
+    ],
+    relevanciaFisioterapia: 'A artéria braquial é o ponto padrão da ausculta de Korotkoff na aferição da PA; a artéria radial é o local de contagem do pulso e execução do Teste de Allen.'
+  },
+  {
+    id: 'subclavia-veia-vs-arteria',
+    titulo: 'Veia Subclávia vs. Artéria Subclávia no Pescoço',
+    subtitulo: 'A relação topográfica com o Músculo Escaleno Anterior e a 1ª costela',
     categoria: 'Vasos da Base',
-    conceitoChave: 'Relação "Anterior-Intermediário-Posterior": Tronco Pulmonar (anterior) -> Aorta (meio/superior) -> Veias Cavas e Pulmonares (posterior/inferior).',
+    conceitoChave: 'O Músculo Escaleno Anterior separa os dois vasos na 1ª costela: a VEIA Subclávia passa ANTERIORMENTE a ele; a ARTÉRIA Subclávia passa POSTERIORMENTE (no hiato interescalênico).',
     diferenciaisBancada: [
       {
-        criterio: 'Tronco Pulmonar',
-        estruturaA: 'Emerge do cone arterial do Ventrículo Direito.',
-        estruturaB: 'Cruza obliquamente pela FRENTE da aorta ascendente e divide-se em artéria pulmonar direita e esquerda.',
-        comoAvaliarNoCadaver: 'É o vaso mais anterior que você vê ao olhar o coração de frente. Possui parede relativamente fina para uma artéria.'
+        criterio: 'Posição em Relação ao Escaleno Anterior',
+        estruturaA: 'Veia Subclávia: Passa ANTERIORMENTE ao tendão do Músculo Escaleno Anterior.',
+        estruturaB: 'Artéria Subclávia: Passa POSTERIORMENTE ao escaleno anterior (entre o escaleno anterior e o escaleno médio).',
+        comoAvaliarNoCadaver: 'Identifique o músculo que desce das vértebras cervicais para a 1ª costela: o vaso da FRENTE é VEIA; o vaso de TRÁS é ARTÉRIA.'
       },
       {
-        criterio: 'Artéria Aorta (Raiz e Arco)',
-        estruturaA: 'Emerge profundamente no centro do Ventrículo Esquerdo.',
-        estruturaB: 'Ascende atrás do tronco pulmonar, faz um arco convexo para trás e para a esquerda, emitindo 3 ramos calibrosos.',
-        comoAvaliarNoCadaver: 'Vaso com a parede mais espessa de todos. Se você puxar o arco, verá a saída do Tronco Braquiocefálico, Carótida E e Subclávia E.'
-      },
-      {
-        criterio: 'Veia Cava Superior e Inferior',
-        estruturaA: 'Chegam na parede posterior do Átrio Direito.',
-        estruturaB: 'A VCS desce verticalmente do lado direito; a VCI abre-se no assoalho do átrio direito.',
-        comoAvaliarNoCadaver: 'Introduza uma pinça pela veia cava superior: ela sai direto pela veia cava inferior através da cavidade do átrio direito.'
-      },
-      {
-        criterio: '4 Veias Pulmonares',
-        estruturaA: 'Chegam aos pares (2 direitas e 2 esquerdas) no teto posterior do Átrio Esquerdo.',
-        estruturaB: 'São curtas e abrem-se na face posterior lisa do coração.',
-        comoAvaliarNoCadaver: 'Vire o coração para trás: procure 4 aberturas vasculares simétricas que entram diretamente no átrio esquerdo.'
+        criterio: 'Acompanhamento do Plexo Braquial',
+        estruturaA: 'Veia Subclávia: Não entra no hiato interescalênico, ficando isolada à frente.',
+        estruturaB: 'Artéria Subclávia: Corre no hiato interescalênico intimamente acompanhada pelos troncos do Plexo Braquial.',
+        comoAvaliarNoCadaver: 'Se houver cordões nervosos amarelos passando junto com o vaso sobre a 1ª costela, trata-se com certeza da Artéria Subclávia.'
       }
     ],
     passoAPassoIdentificacao: [
-      'Passo 1: Segure o coração com o ápice apontado para baixo e para sua esquerda.',
-      'Passo 2: O vaso cilíndrico saindo mais para a frente é o Tronco Pulmonar.',
-      'Passo 3: Logo atrás dele, o vaso curvo espesso que sobe e curva é o Arco da Aorta.',
-      'Passo 4: Verifique a pequena fita fibrosa que une a aorta ao tronco pulmonar: é o Ligamento Arterial.',
-      'Passo 5: Do lado direito e atrás, localize os dois tubos azuis verticais: Veia Cava Superior e Inferior.'
+      'Passo 1: Localize a 1ª costela e o músculo escaleno anterior que nela se insere.',
+      'Passo 2: O vaso venoso largo e azulado que passa superficialmente na frente do escaleno é a Veia Subclávia.',
+      'Passo 3: O vaso arterial cilíndrico de parede espessa que passa atrás do músculo no espaço interescalênico é a Artéria Subclávia.',
+      'Passo 4: Siga ambos até cruzarem a borda lateral da 1ª costela: ali se tornam vasos axilares.'
     ],
     pontosDeConfusao: [
       {
-        armadilha: 'Confundir Artéria Pulmonar com Veia Pulmonar.',
-        comoDesatar: 'As Artérias Pulmonares são 2 e saem da bifurcação do Tronco Pulmonar (anterior). As Veias Pulmonares são 4 e entram diretamente no Átrio Esquerdo (posterior).'
-      },
-      {
-        armadilha: 'Confundir Aurícula com Átrio.',
-        comoDesatar: 'A aurícula é apenas o apêndice rugoso ("orelhinha de cachorro") projetado para a frente. O átrio é a cavidade oca inteira.'
+        armadilha: 'Achar que a artéria e a veia subclávia passam juntas no mesmo espaço.',
+        comoDesatar: 'Elas são rigidamente separadas pelo ventre carnoso do músculo escaleno anterior!'
       }
     ],
-    relevanciaFisioterapia: 'Em cirurgias de revascularização miocárdica e troca valvar, a canulação desses vasos para circulação extracorpórea (CEC) é rotineira. Na UTI, cateteres de Swan-Ganz progridem via VCS -> AD -> VD -> Tronco Pulmonar até a artéria pulmonar.'
+    relevanciaFisioterapia: 'Na Síndrome do Desfiladeiro Torácico (SDT), espasmos ou hipertrofia dos escalenos comprimem a artéria subclávia e o plexo braquial, provocando parestesia no braço e diminuição do pulso radial durante a manobra de Adson.'
   },
   {
-    id: 'focos-ausculta-fisioterapia',
-    titulo: 'Focos de Ausculta Cardíaca e Pulsos Arteriais',
-    subtitulo: 'Mapeamento torácico e pontos de palpação fundamentais na semiologia fisioterapêutica',
-    categoria: 'Ausculta e Semiologia',
-    conceitoChave: 'A ausculta sistemática nos 4 focos precordiais permite identificar estenoses, insuficiências e sobrecargas volêmicas.',
+    id: 'interventricular-anterior-vs-aorta',
+    titulo: 'Artéria Interventricular Anterior ("da Aorta") & Septo',
+    subtitulo: 'Esclarecimento da nomenclatura de prova e irrigação do septo interventricular',
+    categoria: 'Coração',
+    conceitoChave: 'A artéria que desce no sulco anterior chama-se Artéria Interventricular Anterior e é ramo da Coronária Esquerda (e não direta da aorta); irriga o septo interventricular.',
     diferenciaisBancada: [
       {
-        criterio: 'Foco Aórtico (2º EICD)',
-        estruturaA: 'Projeção acústica do fechamento da valva aórtica.',
-        estruturaB: 'Melhor audibilidade da componente A2 da 2ª bulha (B2).',
-        comoAvaliarNoCadaver: 'Localize a 2ª costela articulada no ângulo esternal (de Louis); desça a polpa digital para o espaço intercostal imediatamente inferior, junto ao bordo esternal direito.'
+        criterio: 'Origem Anatômica Exata',
+        estruturaA: 'Artéria Interventricular Anterior (ADA): Ramo terminal da Artéria Coronária Esquerda (que nasce do seio aórtico esquerdo).',
+        estruturaB: 'Aorta Ascendente: O tronco arterial elástico da raiz cardíaca que dá origem às coronárias.',
+        comoAvaliarNoCadaver: 'A artéria que corre no sulco na frente do coração não sai da aorta diretamente; ela nasce do tronco da coronária esquerda sob a aurícula esquerda.'
       },
       {
-        criterio: 'Foco Pulmonar (2º EICE)',
-        estruturaA: 'Projeção acústica do fechamento da valva pulmonar.',
-        estruturaB: 'Local de eleição para escutar o desdobramento fisiológico de B2 durante a inspiração.',
-        comoAvaliarNoCadaver: 'Mesmo nível do foco aórtico, porém espelhado na borda esternal esquerda.'
-      },
-      {
-        criterio: 'Foco Tricúspide (4º/5º EICE)',
-        estruturaA: 'Projeção acústica do fechamento da valva tricúspide.',
-        estruturaB: 'Borda esternal esquerda inferior, próximo à base do processo xifoide.',
-        comoAvaliarNoCadaver: 'Desça 2 a 3 espaços intercostais pela margem esternal esquerda a partir do ângulo de Louis.'
-      },
-      {
-        criterio: 'Foco Mitral (5º EICE na LMC)',
-        estruturaA: 'Projeção acústica do fechamento da valva mitral e pico de B1.',
-        estruturaB: 'Coincide com o Ictus Cordis (ápice do ventrículo esquerdo).',
-        comoAvaliarNoCadaver: 'Linha vertical descendo do ponto médio da clavícula esquerda até cruzar o 5º espaço intercostal.'
+        criterio: 'Septo Interventricular',
+        estruturaA: 'Porção Muscular: Parede espessa compacta inferior que perfaz mais de 90% do septo.',
+        estruturaB: 'Porção Membranosa: Pequena área superior delgada e fibrosa translúcida junto à raiz aórtica.',
+        comoAvaliarNoCadaver: 'No coração cortado, a massa grossa carnosa é a porção muscular; o topo fino perto da valva aórtica é a porção membranosa.'
       }
     ],
     passoAPassoIdentificacao: [
-      'Passo 1: Sempre palpe primeiro o Ângulo de Louis no esterno para ter certeza de qual é o 2º espaço intercostal.',
-      'Passo 2: Ausculte o ritmo e cadência: B1 ("TUM") e B2 ("TÁ") -> Tum-Tá, Tum-Tá.',
-      'Passo 3: Palpe o pulso carotídeo ou radial simultaneamente: a onda de pulso bate exatamente junto com B1 (início da sístole).',
-      'Passo 4: Percorra os focos em sequência: Aórtico -> Pulmonar -> Tricúspide -> Mitral.'
+      'Passo 1: Segure o coração pela face esternocostal com o ápice voltado para baixo.',
+      'Passo 2: Localize o sulco interventricular anterior: a artéria cilíndrica que desce nele em direção ao ápice é a Artéria Interventricular Anterior.',
+      'Passo 3: Observe a veia que a acompanha: é a Grande Veia Cardíaca (veia cardíaca magna).',
+      'Passo 4: Abra os ventrículos e examine a parede entre eles: é o Septo Interventricular.'
     ],
     pontosDeConfusao: [
       {
-        armadilha: 'Achar que o foco auscultatório fica fisicamente em cima da valva anatômica.',
-        comoDesatar: 'As valvas ficam amontoadas profundamente atrás do esterno. Os focos superficiais são os pontos para onde o sangue turbilhonar conduz acusticamente o som com máxima intensidade.'
-      },
-      {
-        armadilha: 'Confundir B3 (terceira bulha - galope ventricular de sobrecarga) com desdobramento de B2.',
-        comoDesatar: 'B3 ocorre na protodiástole (logo após B2), com som grave tipo "Tu-tum-ta" (galope), comum em insuficiência cardíaca descompensada.'
+        armadilha: 'Escrever "Artéria interventricular da aorta" na prova.',
+        comoDesatar: 'Resposta considerada errada pelos professores! A nomenclatura anatômica oficial é Artéria Interventricular Anterior (ou ramo interventricular anterior da artéria coronária esquerda).'
       }
     ],
-    relevanciaFisioterapia: 'Permite ao fisioterapeuta determinar segurança para mobilização precoce, avaliar resposta hemodinâmica ao exercício e identificar sobrecargas cardíacas que exijam interrupção imediata da sessão.'
+    relevanciaFisioterapia: 'Oclusão da interventricular anterior causa infarto agudo do miocárdio anterior extenso com perda de massa contrátil do VE e insuficiência cardíaca grave com fração de ejeção reduzida.'
   }
 ];
 

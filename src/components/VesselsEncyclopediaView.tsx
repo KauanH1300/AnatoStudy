@@ -356,11 +356,10 @@ export const VesselsEncyclopediaView: React.FC = () => {
           onClick={() => setSelectedModalImage(null)}
         >
           <div
-            className="bg-slate-900 rounded-2xl border border-slate-700 max-w-4xl w-full overflow-hidden shadow-2xl space-y-4"
+            className="bg-slate-900 rounded-2xl border border-slate-700 max-w-4xl w-full overflow-hidden shadow-2xl p-4 space-y-4"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
-            <div className="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between text-white">
+            <div className="flex items-center justify-between text-white border-b border-slate-800 pb-3">
               <div>
                 <h3 className="text-base font-bold">{selectedModalImage.titulo}</h3>
                 <p className="text-xs text-slate-400">{selectedModalImage.subtitulo}</p>
@@ -373,31 +372,17 @@ export const VesselsEncyclopediaView: React.FC = () => {
               </button>
             </div>
 
-            {/* Modal Image display */}
-            <div className="p-4 flex items-center justify-center max-h-[70vh] overflow-auto">
-              <img
-                src={selectedModalImage.imageUrl}
-                alt={selectedModalImage.titulo}
-                referrerPolicy="no-referrer"
-                className="max-h-[60vh] w-auto object-contain rounded-lg drop-shadow-xl"
-              />
-            </div>
-
-            {/* Modal Footer with key landmarks */}
-            <div className="p-4 bg-slate-950 border-t border-slate-800 space-y-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-rose-400 block">
-                Marcos Anatômicos Guias:
-              </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
-                {selectedModalImage.legendaPontos.map((pt, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-rose-500 shrink-0"></span>
-                    <span>{pt}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="text-[11px] text-slate-500 pt-1">Fonte da Imagem: {selectedModalImage.autorOuFonte}</p>
-            </div>
+            <AnatomicalImageViewer
+              structureId={selectedModalImage.id}
+              structureName={selectedModalImage.titulo}
+              subtitulo={selectedModalImage.subtitulo}
+              imageUrl={selectedModalImage.imageUrl}
+              fonte={selectedModalImage.autorOuFonte}
+              legendaPontos={selectedModalImage.legendaPontos}
+              tipo={selectedModalImage.tipo}
+              mode="card"
+              defaultView="svg"
+            />
           </div>
         </div>
       )}

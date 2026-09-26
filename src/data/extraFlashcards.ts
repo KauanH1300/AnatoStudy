@@ -2,18 +2,7 @@ import { Flashcard } from '../types/anatomy';
 
 export const extraFlashcards: Flashcard[] = [
   {
-    id: 65,
-    categoria: 'vasos',
-    pergunta: 'Como reconhecer visualmente a VEIA SAFENA PARVA sem tocar na peça cadavérica?',
-    resposta: 'Veia Safena Parva: veia superficial da perna que se origina na margem lateral do pé, ascende POSTERIORMENTE ao maléolo lateral e sobe pela linha média posterior da panturrilha até a fossa poplítea.',
-    dica_pratica: 'OLHANDO SEM TOCAR: Observe a face POSTERIOR da perna (panturrilha). O vaso venoso superficial correndo verticalmente na linha média entre os dois ventres do gastrocnêmio e mergulhando na dobra do joelho (fossa poplítea) é a Veia Safena Parva. A Safena Magna está na face medial e passa na frente do maléolo medial.',
-    relacao_sintopica: 'Acompanhada pelo nervo sural na face posterior da perna; perfura a fáscia poplítea para desembocar na veia poplítea.',
-    funcao_hemodinamica: 'Drena a face lateral do pé e região posterior da perna.',
-    aplicacao_fisioterapia: 'Varizes no trajeto da safena parva provocam dor e sensação de peso na panturrilha ao final do dia; tratada com cinesioterapia vascular e elevação.',
-    tags: ['safena-parva', 'membro-inferior', 'veias-superficiais', 'bancada-sem-tocar']
-  },
-  {
-    id: 66,
+    id: 69,
     categoria: 'vasos',
     pergunta: 'Como diferenciar visualmente a ARTÉRIA ILÍACA EXTERNA da ARTÉRIA FEMORAL?',
     resposta: 'A Artéria Ilíaca Externa torna-se Artéria Femoral no exato momento em que passa sob o LIGAMENTO INGUINAL para entrar na coxa (trígono femoral).',
@@ -24,7 +13,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['iliaca-externa', 'arteria-femoral', 'ligamento-inguinal', 'marcos-osseos']
   },
   {
-    id: 67,
+    id: 70,
     categoria: 'vasos',
     pergunta: 'Como identificar visualmente a ARTÉRIA POPLÍTEA na fossa poplítea sem tocar?',
     resposta: 'Artéria Poplítea: vaso arterial profundo que atravessa a fossa poplítea (atrás do joelho), estendendo-se do hiato dos adutores até a margem inferior do músculo poplíteo.',
@@ -35,7 +24,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['arteria-poplitea', 'fossa-poplitea', 'joelho', 'sintopia-nva']
   },
   {
-    id: 68,
+    id: 71,
     categoria: 'vasos',
     pergunta: 'Como identificar visualmente a ARTÉRIA TIBIAL ANTERIOR e a ARTÉRIA DORSAL DO PÉ (pediosa)?',
     resposta: 'Artéria Tibial Anterior: perfura a membrana interóssea para o compartimento anterior da perna, descendo entre o tibial anterior e o extensor longo dos dedos. Ao cruzar o retináculo dos extensores no tornozelo, torna-se a Artéria Dorsal do Pé.',
@@ -46,7 +35,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['tibial-anterior', 'dorsal-do-pe', 'pulso-pedioso', 'antebraço-perna']
   },
   {
-    id: 69,
+    id: 72,
     categoria: 'vasos',
     pergunta: 'Como identificar visualmente a ARTÉRIA TIBIAL POSTERIOR no tornozelo sem tocar?',
     resposta: 'Artéria Tibial Posterior: desce pelo compartimento posterior profundo da perna e contorna posteriormente o maléolo medial na goteira retromaleolar medial.',
@@ -57,7 +46,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['tibial-posterior', 'tornozelo', 'maleolo-medial', 'bancada-sem-tocar']
   },
   {
-    id: 70,
+    id: 73,
     categoria: 'coração',
     pergunta: 'Como reconhecer visualmente o ÓSTIO DO SEIO CORONÁRIO dentro do átrio direito sem tocar?',
     resposta: 'Óstio do Seio Coronário: orifício arredondado situado no assoalho do átrio direito, localizado entre o óstio atrioventricular direito (valva tricúspide) e o óstio da veia cava inferior.',
@@ -68,7 +57,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['ostio-seio-coronario', 'atrio-direito', 'morfologia-interna', 'bancada-sem-tocar']
   },
   {
-    id: 71,
+    id: 74,
     categoria: 'coração',
     pergunta: 'Como reconhecer visualmente a CRISTA TERMINAL dentro do átrio direito sem tocar?',
     resposta: 'Crista Terminal: crista muscular vertical saliente em forma de "C" que se estende do óstio da veia cava superior ao óstio da veia cava inferior na parede interna do átrio direito.',
@@ -79,7 +68,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['crista-terminal', 'atrio-direito', 'musculos-pectineos', 'bancada-sem-tocar']
   },
   {
-    id: 72,
+    id: 75,
     categoria: 'coração',
     pergunta: 'Como identificar visualmente o CONE ARTERIAL (ou infundíbulo) no ventrículo direito sem tocar?',
     resposta: 'Cone Arterial (infundíbulo): região cônica de paredes lisas localizada na porção superior do ventrículo direito, que conduz o sangue para a valva do tronco pulmonar.',
@@ -90,7 +79,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['cone-arterial', 'infundibulo', 'ventriculo-direito', 'bancada-sem-tocar']
   },
   {
-    id: 73,
+    id: 76,
     categoria: 'coração',
     pergunta: 'Como identificar visualmente a TRABÉCULA SEPTOMARGINAL (banda moderadora) sem tocar?',
     resposta: 'Trabécula Septomarginal: ponte muscular espessa e isolada que cruza transversalmente a cavidade do ventrículo direito, estendendo-se do septo interventricular até a base do músculo papilar anterior.',
@@ -101,18 +90,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['trabecula-septomarginal', 'banda-moderadora', 'ventriculo-direito', 'exclusivo-vd']
   },
   {
-    id: 74,
-    categoria: 'coração',
-    pergunta: 'Como diferenciar visualmente a VALVA MITRAL da VALVA TRICÚSPIDE numa peça com o plano atrioventricular dissecado?',
-    resposta: 'Valva Mitral (esquerda): possui 2 cúspides volumosas (anterior e posterior) e formato ovalado. Valva Tricúspide (direita): possui 3 cúspides (anterior, posterior e septal) e contorno triangular mais amplo.',
-    dica_pratica: 'OLHANDO SEM TOCAR: Olhe a posição em relação aos ventrículos: a valva associada ao ventrículo com parede fina é a Tricúspide (tem 3 cúspides e sua cúspide septal é grudada no septo). A valva associada ao ventrículo com miocárdio espesso é a Mitral (tem apenas 2 cúspides).',
-    relacao_sintopica: 'A valva mitral fica póstero-lateral esquerda; a tricúspide fica ântero-medial direita no plano atrioventricular.',
-    funcao_hemodinamica: 'Abertura diastólica e fechamento sistólico impedindo fluxo retrógrado.',
-    aplicacao_fisioterapia: 'Estenose mitral produz ruflar diastólico audível no foco mitral; regurgitação mitral produz sopro sistólico com irradiação axilar.',
-    tags: ['valva-mitral', 'valva-tricuspide', 'diferenciacao-visual', 'bancada-sem-tocar']
-  },
-  {
-    id: 75,
+    id: 77,
     categoria: 'vasos',
     pergunta: 'Como reconhecer visualmente o TRONCO BRAQUIOCEFÁLICO no mediastino superior sem tocar?',
     resposta: 'Tronco Braquiocefálico: primeiro e maior ramo arterial a emergir da convexidade do arco aórtico (à direita). Tem trajeto oblíquo de cerca de 4 a 5 cm e bifurca-se em artéria carótida comum direita e artéria subclávia direita.',
@@ -123,7 +101,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['tronco-braquiocefalico', 'arco-aortico', 'vasos-da-base', 'bancada-sem-tocar']
   },
   {
-    id: 76,
+    id: 78,
     categoria: 'vasos',
     pergunta: 'Como reconhecer visualmente as VEIAS BRAQUIOCEFÁLICAS Direita e Esquerda e a formação da VCS?',
     resposta: 'A Veia Cava Superior é formada pela união da Veia Braquiocefálica Direita com a Veia Braquiocefálica Esquerda na altura da 1ª cartilagem costal direita. A veia braquiocefálica esquerda é muito mais longa e cruza obliquamente a frente dos ramos da aorta.',
@@ -134,7 +112,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['veias-braquiocefalicas', 'veia-cava-superior', 'mediastino', 'bancada-sem-tocar']
   },
   {
-    id: 77,
+    id: 79,
     categoria: 'coração',
     pergunta: 'Como reconhecer visualmente a ARTÉRIA CORONÁRIA DIREITA no coração intacto sem tocar?',
     resposta: 'Artéria Coronária Direita: emerge do seio aórtico direito, corre pelo sulco coronário (entre o átrio direito e o ventrículo direito), contorna a margem direita e emite a artéria interventricular posterior na face diafragmática.',
@@ -145,7 +123,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['coronaria-direita', 'sulco-coronario', 'bancada-sem-tocar']
   },
   {
-    id: 78,
+    id: 80,
     categoria: 'coração',
     pergunta: 'Como reconhecer visualmente a ARTÉRIA CIRCUNFLEXA no coração sem tocar?',
     resposta: 'Artéria Circunflexa: ramo da artéria coronária esquerda que contorna a margem esquerda do coração pelo sulco coronário, alojando-se entre o átrio esquerdo e o ventrículo esquerdo.',
@@ -156,7 +134,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['arteria-circunflexa', 'coronaria-esquerda', 'bancada-sem-tocar']
   },
   {
-    id: 79,
+    id: 81,
     categoria: 'vasos',
     pergunta: 'Como reconhecer visualmente a VEIA INTERMÉDIA DO COTOVELO na fossa cubital sem tocar?',
     resposta: 'Veia Intermédia do Cotovelo: veia superficial oblíqua situada no tecido subcutâneo anterior do cotovelo, comunicando a veia cefálica (lateral) com a veia basílica (medial).',
@@ -167,7 +145,7 @@ export const extraFlashcards: Flashcard[] = [
     tags: ['veia-intermedia-cotovelo', 'fossa-cubital', 'membro-superior', 'bancada-sem-tocar']
   },
   {
-    id: 80,
+    id: 82,
     categoria: 'vasos',
     pergunta: 'Como reconhecer visualmente a VEIA CEFÁLICA no ombro/sulco deltopeitoral sem tocar?',
     resposta: 'Veia Cefálica: sobe pela face lateral do braço e aloja-se no SULCO DELTOPEITORAL (entre o músculo deltoide e o peitoral maior), antes de mergulhar na fossa infraclavicular para drenar na veia axilar.',

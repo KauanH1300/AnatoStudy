@@ -684,53 +684,53 @@ export const quizQuestionsPart2: QuizQuestion[] = [
   {
     id: 91,
     categoria: 'vasos',
-    topico: 'Estrato das Veias',
-    pergunta: 'Por que o sistema venoso profundo dos membros é fisiologicamente mais eficiente no retorno venoso do que o superficial?',
+    topico: 'Aorta Ascendente e Raiz Intrapericárdica',
+    pergunta: 'Ao examinar a base de um coração cadavérico íntegro dentro do saco pericárdico, o alfinete está espetado no tronco arterial elástico inicial de cerca de 5 cm que emerge diretamente do Ventrículo Esquerdo, contendo o bulbo aórtico e os seios de onde brotam as artérias coronárias. Essa estrutura é a:',
     opcoes: [
-      'Porque as veias profundas possuem paredes mais espessas que as artérias.',
-      'Porque as veias profundas situam-se no interior dos compartimentos osteofasciais e são diretamente comprimidas pela contração dos músculos esqueléticos (bomba muscular).',
-      'Porque as veias profundas não possuem válvulas.',
-      'Porque as veias profundas correm em sentido centrífugo.'
+      'Artéria aorta descendente torácica.',
+      'Artéria aorta ascendente.',
+      'Tronco arterial braquiocefálico.',
+      'Arco aórtico distal.'
     ],
     respostaCorretaIndex: 1,
-    explicacao: 'As veias profundas estão envolvidas pelas fáscias musculares inelásticas. Quando os músculos se contraem (ex: tríceps sural ao caminhar), as veias são espremidas e o sangue é propelido em direção proximal com auxílio das válvulas, respondendo por mais de 85-90% do retorno venoso dos membros.',
-    dicaPratica: 'O músculo da perna funciona como o "coração periférico" apertando as veias profundas.',
-    aplicacaoClinica: 'Pacientes acamados perdem a ação da bomba muscular, o que justifica a prescrição fisioterapêutica precoce de flexão/extensão do tornozelo.',
+    explicacao: 'Trata-se da Artéria Aorta Ascendente. Ela possui cerca de 5 cm de comprimento, localiza-se no mediastino médio totalmente envolvida pelo saco pericárdico fibroso e ascende da raiz do VE até o nível do ângulo esternal (T4), originando em sua base as artérias coronárias direita e esquerda.',
+    dicaPratica: 'OLHANDO SEM TOCAR: Se estiver saindo do teto do VE dentro do pericárdio entre as duas aurículas = Artéria Aorta Ascendente. Se descer ao lado da coluna torácica = Aorta Descendente!',
+    aplicacaoClinica: 'Dissecção aórtica tipo A de Stanford acomete a aorta ascendente, sendo uma emergência cirúrgica cardiotorácica de extrema gravidade.',
     dificuldade: 'Média'
   },
   {
     id: 92,
-    categoria: 'vasos',
-    topico: 'Artérias do Tronco Celíaco',
-    pergunta: 'Quais são os TRÊS ramos terminais originados a partir do Tronco Celíaco na aorta abdominal?',
+    categoria: 'coração',
+    topico: 'Óstio Átrio Ventricular Esquerdo e Valva Mitral',
+    pergunta: 'Na inspeção interna do Átrio Esquerdo aberto pela face posterior (onde desembocam as 4 veias pulmonares), o alfinete aponta para o grande orifício no assoalho que comunica essa câmara com a cavidade do Ventrículo Esquerdo. Qual a identificação correta dessa abertura?',
     opcoes: [
-      'Artéria Renal Direita, Artéria Renal Esquerda e Artéria Mesentérica.',
-      'Artéria Gástrica Esquerda, Artéria Esplênica e Artéria Hepática Comum.',
-      'Artéria Ilíaca Comum, Artéria Sacral Mediana e Artéria Gonadal.',
-      'Artéria Frênica Inferior, Artéria Lombar e Artéria Mesentérica Inferior.'
+      'Óstio da veia cava superior.',
+      'Óstio atrioventricular direito.',
+      'Óstio átrio ventricular esquerdo (ou óstio atrioventricular esquerdo).',
+      'Óstio do seio coronário.'
     ],
-    respostaCorretaIndex: 1,
-    explicacao: 'O Tronco Celíaco (ao nível de T12) trifurca-se em: 1) Artéria Gástrica Esquerda (menor ramo, irriga a curvatura menor do estômago); 2) Artéria Esplênica (ramo tortuoso longo que vai para o baço); 3) Artéria Hepática Comum (que vai para o fígado).',
-    dicaPratica: 'Mnemônica: "GEH" do Tronco Celíaco -> Gástrica esquerda, Esplênica, Hepática comum.',
-    aplicacaoClinica: 'A artéria esplênica tortuosa pode desenvolver aneurismas em mulheres multíparas e cirróticos.',
-    dificuldade: 'Média'
+    respostaCorretaIndex: 2,
+    explicacao: 'O Óstio Átrio Ventricular Esquerdo (ou atrioventricular esquerdo) é a abertura no assoalho do átrio esquerdo guarnecida pelas 2 cúspides da valva mitral (bicúspide), comunicando o átrio esquerdo à espessa cavidade do ventrículo esquerdo.',
+    dicaPratica: 'OLHANDO SEM TOCAR: Se você está na câmara que recebe as veias pulmonares e olha para o buraco no chão com duas cúspides grossas presas por cordas = Óstio Átrio Ventricular Esquerdo!',
+    aplicacaoClinica: 'Estenose mitral reduz a área desse óstio (normal de 4 a 6 cm² para menos de 1,5 cm²), causando congestão capilar pulmonar, dispneia e edema agudo de pulmão.',
+    dificuldade: 'Fácil'
   },
   {
     id: 93,
-    categoria: 'coração',
-    topico: 'Septo Atrioventricular',
-    pergunta: 'O SEPTO ATRIOVENTRICULAR do coração separa especificamente quais duas cavidades cardíacas?',
+    categoria: 'vasos',
+    topico: 'Bifurcação Carotídea em C4 (Externa e Interna)',
+    pergunta: 'Na altura da borda superior da cartilagem tireóidea (nível vertebral C4), a artéria carótida comum bifurca-se. Quais são as características visuais imediatas que permitem diferenciar a ARTÉRIA CARÓTIDA EXTERNA da ARTÉRIA CARÓTIDA INTERNA sem tocar na peça?',
     opcoes: [
-      'Átrio Direito do Ventrículo Esquerdo.',
-      'Átrio Esquerdo do Ventrículo Direito.',
-      'Átrio Direito do Átrio Esquerdo.',
-      'Ventrículo Direito do Ventrículo Esquerdo.'
+      'A carótida interna emite múltiplos ramos para a tireoide e língua, enquanto a externa não se ramifica.',
+      'A Artéria Carótida Externa situa-se mais ântero-medialmente e EMITE múltiplos ramos colaterais no pescoço (tireóidea sup., lingual, facial); a Artéria Carótida Interna situa-se póstero-lateralmente, tem dilatação na raiz (seio carotídeo) e NÃO EMITE nenhum ramo no pescoço.',
+      'A carótida interna é venosa e a externa é arterial.',
+      'A carótida externa passa por dentro da glândula tireoide e a interna passa atrás da escápula.'
     ],
-    respostaCorretaIndex: 0,
-    explicacao: 'Devido à inserção da valva tricúspide ser ligeiramente mais apical que a da valva mitral, existe uma porção do septo cardíaco que separa diretamente o Átrio Direito do Ventrículo Esquerdo: o Septo Atrioventricular.',
-    dicaPratica: 'Como a valva tricúspide se fixa um pouco mais para baixo que a mitral, sobra uma parede entre o átrio de um lado (AD) e o ventrículo do outro (VE)!',
-    aplicacaoClinica: 'Defeitos do septo AV (defeito do septo atrioventricular total) são muito frequentes em crianças com Síndrome de Down.',
-    dificuldade: 'Difícil'
+    respostaCorretaIndex: 1,
+    explicacao: 'Critério soberano de prova prática: a Artéria Carótida Externa emite 8 ramos colaterais no pescoço e face; a Artéria Carótida Interna NÃO emite nenhum ramo no pescoço e sobe lisa e retilínea até a base do crânio para entrar no canal carotídeo, possuindo na raiz o seio carotídeo.',
+    dicaPratica: 'OLHANDO SEM TOCAR: O ramo da bifurcação que dá galhos no pescoço é a Carótida EXTERNA. O ramo liso sem galho nenhum que vai direto para o crânio é a Carótida INTERNA!',
+    aplicacaoClinica: 'Aterosclerose na bifurcação carotídea e bulbo carotídeo é a principal causa de acidente vascular encefálico (AVE) isquêmico por tromboembolismo.',
+    dificuldade: 'Média'
   },
   {
     id: 94,

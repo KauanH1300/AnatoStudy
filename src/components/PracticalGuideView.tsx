@@ -80,7 +80,7 @@ export const PracticalGuideView: React.FC = () => {
           }`}
         >
           <Pin className="w-4 h-4 text-rose-600" />
-          <span>20 Estações do Simulado UFPB</span>
+          <span>24 Estruturas-Chave da Prova Prática</span>
         </button>
 
         <button
@@ -128,7 +128,7 @@ export const PracticalGuideView: React.FC = () => {
               {/* Category tags */}
               <div className="flex flex-wrap gap-1.5 w-full sm:w-auto">
                 {[
-                  { id: 'todas', label: 'Todas as 20' },
+                  { id: 'todas', label: `Todas as ${examStationsUfpb.length}` },
                   { id: 'Coração', label: 'Coração' },
                   { id: 'Grandes Vasos', label: 'Grandes Vasos' },
                   { id: 'Membro Superior', label: 'Membro Sup.' },
@@ -150,7 +150,7 @@ export const PracticalGuideView: React.FC = () => {
             </div>
 
             <div className="flex items-center justify-between text-xs text-slate-500 pt-1 border-t border-slate-100">
-              <span>Mostrando <strong>{filteredStations.length}</strong> de 20 estações práticas</span>
+              <span>Mostrando <strong>{filteredStations.length}</strong> de {examStationsUfpb.length} estruturas essenciais da bancada</span>
               <span className="text-[11px] text-rose-600 font-medium">Toque no cartão para expandir detalhes visuais</span>
             </div>
           </div>

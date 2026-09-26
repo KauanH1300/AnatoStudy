@@ -3,467 +3,399 @@ export interface AnatomicalImageRef {
   titulo: string;
   subtitulo: string;
   tipo: 'artéria' | 'veia' | 'câmara' | 'valva' | 'misto';
-  // High quality medical atlas images (Wikipedia Commons / NIH National Library of Medicine open educational assets)
   imageUrl: string;
   autorOuFonte: string;
   legendaPontos: string[];
 }
 
 export const anatomicalIllustrations: Record<string, AnatomicalImageRef> = {
-  // AORTA & GRANDES VASOS
-  'aorta': {
-    id: 'aorta',
-    titulo: 'Artéria Aorta & Ramos do Arco Aórtico',
-    subtitulo: 'Aorta Ascendente, Arco Aórtico com os 3 ramos e Aorta Descendente',
-    tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
-    autorOuFonte: 'Atlas Anatômico Médico / Gray\'s Anatomy Commons',
-    legendaPontos: [
-      '1. Tronco Braquiocefálico (1º ramo à direita)',
-      '2. Artéria Carótida Comum Esquerda (2º ramo central)',
-      '3. Artéria Subclávia Esquerda (3º ramo à esquerda)',
-      '4. Ligamento Arterial (na concavidade do arco conectando ao tronco pulmonar)'
-    ]
-  },
-  'arco-aortico': {
-    id: 'arco-aortico',
-    titulo: 'Arco Aórtico & Ramos Maiores',
-    subtitulo: 'Estação 12 da UFPB: Arco da aorta projetando os 3 grandes ramos supra-aórticos',
-    tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
-    autorOuFonte: 'Gray\'s Anatomy / Atlas Torácico',
-    legendaPontos: [
-      'Origina da direita para a esquerda: Tronco Braquiocefálico, Carótida Comum E e Subclávia E',
-      'Passa sobre o brônquio principal esquerdo e tronco pulmonar',
-      'Cruza anteriormente a traqueia na altura de T4'
-    ]
-  },
-  'tronco-pulmonar': {
-    id: 'tronco-pulmonar',
-    titulo: 'Tronco Pulmonar & Artérias Pulmonares',
-    subtitulo: 'Emergência do cone arterial do VD e bifurcação sob o arco aórtico',
-    tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Heart_anterior_exterior_view.jpg/1024px-Heart_anterior_exterior_view.jpg',
-    autorOuFonte: 'Dissecção Anatômica Cardíaca / Wikimedia Commons',
-    legendaPontos: [
-      'Vaso arterial mais anterior na base do coração',
-      'Conduz sangue VENOSO do Ventrículo Direito aos pulmões',
-      'Bifurca-se em Artéria Pulmonar Direita e Esquerda'
-    ]
-  },
-  'veia-cava-superior': {
-    id: 'veia-cava-superior',
-    titulo: 'Veia Cava Superior (VCS) & Deságue Atrial',
-    subtitulo: 'Retorno venoso da cabeça, pescoço e membros superiores (Estação 3 da UFPB)',
-    tipo: 'veia',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Gray490.png/900px-Gray490.png',
-    autorOuFonte: 'Henry Gray\'s Anatomy of the Human Body',
-    legendaPontos: [
-      'Formada pela junção das Veias Braquiocefálicas D e E',
-      'Recebe o arco da Veia Ázigos na face posterior',
-      'Desemboca no teto póstero-superior do Átrio Direito sem válvulas'
-    ]
-  },
-  'veia-cava-inferior': {
-    id: 'veia-cava-inferior',
-    titulo: 'Veia Cava Inferior (VCI) & Assoalho do Átrio Direito',
-    subtitulo: 'Drenagem de abdome, pelve e membros inferiores (Estação 6 da UFPB)',
-    tipo: 'veia',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Gray578.png/900px-Gray578.png',
-    autorOuFonte: 'Atlas de Anatomia Humana / Wikimedia Commons',
-    legendaPontos: [
-      'Maior vaso venoso do corpo humano (~3 cm)',
-      'Perfura o centro tendíneo do diafragma (nível T8)',
-      'Possui a Valva da VCI (válvula de Eustáquio) no átrio direito'
-    ]
-  },
-  'veias-pulmonares': {
-    id: 'veias-pulmonares',
-    titulo: '4 Veias Pulmonares no Átrio Esquerdo',
-    subtitulo: 'Face posterior (base) do coração trazendo sangue arterializado',
-    tipo: 'veia',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Heart_posterior_exterior_view.jpg/1024px-Heart_posterior_exterior_view.jpg',
-    autorOuFonte: 'Dissecção da Base Cardíaca / Wikimedia Commons',
-    legendaPontos: [
-      '2 Veias Pulmonares Direitas e 2 Veias Pulmonares Esquerdas',
-      'Deságuam na parede póstero-superior lisa do Átrio Esquerdo',
-      'Únicas veias pós-natais que transportam sangue 100% ARTERIAL (O₂)'
-    ]
-  },
-  'arteria-coronaria-esquerda': {
-    id: 'arteria-coronaria-esquerda',
-    titulo: 'Artéria Coronária Esquerda (ADA & ACx)',
-    subtitulo: 'Sulco interventricular anterior e sulco coronário esquerdo (Estação 7 da UFPB)',
-    tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Coronary_arteries.svg/1024px-Coronary_arteries.svg.png',
-    autorOuFonte: 'Esquema Anatômico da Circulação Coronariana / Patrick J. Lynch',
-    legendaPontos: [
-      'Emerge sob a aurícula esquerda no seio aórtico esquerdo',
-      'Ramo Interventricular Anterior (ADA): corre no sulco IV anterior com a Grande Veia Cardíaca',
-      'Ramo Circunflexo (ACx): contorna a borda esquerda do coração'
-    ]
-  },
-  'arteria-coronaria-direita': {
-    id: 'arteria-coronaria-direita',
-    titulo: 'Artéria Coronária Direita (ACD & Ramos)',
-    subtitulo: 'Sulco atrioventricular direito e ramo marginal direito',
-    tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Coronary_arteries.svg/1024px-Coronary_arteries.svg.png',
-    autorOuFonte: 'Esquema Anatômico Coronariano / Patrick J. Lynch',
-    legendaPontos: [
-      'Corre no sulco entre Átrio Direito e Ventrículo Direito',
-      'Emite o Ramo Marginal Direito na borda aguda',
-      'Origina a Artéria Interventricular Posterior na face diafragmática (em 85-90%)'
-    ]
-  },
-  'seio-coronario': {
-    id: 'seio-coronario',
-    titulo: 'Seio Coronário na Face Posterior',
-    subtitulo: 'Canal venoso que drena o miocárdio de volta ao Átrio Direito (Estação 17 da UFPB)',
-    tipo: 'veia',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Heart_posterior_exterior_view.jpg/1024px-Heart_posterior_exterior_view.jpg',
-    autorOuFonte: 'Dissecção do Sulco Coronário Posterior / Wikimedia Commons',
-    legendaPontos: [
-      'Localizado no sulco coronário posterior entre AE e VE',
-      'Drena a Grande, Média e Pequena veias cardíacas',
-      'Desemboca no Átrio Direito com a Valva de Tebésio no Trígono de Koch'
-    ]
-  },
-  'auricula-esquerda': {
-    id: 'auricula-esquerda',
-    titulo: 'Aurícula Esquerda (Apêndice Atrial Esquerdo)',
-    subtitulo: 'Apêndice denteado e estreito sobreposto ao sulco coronário (Estação 4 da UFPB)',
-    tipo: 'câmara',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Heart_anterior_exterior_view.jpg/1024px-Heart_anterior_exterior_view.jpg',
-    autorOuFonte: 'Dissecção Cardíaca Anterior / Wikimedia Commons',
-    legendaPontos: [
-      'Aspecto ondulado e recortado ("orelha de cão")',
-      'Sobreposta à emergência da Artéria Coronária Esquerda e Tronco Pulmonar',
-      'Principal sítio de formação de trombos em Fibrilação Atrial'
-    ]
-  },
-  'trabecula-septomarginal': {
-    id: 'trabecula-septomarginal',
-    titulo: 'Trabécula Septomarginal (Banda Moderadora)',
-    subtitulo: 'Ponte muscular cruzando o lúmen do Ventrículo Direito (Estação 5 da UFPB)',
-    tipo: 'câmara',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Heart_anterior_exterior_view.jpg/1024px-Heart_anterior_exterior_view.jpg',
-    autorOuFonte: 'Dissecção Interna do Ventrículo Direito / Wikimedia Commons',
-    legendaPontos: [
-      'Conecta o septo interventricular à base do músculo papilar anterior do VD',
-      'Conduz o Ramo Direito do Feixe Atrioventricular (Feixe de His)',
-      'Estrutura diagnóstica exclusiva do Ventrículo Direito (inexistente no VE)'
-    ]
-  },
-  'fossa-oval': {
-    id: 'fossa-oval',
-    titulo: 'Fossa Oval & Limbo da Fossa Oval',
-    subtitulo: 'Depressão no septo interatrial do Átrio Direito (Estação 8 da UFPB)',
-    tipo: 'câmara',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
-    autorOuFonte: 'Gray\'s Anatomy / Wikimedia Commons',
-    legendaPontos: [
-      'Remanescente embrionário do Forame Oval fetal',
-      'Assoalho translúcido e fino circundado pelo anel fibroso (Limbo)',
-      'Localizada na parede septal posteromedial do Átrio Direito'
-    ]
-  },
-  'valva-tricuspide': {
-    id: 'valva-tricuspide',
-    titulo: 'Valva Atrioventricular Direita (Tricúspide)',
-    subtitulo: 'Aparelho valvar com cúspides anterior, posterior e septal (Estação 10 da UFPB)',
-    tipo: 'valva',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
-    autorOuFonte: 'Aparelho Valvar Cardíaco / Gray\'s Anatomy',
-    legendaPontos: [
-      '3 cúspides presas por cordas tendíneas aos músculos papilares',
-      'Impede o refluxo de sangue venoso do VD para o AD durante a sístole',
-      'Orifício atrioventricular direito circundado por anel fibroso'
-    ]
-  },
-  'musculos-papilares': {
-    id: 'musculos-papilares',
-    titulo: 'Músculos Papilares e Cordas Tendíneas do VE',
-    subtitulo: 'Pilares musculares gigantes anterior e posterior (Estação 11 da UFPB)',
-    tipo: 'câmara',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
-    autorOuFonte: 'Câmaras Ventriculares / Wikimedia Commons',
-    legendaPontos: [
-      'Apenas 2 músculos papilares hipertrofiados no VE (Anterior e Posterior)',
-      'Tracionam as cordas tendíneas da valva mitral impedindo o prolapso',
-      'Miocárdio espesso (parede 3x mais espessa que o VD)'
-    ]
-  },
-  'musculos-pectineos': {
-    id: 'musculos-pectineos',
-    titulo: 'Músculos Pectíneos no Átrio Direito',
-    subtitulo: 'Feixes musculares em crista na parede anterior do AD (Estação 15 da UFPB)',
-    tipo: 'câmara',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
-    autorOuFonte: 'Átrio Direito Interno / Gray\'s Anatomy',
-    legendaPontos: [
-      'Dispostos em paralelo lembrando os dentes de um pente',
-      'Partem da Crista Terminalis em direção à aurícula direita',
-      'Diferenciam a parede anterior trabeculada do seio venoso posterior liso'
-    ]
-  },
-  'tronco-braquiocefalico': {
-    id: 'tronco-braquiocefalico',
-    titulo: 'Tronco Braquiocefálico Arterial',
-    subtitulo: '1º e mais calibroso ramo do arco aórtico (Estação 16 da UFPB)',
-    tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
-    autorOuFonte: 'Atlas Anatômico / Gray\'s Anatomy',
-    legendaPontos: [
-      'Emerge da convexidade do arco aórtico à direita',
-      'Bifurca-se atrás da articulação esternoclavicular direita',
-      'Origina a Artéria Carótida Comum Direita e Artéria Subclávia Direita'
-    ]
-  },
-  'valva-aortica': {
-    id: 'valva-aortica',
-    titulo: 'Valva Aórtica e Seios da Aorta (Valsalva)',
-    subtitulo: '3 cúspides semilunares e óstios coronários (Estação 20 da UFPB)',
-    tipo: 'valva',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
-    autorOuFonte: 'Aparelho Valvar Aórtico / Gray\'s Anatomy',
-    legendaPontos: [
-      '3 válvulas semilunares com lúnula e nódulo de Arâncio',
-      'Seio aórtico direito dá origem à Artéria Coronária Direita',
-      'Seio aórtico esquerdo dá origem à Artéria Coronária Esquerda'
-    ]
-  },
-
-  // CABEÇA & PESCOÇO
-  'arteria-carotida-comum': {
-    id: 'arteria-carotida-comum',
-    titulo: 'Artérias Carótidas Comum, Interna e Externa',
-    subtitulo: 'Bainha carotídea do pescoço e bifurcação em C4',
-    tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Gray511.png/900px-Gray511.png',
-    autorOuFonte: 'Anatomia Humana / Henry Gray',
-    legendaPontos: [
-      'Asciende verticalmente pelo trígono carotídeo sem emitir ramos no pescoço',
-      'Bifurca-se ao nível da cartilagem tireóidea (C4)',
-      'Possui o Seio Carotídeo (barorreceptor) e o Corpo Carotídeo (quimiorreceptor)'
-    ]
-  },
-  'veia-jugular-interna': {
-    id: 'veia-jugular-interna',
-    titulo: 'Veia Jugular Interna & Feixe Carotídeo',
-    subtitulo: 'Drenagem do crânio descendo lateral à artéria carótida comum',
-    tipo: 'veia',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Gray558.png/900px-Gray558.png',
-    autorOuFonte: 'Gray\'s Anatomy / Wikimedia Commons',
-    legendaPontos: [
-      'Continuação direta do Seio Sigmóideo na base do crânio',
-      'Desce lateral à Carótida Comum sob o músculo esternocleidomastóideo',
-      'Une-se à Veia Subclávia para formar a Veia Braquiocefálica'
-    ]
-  },
-  'veia-jugular-externa': {
-    id: 'veia-jugular-externa',
-    titulo: 'Veia Jugular Externa (Superficial)',
-    subtitulo: 'Cruzamento diagonal superficial sobre o músculo ECM',
-    tipo: 'veia',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Gray558.png/900px-Gray558.png',
-    autorOuFonte: 'Atlas Anatômico / Henry Gray',
-    legendaPontos: [
-      'Corre superficialmente no tecido subcutâneo sobre o músculo ECM',
-      'Formada pela união da Veia Retromandibular com a Auricular Posterior',
-      'Perfura a fáscia profunda acima da clavícula para entrar na subclávia'
-    ]
-  },
-
-  // MEMBRO SUPERIOR
-  'arteria-subclavia': {
-    id: 'arteria-subclavia',
-    titulo: 'Artéria Subclávia & Hiato Interescalênico',
-    subtitulo: 'Passagem entre escaleno anterior e médio sobre a 1ª costela',
-    tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Gray506.png/900px-Gray506.png',
-    autorOuFonte: 'Dissecção do Desfiladeiro Torácico / Gray\'s Anatomy',
-    legendaPontos: [
-      'Emite a Artéria Vertebral, Torácica Interna e Tronco Tireocervical',
-      'Passa sobre a 1ª costela acompanhada pelo Plexo Braquial',
-      'Ao cruzar a borda lateral da 1ª costela, torna-se Artéria Axilar'
-    ]
-  },
+  // 1. ARTÉRIA BRAQUIAL
   'arteria-braquial': {
     id: 'arteria-braquial',
     titulo: 'Artéria Braquial (Umeral) no Braço e Fossa Cubital',
-    subtitulo: 'Sulco bicipital medial com nervo mediano (Estação 1 da UFPB)',
+    subtitulo: 'Estação 1 UFPB: Sulco bicipital medial com nervo mediano e veias satélites',
     tipo: 'artéria',
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Gray525.png/900px-Gray525.png',
-    autorOuFonte: 'Atlas de Anatomia do Membro Superior / Henry Gray',
+    autorOuFonte: 'Atlas Anatômico do Membro Superior / Henry Gray',
     legendaPontos: [
-      'Desce pelo lado medial do bíceps braquial com 2 veias satélites',
-      'Cruzada anteriormente de lateral para medial pelo Nervo Mediano',
-      'Bifurca-se no colo do rádio nas artérias Radial e Ulnar'
+      '1. Desce pelo lado medial do bíceps braquial com luz aberta e parede elástica espessa',
+      '2. Cruzada suavemente pela frente pelo Nervo Mediano (de lateral para medial)',
+      '3. Acompanhada por duas veias braquiais satélites colabadas e mais escuras',
+      '4. Bifurca-se no colo do rádio nas artérias Radial e Ulnar'
     ]
   },
+
+  // 2. ARTÉRIA RADIAL
   'arteria-radial': {
     id: 'arteria-radial',
     titulo: 'Artéria Radial na Goteira do Pulso e Tabaqueira',
-    subtitulo: 'Face lateral do antebraço até o arco palmar profundo (Estação 18 da UFPB)',
+    subtitulo: 'Estação 2 UFPB: Entre o braquiorradial e o flexor radial do carpo',
     tipo: 'artéria',
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Gray528.png/900px-Gray528.png',
     autorOuFonte: 'Dissecção do Antebraço e Mão / Henry Gray',
     legendaPontos: [
-      'Corre sob o músculo braquiorradial sobre a face anterior do osso rádio',
-      'Palpável na goteira do pulso (entre braquiorradial e flexor radial do carpo)',
-      'Cruza o assoalho da Tabaqueira Anatômica na mão'
-    ]
-  },
-  'arteria-ulnar': {
-    id: 'arteria-ulnar',
-    titulo: 'Artéria Ulnar & Canal de Guyon',
-    subtitulo: 'Margem medial do antebraço formando o arco palmar superficial',
-    tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Gray528.png/900px-Gray528.png',
-    autorOuFonte: 'Atlas Anatômico do Membro Superior / Henry Gray',
-    legendaPontos: [
-      'Mais calibrosa que a radial na bifurcação cubital',
-      'Desce colada medialmente ao Nervo Ulnar sob o flexor ulnar do carpo',
-      'Entra na mão pelo Canal de Guyon (fora do túnel do carpo)'
-    ]
-  },
-  'veias-cefalica-basilica': {
-    id: 'veias-cefalica-basilica',
-    titulo: 'Veias Superficiais: Cefálica, Basílica & Intermédia',
-    subtitulo: 'Rede venosa superficial do membro superior e punção venosa',
-    tipo: 'veia',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Gray574.png/900px-Gray574.png',
-    autorOuFonte: 'Veias Superficiais do Membro Superior / Henry Gray',
-    legendaPontos: [
-      'Veia Cefálica: lateral, corre no sulco deltopeitoral até a veia axilar',
-      'Veia Basílica: medial, perfura a fáscia profunda no braço para a veia axilar',
-      'Veia Intermédia do Cotovelo: comunicação clássica para punção na fossa cubital'
+      '1. Corre na goteira do pulso entre tendão do braquiorradial (lateral) e flexor radial do carpo (medial)',
+      '2. Repousa diretamente sobre a face anterior da extremidade distal do rádio',
+      '3. Cruza o assoalho da tabaqueira anatômica no dorso do polegar',
+      '4. Perfura o 1º interósseo dorsal para formar o Arco Palmar Profundo'
     ]
   },
 
-  // MEMBRO INFERIOR
-  'arteria-femoral': {
-    id: 'arteria-femoral',
-    titulo: 'Artéria Femoral no Trígono Femoral (de Scarpa)',
-    subtitulo: 'Feixe vásculo-nervoso NAVe sob o ligamento inguinal (Estação 9 da UFPB)',
+  // 3. ARTÉRIA AORTA DESCENDENTE
+  'arteria-aorta-descendente': {
+    id: 'arteria-aorta-descendente',
+    titulo: 'Artéria Aorta Descendente (Torácica)',
+    subtitulo: 'Estação 3 UFPB: Mediastino posterior colado às vértebras T4 a T12',
     tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Gray548.png/900px-Gray548.png',
-    autorOuFonte: 'Trígono Femoral e Membro Inferior / Henry Gray',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Gray505.png/900px-Gray505.png',
+    autorOuFonte: 'Mediastino Posterior e Aorta Torácica / Henry Gray',
     legendaPontos: [
-      'Continuação da Ilíaca Externa sob o Ligamento Inguinal',
-      'Regra NAVe: Nervo femoral lateral, Artéria média, Veia medial',
-      'Origina a volumosa Artéria Femoral Profunda para a coxa'
+      '1. Desce no mediastino posterior colada aos corpos vertebrais torácicos (T4 a T12)',
+      '2. Emite 9 pares de artérias intercostais posteriores para a parede torácica',
+      '3. Situa-se à esquerda do esôfago e da veia ázigos',
+      '4. Perfura o diafragma pelo hiato aórtico (T12) tornando-se aorta abdominal'
     ]
   },
-  'arteria-poplitea': {
-    id: 'arteria-poplitea',
-    titulo: 'Artéria Poplítea na Fossa Poplítea',
-    subtitulo: 'Vaso mais profundo atrás do joelho (Estação 19 da UFPB)',
+
+  // 4. ARTÉRIA AORTA ASCENDENTE
+  'arteria-aorta-ascendente': {
+    id: 'arteria-aorta-ascendente',
+    titulo: 'Artéria Aorta Ascendente (Raiz Intrapericárdica)',
+    subtitulo: 'Estação 4 UFPB: Emerge do VE com os seios coronários dentro do saco pericárdico',
     tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Gray551.png/900px-Gray551.png',
-    autorOuFonte: 'Fossa Poplítea e Vasos Profundos / Henry Gray',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
+    autorOuFonte: 'Anatomia Cardíaca da Base / Wikimedia Commons',
     legendaPontos: [
-      'Estrutura mais profunda da fossa poplítea encostada no fêmur e cápsula articular',
-      'Relação de profundidade: Nervo Tibial -> Veia Poplítea -> Artéria Poplítea',
-      'Bifurca-se nas artérias Tibial Anterior e Tibial Posterior'
+      '1. Origina-se no óstio da aorta no Ventrículo Esquerdo, contida no saco pericárdico',
+      '2. Apresenta o bulbo da aorta com os seios de Valsalva de onde saem as coronárias',
+      '3. Ascende cerca de 5 cm posterior ao tronco pulmonar e medial à aurícula direita',
+      '4. Continua-se no nível do ângulo esternal (T4) como Arco da Aorta'
     ]
   },
-  'arteria-tibial-posterior': {
-    id: 'arteria-tibial-posterior',
-    titulo: 'Artéria Tibial Posterior no Túnel do Tarso',
-    subtitulo: 'Goteira retromaleolar medial (Estação 14 da UFPB)',
-    tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Gray553.png/900px-Gray553.png',
-    autorOuFonte: 'Artérias da Perna e Pé / Henry Gray',
+
+  // 5. EPICÁRDIO
+  'epicardio': {
+    id: 'epicardio',
+    titulo: 'Epicárdio (Lâmina Visceral do Pericárdio Seroso)',
+    subtitulo: 'Estação 5 UFPB: Película brilhante aderida diretamente sobre a gordura do miocárdio',
+    tipo: 'câmara',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Heart_anterior_exterior_view.jpg/1024px-Heart_anterior_exterior_view.jpg',
+    autorOuFonte: 'Dissecção da Superfície Cardíaca / Wikimedia Commons',
     legendaPontos: [
-      'Passa posteriormente ao maléolo medial no túnel do tarso',
-      'Acompanhada pelas 2 veias comitantes e pelo Nervo Tibial',
-      'Palpação de pulso periférico essencial na avaliação vascular'
+      '1. Membrana fina, translúcida e reluzente colada intimamente na superfície miocárdica',
+      '2. Cobre os depósitos de tecido adiposo dos sulcos e os vasos coronários',
+      '3. Secreta o líquido seroso lubrificante para a cavidade pericárdica virtual',
+      '4. Não se solta como saco solto (a bolsa solta é o pericárdio fibroso)'
     ]
   },
-  'arterias-tibial-anterior-posterior': {
-    id: 'arterias-tibial-anterior-posterior',
-    titulo: 'Artérias Tibial Anterior, Posterior & Pediosa',
-    subtitulo: 'Compartimentos da perna e pulsos periféricos do tornozelo e pé',
-    tipo: 'artéria',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Gray553.png/900px-Gray553.png',
-    autorOuFonte: 'Artérias da Perna e Pé / Henry Gray',
+
+  // 6. MÚSCULO PECTÍNEO
+  'musculo-pectineo': {
+    id: 'musculo-pectineo',
+    titulo: 'Músculo Pectíneo (Músculos Pectíneos do Átrio Direito)',
+    subtitulo: 'Estação 6 UFPB: Cristas musculares em dente de pente na parede anterior e aurícula',
+    tipo: 'câmara',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Gray490.png/900px-Gray490.png',
+    autorOuFonte: 'Morfologia Interna do Átrio Direito / Henry Gray',
     legendaPontos: [
-      'Tibial Posterior: passa atrás do maléolo medial no túnel do tarso',
-      'Tibial Anterior / Pediosa: corre no dorso do pé lateral ao extensor do hálux',
-      'Fundamentais para avaliação de circulação em diabéticos (Índice ITB)'
+      '1. Feixes musculares paralelos em forma de dentes de pente (pecten)',
+      '2. Nascem em ângulo reto a partir da Crista Terminal em direção à aurícula direita',
+      '3. Contrastam com a parede posterior perfeitamente lisa do seio venoso das cavas',
+      '4. Aumentam a força de contração atrial sem ganho excessivo de espessura'
     ]
   },
-  'veia-safena-magna': {
-    id: 'veia-safena-magna',
-    titulo: 'Veia Safena Magna & Trajeto Medial do Membro Inferior',
-    subtitulo: 'Ponto anatômico obrigatório: 1-2 cm ANTERIOR ao maléolo medial (Estação 2 da UFPB)',
-    tipo: 'veia',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Gray582.png/900px-Gray582.png',
-    autorOuFonte: 'Veias do Membro Inferior / Henry Gray (Estação 2 da UFPB)',
+
+  // 7. ÓSTIO ÁTRIO VENTRICULAR DIREITO
+  'ostio-atrio-ventricular-direito': {
+    id: 'ostio-atrio-ventricular-direito',
+    titulo: 'Óstio Átrio Ventricular Direito (Valva Tricúspide)',
+    subtitulo: 'Estação 7 UFPB: Comunicação entre o átrio direito e ventrículo direito',
+    tipo: 'valva',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
+    autorOuFonte: 'Aparelho Valvar Atrioventricular / Gray\'s Anatomy',
     legendaPontos: [
-      'Maior veia superficial do organismo humano',
-      'Passa obrigatoriamente pela FRENTE do maléolo medial no tornozelo',
-      'Sobe pela face medial da perna e coxa até o Hiato Safeno na Veia Femoral'
+      '1. Grande abertura circular no assoalho do átrio direito',
+      '2. Guarnecido pelas 3 cúspides da valva tricúspide (anterior, posterior e septal)',
+      '3. Circundado pelo anel fibroso direito do esqueleto cardíaco',
+      '4. Permite enxergar as cordas tendíneas no interior da cavidade ventricular direita'
     ]
   },
-  'veia-safena-parva': {
-    id: 'veia-safena-parva',
-    titulo: 'Veia Safena Parva na Panturrilha Posterior',
-    subtitulo: 'Ponto anatômico obrigatório: POSTERIOR ao maléolo lateral (Estação 13 da UFPB)',
-    tipo: 'veia',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Gray582.png/900px-Gray582.png',
-    autorOuFonte: 'Veia Safena Parva e Nervo Sural / Henry Gray',
-    legendaPontos: [
-      'Passa obrigatoriamente por TRÁS do maléolo lateral',
-      'Sobe entre os ventres do músculo gastrocnêmio com o Nervo Sural',
-      'Perfura a fáscia poplítea para desembocar na Veia Poplítea'
-    ]
-  },
-  'valva-mitral': {
-    id: 'valva-mitral',
-    titulo: 'Valva Atrioventricular Esquerda (Mitral / Bicúspide)',
-    subtitulo: '2 cúspides volumosas e 2 músculos papilares hipertrofiados (Estação 9 da UFPB)',
+
+  // 8. ÓSTIO ÁTRIO VENTRICULAR ESQUERDO
+  'ostio-atrio-ventricular-esquerdo': {
+    id: 'ostio-atrio-ventricular-esquerdo',
+    titulo: 'Óstio Átrio Ventricular Esquerdo (Valva Mitral)',
+    subtitulo: 'Estação 8 UFPB: Comunicação entre o átrio esquerdo e ventrículo esquerdo',
     tipo: 'valva',
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
     autorOuFonte: 'Aparelho Valvar Mitral / Gray\'s Anatomy',
     legendaPontos: [
-      'Apenas 2 cúspides robustas (anterior e posterior)',
-      'Cúspide anterior ampla e lisa contígua à via de saída aórtica',
-      'Cordas tendíneas grossas conectadas a 2 músculos papilares do VE'
+      '1. Abertura ovalada no assoalho do átrio esquerdo guarnecida pela Valva Mitral',
+      '2. Possui 2 grandes cúspides robustas ancoradas a 2 músculos papilares',
+      '3. Borda anterior em continuidade fibrosa com a raiz da valva aórtica',
+      '4. Conduz o sangue oxigenado para a câmara de alta pressão ventricular esquerda'
     ]
   },
-  'ligamento-arterial': {
-    id: 'ligamento-arterial',
-    titulo: 'Ligamento Arterial (Remanescente do Ducto de Botallo)',
-    subtitulo: 'Fita fibrosa unindo arco da aorta ao tronco pulmonar (Estação 17 da UFPB)',
-    tipo: 'misto',
+
+  // 9. ARCO PALMAR
+  'arco-palmar': {
+    id: 'arco-palmar',
+    titulo: 'Arco Palmar Superficial e Profundo da Mão',
+    subtitulo: 'Estação 9 UFPB: Anastomoses arteriais palmares e artérias digitais',
+    tipo: 'artéria',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Gray527.png/900px-Gray527.png',
+    autorOuFonte: 'Artérias da Palma da Mão / Henry Gray',
+    legendaPontos: [
+      '1. Arco Palmar Superficial: alça convexa sob a aponeurose palmar (predomínio da A. Ulnar)',
+      '2. Emite as artérias digitais palmares comuns que se bifurcam para os dedos',
+      '3. Arco Palmar Profundo: repousa sobre as bases dos metacárpicos (predomínio da A. Radial)',
+      '4. Garante dupla via arterial protetora para a mão (avaliada no Teste de Allen)'
+    ]
+  },
+
+  // 10. VALVA AÓRTICA
+  'valva-aortica': {
+    id: 'valva-aortica',
+    titulo: 'Valva Aórtica (3 Cúspides Semilunares e Óstios Coronários)',
+    subtitulo: 'Estação 10 UFPB: Seios de Valsalva, lúnulas e nódulos de Arâncio',
+    tipo: 'valva',
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
-    autorOuFonte: 'Anatomia Mediastinal / Gray\'s Anatomy',
+    autorOuFonte: 'Aparelho Valvar Aórtico / Gray\'s Anatomy',
     legendaPontos: [
-      'Cordão fibroso tenso na concavidade do arco aórtico',
-      'Conecta a face superior da artéria pulmonar esquerda ao arco da aorta',
-      'Nervo laríngeo recorrente esquerdo faz a alça por baixo dele'
+      '1. 3 cúspides semilunares em ninho de andorinha (direita, esquerda e posterior)',
+      '2. NÃO possui cordas tendíneas nem músculos papilares',
+      '3. Óstios coronários visíveis no fundo dos seios aórticos direito e esquerdo',
+      '4. Nódulo de Arâncio central e lúnula em cada borda livre semilunar'
     ]
   },
-  'veia-femoral': {
-    id: 'veia-femoral',
-    titulo: 'Veia Femoral e Veia Poplítea (Sistema Venoso Profundo)',
-    subtitulo: 'Drenagem profunda de 90% do retorno venoso dos MMII',
-    tipo: 'veia',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Gray548.png/900px-Gray548.png',
-    autorOuFonte: 'Sistema Venoso Profundo / Henry Gray',
+
+  // 11. ARTÉRIA ILÍACA COMUM
+  'arteria-iliaca-comum': {
+    id: 'arteria-iliaca-comum',
+    titulo: 'Artéria Ilíaca Comum (Bifurcação Aórtica em L4)',
+    subtitulo: 'Estação 11 UFPB: Ramos divergentes em Y ao nível da linha bi-ilíaca',
+    tipo: 'artéria',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Gray539.png/900px-Gray539.png',
+    autorOuFonte: 'Aorta Abdominal e Ramos Ilíacos / Henry Gray',
     legendaPontos: [
-      'Principal conduto do retorno venoso profundo dos MMII',
-      'Local mais crítico de Trombose Venosa Profunda (TVP)',
-      'No trígono femoral situa-se medialmente à Artéria Femoral'
+      '1. Ramos terminais em "Y" da Aorta Abdominal na altura da 4ª vértebra lombar (L4)',
+      '2. Calibre espesso de 10 a 12 mm com trajeto oblíquo de cerca de 4 a 5 cm',
+      '3. Bifurca-se no nível do disco L5-S1 em Artéria Ilíaca Externa e Interna',
+      '4. Medial ao músculo psoas maior e anterior às veias ilíacas comuns'
+    ]
+  },
+
+  // 12. VEIA SUBCLÁVIA
+  'veia-subclavia': {
+    id: 'veia-subclavia',
+    titulo: 'Veia Subclávia (Anterior ao Músculo Escaleno Anterior)',
+    subtitulo: 'Estação 12 UFPB: Cruza a 1ª costela anterior ao escaleno e à artéria subclávia',
+    tipo: 'veia',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Gray506.png/900px-Gray506.png',
+    autorOuFonte: 'Desfiladeiro Torácico e Vasos Subclávios / Henry Gray',
+    legendaPontos: [
+      '1. Passa OBRIGATORIAMENTE PELA FRENTE do Músculo Escaleno Anterior',
+      '2. A Artéria Subclávia passa ATRÁS do escaleno anterior no hiato interescalênico',
+      '3. Une-se à Veia Jugular Interna no ângulo de Pirogoff formando a V. Braquiocefálica',
+      '4. Recebe o Ducto Torácico à esquerda e o Ducto Linfático à direita'
+    ]
+  },
+
+  // 13. ARTÉRIA AXILAR
+  'arteria-axilar': {
+    id: 'arteria-axilar',
+    titulo: 'Artéria Axilar e o "M" do Plexo Braquial',
+    subtitulo: 'Estação 13 UFPB: Cruza a fossa axilar sob o peitoral menor',
+    tipo: 'artéria',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Gray523.png/900px-Gray523.png',
+    autorOuFonte: 'Fossa Axilar e Plexo Braquial / Henry Gray',
+    legendaPontos: [
+      '1. Continuação da subclávia a partir da borda lateral da 1ª costela até o redondo maior',
+      '2. Cruzada anteriormente pelo tendão do músculo Peitoral Menor',
+      '3. Intimamente abraçada pelas alças nervosas em "M" do Plexo Braquial',
+      '4. Continua-se no braço diretamente como Artéria Braquial'
+    ]
+  },
+
+  // 14. ARTÉRIA INTERVENTRICULAR DA AORTA (INTERVENTRICULAR ANTERIOR / ADA)
+  'arteria-interventricular': {
+    id: 'arteria-interventricular',
+    titulo: 'Artéria Interventricular Anterior (Ramo da Coronária Esquerda)',
+    subtitulo: 'Estação 14 UFPB: Sulco interventricular anterior em direção ao ápice',
+    tipo: 'artéria',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Coronary_arteries.svg/1024px-Coronary_arteries.svg.png',
+    autorOuFonte: 'Circulação Coronariana / Patrick J. Lynch',
+    legendaPontos: [
+      '1. Emerge da Artéria Coronária Esquerda sob a aurícula esquerda (e NÃO direto da aorta)',
+      '2. Corre no sulco interventricular anterior acompanhada pela Grande Veia Cardíaca',
+      '3. Irriga os 2/3 anteriores do septo interventricular e a parede anterior do VE',
+      '4. Contorna o ápice cardíaco anastomosando-se com a interventricular posterior'
+    ]
+  },
+
+  // 15. PERICÁRDIO FIBROSO
+  'pericardio-fibroso': {
+    id: 'pericardio-fibroso',
+    titulo: 'Pericárdio Fibroso (Saco Externo Inelástico)',
+    subtitulo: 'Estação 15 UFPB: Cápsula densa opaca que ancora o coração ao diafragma e esterno',
+    tipo: 'câmara',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Heart_anterior_exterior_view.jpg/1024px-Heart_anterior_exterior_view.jpg',
+    autorOuFonte: 'Saco Pericárdico Externo / Wikimedia Commons',
+    legendaPontos: [
+      '1. Saco externo espesso, resistente, esbranquiçado, opaco e inelástico',
+      '2. Funde-se inferiormente ao centro tendíneo do diafragma (lig. pericardiofrênico)',
+      '3. Funde-se superiormente à túnica adventícia dos grandes vasos da base',
+      '4. Impede a dilatação aguda súbita das câmaras cardíacas'
+    ]
+  },
+
+  // 16. PERICÁRDIO SEROSO
+  'pericardio-seroso': {
+    id: 'pericardio-seroso',
+    titulo: 'Pericárdio Seroso (Lâmina Parietal e Lâmina Visceral)',
+    subtitulo: 'Estação 16 UFPB: Folheto parietal interno e visceral (epicárdio) com líquido seroso',
+    tipo: 'câmara',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
+    autorOuFonte: 'Folhetos Pericárdicos / Gray\'s Anatomy',
+    legendaPontos: [
+      '1. Lâmina Parietal: forra internamente o pericárdio fibroso como película lisa e brilhante',
+      '2. Lâmina Visceral (Epicárdio): adere diretamente à superfície externa do miocárdio',
+      '3. Cavidade Pericárdica: espaço virtual contendo 15 a 50 mL de líquido lubrificante',
+      '4. Forma os seios transverso e oblíquo do pericárdio na reflexão dos grandes vasos'
+    ]
+  },
+
+  // 17. ARTÉRIA CARÓTIDA COMUM
+  'arteria-carotida-comum': {
+    id: 'arteria-carotida-comum',
+    titulo: 'Artéria Carótida Comum no Trígono Carotídeo',
+    subtitulo: 'Estação 17 UFPB: Bainha carotídea sem ramos até a cartilagem tireóidea (C4)',
+    tipo: 'artéria',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Gray511.png/900px-Gray511.png',
+    autorOuFonte: 'Trígono Carotídeo e Bainha / Henry Gray',
+    legendaPontos: [
+      '1. Tubo arterial cilíndrico reto vertical que ascende pelo pescoço sem dar ramos cervicais',
+      '2. Contida na Bainha Carotídea medialmente à V. Jugular Interna e anterior ao Nervo Vago',
+      '3. Termina na borda superior da cartilagem tireóidea (nível vertebral C4)',
+      '4. Pulso central de escolha na avaliação de Parada Cardiorrespiratória (RCP)'
+    ]
+  },
+
+  // 18. ARTÉRIA CARÓTIDA EXTERNA E INTERNA
+  'arteria-carotida-externa-interna': {
+    id: 'arteria-carotida-externa-interna',
+    titulo: 'Artérias Carótida Externa e Interna (Bifurcação em C4)',
+    subtitulo: 'Estação 18 UFPB: Externa emite ramos cervicais; Interna sobe lisa para o crânio com o seio carotídeo',
+    tipo: 'artéria',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Gray511.png/900px-Gray511.png',
+    autorOuFonte: 'Bifurcação Carotídea / Henry Gray',
+    legendaPontos: [
+      '1. Carótida Externa: ântero-medial, emite ramos imediatos no pescoço (tireóidea sup, lingual, facial)',
+      '2. Carótida Interna: póstero-lateral, não emite nenhum ramo no pescoço e entra no canal carotídeo',
+      '3. Seio Carotídeo: dilatação na base da carótida interna com barorreceptores (nervo IX)',
+      '4. Corpo Carotídeo: quimiorreceptor no ângulo da bifurcação sensível a hipóxia e acidose'
+    ]
+  },
+
+  // 19. AURÍCULA DIREITA
+  'auricula-direita': {
+    id: 'auricula-direita',
+    titulo: 'Aurícula Direita (Apêndice Atrial Direito)',
+    subtitulo: 'Estação 19 UFPB: Apêndice triangular sobre a raiz da aorta ascendente',
+    tipo: 'câmara',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Heart_anterior_exterior_view.jpg/1024px-Heart_anterior_exterior_view.jpg',
+    autorOuFonte: 'Superfície Anterior do Coração / Wikimedia Commons',
+    legendaPontos: [
+      '1. Bolsa muscular cônica larga em forma de orelha de cão na frente do átrio direito',
+      '2. Sobrepõe-se e abraça a raiz ântero-lateral da Aorta Ascendente',
+      '3. Cavidade interna densamente forrada por cristas de Músculos Pectíneos',
+      '4. Local clássico de canulação venosa superior em circulação extracorpórea (CEC)'
+    ]
+  },
+
+  // 20. MÚSCULO PAPILAR
+  'musculo-papilar': {
+    id: 'musculo-papilar',
+    titulo: 'Músculos Papilares e Cordas Tendíneas Ventriculares',
+    subtitulo: 'Estação 20 UFPB: Colunas carnosas que tracionam as cúspides na sístole',
+    tipo: 'câmara',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
+    autorOuFonte: 'Câmaras Ventriculares e Aparelho Subvalvar / Gray\'s Anatomy',
+    legendaPontos: [
+      '1. Colunas musculares cônicas salientes na parede do miocárdio ventricular',
+      '2. Do ápice partem dezenas de cordas tendíneas fibrosas esbranquiçadas até as cúspides',
+      '3. VE possui 2 músculos papilares gigantescos (anterior e posterior)',
+      '4. VD possui 3 músculos papilares menores (anterior, posterior e septal)'
+    ]
+  },
+
+  // 21. SEPTO INTERVENTRICULAR
+  'septo-interventricular': {
+    id: 'septo-interventricular',
+    titulo: 'Septo Interventricular (Porção Muscular e Membranosa)',
+    subtitulo: 'Estação 21 UFPB: Parede divisória espessa entre os ventrículos direito e esquerdo',
+    tipo: 'câmara',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Diagram_of_the_human_heart_%28cropped%29.svg/1024px-Diagram_of_the_human_heart_%28cropped%29.svg.png',
+    autorOuFonte: 'Corte Anatômico Cardíaco / Gray\'s Anatomy',
+    legendaPontos: [
+      '1. Porção Muscular: espessa e compacta, perfaz mais de 90% da massa septal inferior',
+      '2. Porção Membranosa: superior, delgada e translúcida junto à raiz aórtica',
+      '3. Abaulado em direção ao VD pela maior pressão intracavitária do VE',
+      '4. Percorrido internamente pelos ramos direito e esquerdo do Feixe de His'
+    ]
+  },
+
+  // 22. ARTÉRIA ILÍACA INTERNA
+  'arteria-iliaca-interna': {
+    id: 'arteria-iliaca-interna',
+    titulo: 'Artéria Ilíaca Interna (Hipogástrica)',
+    subtitulo: 'Estação 22 UFPB: Mergulha profundamente para dentro da cavidade da pelve menor',
+    tipo: 'artéria',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Gray540.png/900px-Gray540.png',
+    autorOuFonte: 'Vasos da Pelve e Períneo / Henry Gray',
+    legendaPontos: [
+      '1. Ramo medial da bifurcação da ilíaca comum no nível do disco L5-S1',
+      '2. Mergulha verticalmente para dentro do estreito superior da pelve menor',
+      '3. Diferencia-se da ilíaca externa que segue rente ao psoas para a perna',
+      '4. Irriga as vísceras pélvicas (bexiga, útero, próstata, reto) e músculos glúteos'
+    ]
+  },
+
+  // 23. VEIA SAFENA MAGNA
+  'veia-safena-magna': {
+    id: 'veia-safena-magna',
+    titulo: 'Veia Safena Magna (Anterior ao Maléolo Medial)',
+    subtitulo: 'Estação 23 UFPB: Maior veia superficial passando 1 a 2 cm anterior ao maléolo interno',
+    tipo: 'veia',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Gray582.png/900px-Gray582.png',
+    autorOuFonte: 'Veias Superficiais do Membro Inferior / Henry Gray',
+    legendaPontos: [
+      '1. Passa OBRIGATORIAMENTE 1 a 2 cm ANTERIOR ao Maléolo Medial no tornozelo',
+      '2. Sobe pela face medial da perna (com nervo safeno) e coxa (com M. sartório)',
+      '3. Perfura a fáscia lata no Hiato Safeno para desembocar na Veia Femoral',
+      '4. Principal vaso retirado para enxertos cirúrgicos de ponte de safena'
+    ]
+  },
+
+  // 24. VEIA SAFENA PARVA
+  'veia-safena-parva': {
+    id: 'veia-safena-parva',
+    titulo: 'Veia Safena Parva (Posterior ao Maléolo Lateral)',
+    subtitulo: 'Estação 24 UFPB: Sobe pela linha média da panturrilha até a veia poplítea',
+    tipo: 'veia',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Gray582.png/900px-Gray582.png',
+    autorOuFonte: 'Veia Safena Parva e Nervo Sural / Henry Gray',
+    legendaPontos: [
+      '1. Passa OBRIGATORIAMENTE por TRÁS (posterior) do Maléolo Lateral no tornozelo',
+      '2. Sobe na linha média da panturrilha entre as cabeças do gastrocnêmio com o Nervo Sural',
+      '3. Perfura a fáscia poplítea para desembocar diretamente na Veia Poplítea',
+      '4. Drena a borda lateral do pé, calcanhar e face posterior da perna'
     ]
   }
 };
 
 /**
- * Returns the matching anatomical illustration for an exam station
+ * Returns matching anatomical illustration by ID or Station Number 1 to 24
  */
 export function getIllustrationForStation(stationNumeroOrId: number | string): AnatomicalImageRef | null {
   if (typeof stationNumeroOrId === 'string' && anatomicalIllustrations[stationNumeroOrId]) {
@@ -476,25 +408,29 @@ export function getIllustrationForStation(stationNumeroOrId: number | string): A
 
   const mapByNumber: Record<number, string> = {
     1: 'arteria-braquial',
-    2: 'veia-safena-magna',
-    3: 'veia-cava-superior',
-    4: 'auricula-esquerda',
-    5: 'trabecula-septomarginal',
-    6: 'valva-tricuspide',
-    7: 'arteria-coronaria-esquerda',
-    8: 'tronco-braquiocefalico',
-    9: 'valva-mitral',
-    10: 'fossa-oval',
-    11: 'seio-coronario',
-    12: 'musculos-papilares',
-    13: 'valva-aortica',
-    14: 'veia-cava-inferior',
-    15: 'arteria-carotida-comum',
-    16: 'arteria-subclavia',
-    17: 'ligamento-arterial',
-    18: 'veias-pulmonares',
-    19: 'musculos-pectineos',
-    20: 'arteria-coronaria-direita'
+    2: 'arteria-radial',
+    3: 'arteria-aorta-descendente',
+    4: 'arteria-aorta-ascendente',
+    5: 'epicardio',
+    6: 'musculo-pectineo',
+    7: 'ostio-atrio-ventricular-direito',
+    8: 'ostio-atrio-ventricular-esquerdo',
+    9: 'arco-palmar',
+    10: 'valva-aortica',
+    11: 'arteria-iliaca-comum',
+    12: 'veia-subclavia',
+    13: 'arteria-axilar',
+    14: 'arteria-interventricular',
+    15: 'pericardio-fibroso',
+    16: 'pericardio-seroso',
+    17: 'arteria-carotida-comum',
+    18: 'arteria-carotida-externa-interna',
+    19: 'auricula-direita',
+    20: 'musculo-papilar',
+    21: 'septo-interventricular',
+    22: 'arteria-iliaca-interna',
+    23: 'veia-safena-magna',
+    24: 'veia-safena-parva'
   };
 
   const imageKey = mapByNumber[num];
@@ -507,6 +443,32 @@ export function getIllustrationForStation(stationNumeroOrId: number | string): A
     if (anatomicalIllustrations[directKey]) {
       return anatomicalIllustrations[directKey];
     }
+
+    // Keyword match
+    if (directKey.includes('braquial')) return anatomicalIllustrations['arteria-braquial'];
+    if (directKey.includes('radial')) return anatomicalIllustrations['arteria-radial'];
+    if (directKey.includes('aorta descendente') || directKey.includes('toracica descendente')) return anatomicalIllustrations['arteria-aorta-descendente'];
+    if (directKey.includes('aorta ascendente')) return anatomicalIllustrations['arteria-aorta-ascendente'];
+    if (directKey.includes('epicardio')) return anatomicalIllustrations['epicardio'];
+    if (directKey.includes('pectineo') || directKey.includes('pectinado')) return anatomicalIllustrations['musculo-pectineo'];
+    if (directKey.includes('ostio') && directKey.includes('direito')) return anatomicalIllustrations['ostio-atrio-ventricular-direito'];
+    if (directKey.includes('ostio') && directKey.includes('esquerdo')) return anatomicalIllustrations['ostio-atrio-ventricular-esquerdo'];
+    if (directKey.includes('arco palmar') || directKey.includes('palmar')) return anatomicalIllustrations['arco-palmar'];
+    if (directKey.includes('valva aortica') || directKey.includes('valva da aorta')) return anatomicalIllustrations['valva-aortica'];
+    if (directKey.includes('iliaca comum')) return anatomicalIllustrations['arteria-iliaca-comum'];
+    if (directKey.includes('veia subclavia')) return anatomicalIllustrations['veia-subclavia'];
+    if (directKey.includes('axilar')) return anatomicalIllustrations['arteria-axilar'];
+    if (directKey.includes('interventricular')) return anatomicalIllustrations['arteria-interventricular'];
+    if (directKey.includes('pericardio fibroso')) return anatomicalIllustrations['pericardio-fibroso'];
+    if (directKey.includes('pericardio seroso')) return anatomicalIllustrations['pericardio-seroso'];
+    if (directKey.includes('carotida externa') || directKey.includes('carotida interna')) return anatomicalIllustrations['arteria-carotida-externa-interna'];
+    if (directKey.includes('carotida comum') || directKey.includes('carotida')) return anatomicalIllustrations['arteria-carotida-comum'];
+    if (directKey.includes('auricula direita')) return anatomicalIllustrations['auricula-direita'];
+    if (directKey.includes('papilar') || directKey.includes('papilares')) return anatomicalIllustrations['musculo-papilar'];
+    if (directKey.includes('septo')) return anatomicalIllustrations['septo-interventricular'];
+    if (directKey.includes('iliaca interna')) return anatomicalIllustrations['arteria-iliaca-interna'];
+    if (directKey.includes('safena magna')) return anatomicalIllustrations['veia-safena-magna'];
+    if (directKey.includes('safena parva')) return anatomicalIllustrations['veia-safena-parva'];
   }
 
   return null;
