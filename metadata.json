@@ -1,0 +1,6 @@
+{
+  "name": "AnatoFisio - Anatomia Cardiovascular & Coração",
+  "description": "Plataforma de estudos para prova prática e teórica de Anatomia Humana (Sistema Circulatório e Coração) com foco em Fisioterapia UFPB. Flashcards interativos, simulador de quiz, guia de bancada cadavérica e ausculta.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
