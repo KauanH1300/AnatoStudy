@@ -13,9 +13,11 @@ import {
   ChevronRight,
   ChevronLeft,
   Flame,
-  Wind
+  Wind,
+  Play
 } from 'lucide-react';
 import { playHeartSound } from '../utils/audioSimulator';
+import { CirculationAnimationPlayer } from './CirculationAnimationPlayer';
 
 interface HeartPart {
   id: string;
@@ -337,7 +339,7 @@ const grandeCirculacaoPassos: StepCirculation[] = [
 
 export const HeartInteractiveModel: React.FC = () => {
   // Navigation tab
-  const [activeTab, setActiveTab] = useState<'pequena' | 'grande' | 'comparativo' | 'anatomia'>('pequena');
+  const [activeTab, setActiveTab] = useState<'animacao' | 'pequena' | 'grande' | 'comparativo' | 'anatomia'>('animacao');
 
   // Interactive anatomical model part
   const [selectedPartId, setSelectedPartId] = useState<string>('ad');
@@ -363,12 +365,24 @@ export const HeartInteractiveModel: React.FC = () => {
           Esquema da Circulação & Modelo Cardíaco
         </h1>
         <p className="text-sm text-slate-500 max-w-2xl">
-          Entenda de forma definitiva a <strong>ordem cronológica exata</strong> da Pequena Circulação (Pulmonar) e da Grande Circulação (Sistêmica): onde começam, cada vaso pelo qual passam, local de hematose/troca e onde terminam.
+          Visualize a <strong>animação interativa em tempo real</strong> de como o sangue percorre o corpo todo (Pequena e Grande Circulação), com pontos de hematose, perfusão tecidual e rota passo a passo.
         </p>
       </div>
 
       {/* Main Mode Selector Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 p-1.5 bg-slate-100 rounded-2xl border border-slate-200">
+        <button
+          onClick={() => setActiveTab('animacao')}
+          className={`py-3 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all ${
+            activeTab === 'animacao'
+              ? 'bg-gradient-to-r from-rose-600 to-rose-700 text-white shadow-xs ring-2 ring-rose-500/20'
+              : 'text-slate-700 hover:text-slate-900 bg-white/70 hover:bg-white'
+          }`}
+        >
+          <Play className="w-4 h-4 fill-current text-amber-300" />
+          <span>Animação do Fluxo</span>
+        </button>
+
         <button
           onClick={() => setActiveTab('pequena')}
           className={`py-3 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all ${
@@ -407,7 +421,7 @@ export const HeartInteractiveModel: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('anatomia')}
-          className={`py-3 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all ${
+          className={`py-3 px-3 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all col-span-2 sm:col-span-1 ${
             activeTab === 'anatomia'
               ? 'bg-white text-slate-900 shadow-xs ring-1 ring-slate-200'
               : 'text-slate-600 hover:text-slate-900'
@@ -417,6 +431,9 @@ export const HeartInteractiveModel: React.FC = () => {
           <span>Câmaras & Valvas SVG</span>
         </button>
       </div>
+
+      {/* TAB 0: ANIMATED CIRCULATION SIMULATOR */}
+      {activeTab === 'animacao' && <CirculationAnimationPlayer />}
 
       {/* TAB 1: PEQUENA CIRCULAÇÃO (PULMONAR) */}
       {activeTab === 'pequena' && (
