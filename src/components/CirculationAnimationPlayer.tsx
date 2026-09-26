@@ -15,7 +15,9 @@ import {
   ChevronRight,
   ChevronLeft,
   Layers,
-  Heart
+  Heart,
+  Eye,
+  Filter
 } from 'lucide-react';
 import { playHeartSound } from '../utils/audioSimulator';
 
@@ -24,6 +26,8 @@ export interface CirculationStage {
   circuito: 'Pequena (Pulmonar)' | 'Grande (Sistêmica)';
   titulo: string;
   subtitulo: string;
+  origem: string;
+  destino: string;
   sangue: 'venoso' | 'arterial' | 'transicao-oxigenacao' | 'transicao-desoxigenacao';
   gasPreponderante: string;
   pressaoEstimada: string;
@@ -36,97 +40,113 @@ const circulationStages: CirculationStage[] = [
   {
     id: 1,
     circuito: 'Pequena (Pulmonar)',
-    titulo: '1. Sístole do Ventrículo Direito (Início da Pequena)',
-    subtitulo: 'Ejeção de sangue venoso sob baixa pressão',
+    titulo: '1. Ventrículo Direito ➔ Valva do Tronco Pulmonar',
+    subtitulo: 'Início da Pequena Circulação',
+    origem: 'Ventrículo Direito (VD)',
+    destino: 'Raiz do Tronco Pulmonar',
     sangue: 'venoso',
     gasPreponderante: 'Rico em CO₂ · Pobre em O₂',
-    pressaoEstimada: '~25 mmHg (baixa resistência)',
-    oQueOcorre: 'O miocárdio do Ventrículo Direito se contrai, abrindo a valva pulmonar e impulsionando o sangue venoso para o tronco pulmonar.',
-    relevanciaFisio: 'Pressões ventriculares direitas excessivas (como no DPOC ou embolia) geram sobrecarga e Cor Pulmonale com fadiga muscular periférica.',
+    pressaoEstimada: '~25 mmHg (sístole)',
+    oQueOcorre: 'O Ventrículo Direito se contrai vigorosamente na sístole. A pressão intraventricular sobe e abre a valva do tronco pulmonar, ejetando sangue venoso desoxigenado em direção aos pulmões.',
+    relevanciaFisio: 'Pressões ventriculares direitas excessivas (como no DPOC ou tromboembolismo) causam sobrecarga pressórica e Cor Pulmonale com fadiga precoce.',
     destaqueSvg: 'vd'
   },
   {
     id: 2,
     circuito: 'Pequena (Pulmonar)',
-    titulo: '2. Tronco Pulmonar & Artérias Pulmonares D e E',
-    subtitulo: 'Artérias conduzindo sangue venoso desoxigenado',
+    titulo: '2. Tronco Pulmonar ➔ Artérias Pulmonares D e E ➔ Pulmões',
+    subtitulo: 'Condução arterial pulmonar desoxigenada',
+    origem: 'Tronco Pulmonar',
+    destino: 'Hilos Pulmonares Direito e Esquerdo',
     sangue: 'venoso',
     gasPreponderante: 'Rico em CO₂ · Pobre em O₂',
     pressaoEstimada: '~25/10 mmHg',
-    oQueOcorre: 'O tronco pulmonar ascende, cruza a frente da aorta e se bifurca sob o arco aórtico, penetrando os hilos dos dois pulmões.',
-    relevanciaFisio: 'Atenção na prova prática da UFPB: apesar de se chamarem ARTÉRIAS, transportam sangue VENOSO (desoxigenado)!',
+    oQueOcorre: 'O sangue venoso sobe pelo tronco pulmonar, cruza anterior à aorta e bifurca-se sob o arco da aorta nas artérias pulmonares direita e esquerda, adentrando o parênquima pulmonar.',
+    relevanciaFisio: 'PEGADINHA DE PROVA NA UFPB: apesar de se chamarem ARTÉRIAS (saem do coração), transportam sangue VENOSO (desoxigenado)!',
     destaqueSvg: 'tronco-pulmonar'
   },
   {
     id: 3,
     circuito: 'Pequena (Pulmonar)',
-    titulo: '3. Hematose nos Capilares Alveolares (Troca Gasosa)',
-    subtitulo: 'O sangue torna-se ARTERIAL (100% oxigenado)',
+    titulo: '3. Rede Capilar Alveolar (HEMATOSE PULMONAR)',
+    subtitulo: 'Transformação: Sangue torna-se 100% ARTERIAL',
+    origem: 'Arteríolas Alveolares',
+    destino: 'Vênulas Alveolares Pulmonares',
     sangue: 'transicao-oxigenacao',
-    gasPreponderante: 'CO₂ eliminado no ar expirado · O₂ absorvido pelas hemácias',
-    pressaoEstimada: '~8-10 mmHg (regime capilar seguro)',
-    oQueOcorre: 'Nos alvéolos pulmonares, o dióxido de carbono difunde-se para fora do sangue e o oxigênio inspirado se liga à hemoglobina. O sangue muda de azul para vermelho vivo!',
-    relevanciaFisio: 'Manobras fisioterapêuticas de reexpansão pulmonar e higiene brônquica otimizam a relação V/Q (ventilação/perfusão) e a hematose alveolar.',
+    gasPreponderante: 'CO₂ eliminado no ar expirado ⬆ · O₂ absorvido pela hemoglobina ⬇',
+    pressaoEstimada: '~8-10 mmHg (baixa pressão para não gerar edema)',
+    oQueOcorre: 'MOMENTO DECISIVO: Através da membrana alvéolo-capilar, o CO₂ difunde-se para a luz alveolar para expiração, enquanto o O₂ inspirado difunde-se para as hemácias. O SANGUE MUDA DE AZUL PARA VERMELHO!',
+    relevanciaFisio: 'Técnicas de Fisioterapia Respiratória (ventilação não invasiva, exercícios de reexpansão e desobstrução) otimizam a relação ventilação/perfusão (V/Q).',
     destaqueSvg: 'pulmoes'
   },
   {
     id: 4,
     circuito: 'Pequena (Pulmonar)',
-    titulo: '4. 4 Veias Pulmonares & Átrio Esquerdo (Fim da Pequena)',
+    titulo: '4. 4 Veias Pulmonares ➔ Átrio Esquerdo (Fim da Pequena)',
     subtitulo: 'Retorno venoso com sangue arterial ao coração',
+    origem: 'Pulmões (2 Veias D + 2 Veias E)',
+    destino: 'Teto do Átrio Esquerdo (AE)',
     sangue: 'arterial',
     gasPreponderante: 'Rico em O₂ · Pobre em CO₂',
     pressaoEstimada: '~5-10 mmHg',
-    oQueOcorre: 'As 4 veias pulmonares (2 direitas e 2 esquerdas) deságuam no teto do Átrio Esquerdo, encerrando a Pequena Circulação. O sangue passa pela valva mitral para o VE.',
-    relevanciaFisio: 'Aumento da pressão venocapilar pulmonar por estenose mitral causa extravasamento intersticial (edema agudo de pulmão).',
+    oQueOcorre: 'As 4 veias pulmonares deságuam no Átrio Esquerdo sem válvulas. A Pequena Circulação encerra-se aqui! Na diástole, o sangue passa pela valva mitral e enche o Ventrículo Esquerdo.',
+    relevanciaFisio: 'Estenose ou insuficiência mitral provoca congestão retrógrada nas veias pulmonares, gerando dispneia paroxística noturna e edema pulmonar agudo.',
     destaqueSvg: 'veias-pulmonares'
   },
   {
     id: 5,
     circuito: 'Grande (Sistêmica)',
-    titulo: '5. Sístole do Ventrículo Esquerdo (Início da Grande)',
-    subtitulo: 'Bomba sistêmica de alta pressão',
+    titulo: '5. Ventrículo Esquerdo ➔ Valva da Aorta',
+    subtitulo: 'Início da Grande Circulação (Bomba de Alta Pressão)',
+    origem: 'Ventrículo Esquerdo (VE)',
+    destino: 'Raiz da Artéria Aorta',
     sangue: 'arterial',
     gasPreponderante: 'Rico em O₂ · Pobre em CO₂',
-    pressaoEstimada: '~120 mmHg (alta pressão)',
-    oQueOcorre: 'O miocárdio hipertrofiado do Ventrículo Esquerdo (3x mais espesso que o VD) contrai-se com vigor, abrindo a valva aórtica para ejetar o débito cardíaco.',
-    relevanciaFisio: 'O choque da ponta (Ictus Cordis) palpável no 5º EICE na linha hemiclavicular esquerda reflete a força e o tamanho deste ventrículo.',
+    pressaoEstimada: '~120 mmHg (sístole sistêmica)',
+    oQueOcorre: 'O miocárdio hipertrofiado do Ventrículo Esquerdo (3 vezes mais espesso que o VD) contrai-se com enorme força, abrindo a valva aórtica para ejetar todo o débito cardíaco.',
+    relevanciaFisio: 'O choque da ponta (Ictus Cordis), palpável no 5º espaço intercostal esquerdo na linha hemiclavicular, espelha a localização e força contrátil do VE.',
     destaqueSvg: 've'
   },
   {
     id: 6,
     circuito: 'Grande (Sistêmica)',
-    titulo: '6. Artéria Aorta & Arteríolas Sistêmicas',
-    subtitulo: 'Distribuição arterial corporal & regulação de RPT',
+    titulo: '6. Artéria Aorta ➔ Artérias Periféricas & Arteríolas',
+    subtitulo: 'Distribuição arterial e resistência vascular sistêmica',
+    origem: 'Arco Aórtico e Aorta Descendente',
+    destino: 'Cabeça, MMSS, Vísceras e MMII',
     sangue: 'arterial',
     gasPreponderante: 'Rico em O₂ · Pobre em CO₂',
     pressaoEstimada: '~120/80 mmHg',
-    oQueOcorre: 'A onda de pulso percorre o arco aórtico (irrigando cabeça e braços) e a aorta descendente (irrigando vísceras e pernas). As arteríolas regulam a resistência periférica.',
-    relevanciaFisio: 'O efeito Windkessel da elasticidade aórtica suaviza a pulsação sistólica. Exercícios aeróbicos melhoram a vasodilatação endotelial.',
+    oQueOcorre: 'O sangue arterial percorre a aorta ascendente (nutrindo coronárias), o arco aórtico (nutrindo cabeça e braços) e a aorta descendente torácica e abdominal, atingindo as arteríolas de resistência.',
+    relevanciaFisio: 'O efeito elástico Windkessel da aorta absorve a onda pulsátil. A resistência das arteríolas determina diretamente a Pressão Arterial Sistêmica.',
     destaqueSvg: 'aorta'
   },
   {
     id: 7,
     circuito: 'Grande (Sistêmica)',
-    titulo: '7. Capilares dos Tecidos Corporais (Perfusão Sistêmica)',
-    subtitulo: 'Entrega de oxigênio & captação de CO₂ metabólico',
+    titulo: '7. Capilares Sistêmicos (PERFUSÃO TECIDUAL NOS ÓRGÃOS)',
+    subtitulo: 'Entrega de O₂ e Nutrientes · Coleta de CO₂ Metabólico',
+    origem: 'Arteríolas Sistêmicas',
+    destino: 'Vênulas Sistêmicas',
     sangue: 'transicao-desoxigenacao',
-    gasPreponderante: 'O₂ entra nas células musculares e órgãos · CO₂ entra no sangue',
-    pressaoEstimada: '~30 mmHg (arteriolar) → ~15 mmHg (venular)',
-    oQueOcorre: 'O oxigênio e os nutrientes são consumidos pelas mitocôndrias celulares para gerar ATP. O sangue perde oxigênio e volta a ficar azul (venoso).',
-    relevanciaFisio: 'Em insuficiência arterial periférica, a diminuição da perfusão gera claudicação intermitente durante a marcha no paciente.',
+    gasPreponderante: 'O₂ entra nas mitocôndrias celulares ⬇ · CO₂ sai para o sangue ⬆',
+    pressaoEstimada: '~30 mmHg (arteriolar) ➔ ~15 mmHg (venular)',
+    oQueOcorre: 'MOMENTO DECISIVO: Nos tecidos corporais, o oxigênio é entregue às células musculares e tecidos para respiração aeróbica. O CO₂ é recolhido pelo sangue. O SANGUE TORNA-SE VENOSO (AZUL)!',
+    relevanciaFisio: 'Na Doença Arterial Obstrutiva Periférica (DAOP), a queda de perfusão em MMII causa claudicação intermitente que interrompe a marcha.',
     destaqueSvg: 'tecidos'
   },
   {
     id: 8,
     circuito: 'Grande (Sistêmica)',
-    titulo: '8. Veias Cavas & Átrio Direito (Fim da Grande Circulação)',
-    subtitulo: 'Retorno venoso total ao ponto de reinício',
+    titulo: '8. Veias Cavas (VCS e VCI) ➔ Átrio Direito (Fim da Grande)',
+    subtitulo: 'Retorno venoso total e reinício do ciclo cardíaco',
+    origem: 'Veia Cava Superior e Inferior',
+    destino: 'Átrio Direito (AD)',
     sangue: 'venoso',
     gasPreponderante: 'Rico em CO₂ · Pobre em O₂',
-    pressaoEstimada: '~2-6 mmHg (Pressão Venosa Central - PVC)',
-    oQueOcorre: 'A Veia Cava Superior (cabeça/braços) e a Veia Cava Inferior (tronco/pernas) despejam todo o retorno venoso no Átrio Direito, completando o ciclo que se reinicia!',
-    relevanciaFisio: 'A bomba muscular da panturrilha ("segundo coração") é ativada pela dorsiflexão durante a caminhada, impulsionando o retorno venoso contra a gravidade.',
+    pressaoEstimada: '~2-6 mmHg (Pressão Venosa Central)',
+    oQueOcorre: 'A VCS (drenando cabeça e braços) e a VCI (drenando abdome e pernas) deságuam no Átrio Direito. Encerra-se a Grande Circulação! O sangue passa para o VD pela tricúspide e o ciclo recomeça.',
+    relevanciaFisio: 'A bomba muscular da panturrilha (sóleo e gastrocnêmios) é o "coração periférico", impulsionando o sangue pela VCI contra a gravidade na deambulação.',
     destaqueSvg: 'ad'
   }
 ];
@@ -137,7 +157,8 @@ export const CirculationAnimationPlayer: React.FC = () => {
   const [speed, setSpeed] = useState<number>(1);
   const [soundEnabled, setSoundEnabled] = useState<boolean>(false);
   const [modeFilter, setModeFilter] = useState<'tudo' | 'pequena' | 'grande'>('tudo');
-  const [flowPhase, setFlowPhase] = useState<number>(0); // 0 to 100 continuously
+  const [focusOnlyCurrent, setFocusOnlyCurrent] = useState<boolean>(true); // Foco estrito solicitado pelo usuário
+  const [flowPhase, setFlowPhase] = useState<number>(0); // 0 to 100 progress inside current segment
 
   const currentStage = circulationStages[currentStageIndex];
 
@@ -147,16 +168,19 @@ export const CirculationAnimationPlayer: React.FC = () => {
   const stageTimerRef = useRef<number>(0);
 
   useEffect(() => {
-    const stageDuration = 3800 / speed;
+    // Duration of each step: ~3500ms at 1x
+    const stageDuration = 3600 / speed;
 
     const animate = (time: number) => {
       const delta = time - lastTimeRef.current;
       lastTimeRef.current = time;
 
       if (isPlaying) {
-        setFlowPhase((prev) => (prev + (delta * 0.05 * speed)) % 100);
-
+        // Internal progress inside this exact step (0 to 100%)
         stageTimerRef.current += delta;
+        const currentProgress = (stageTimerRef.current / stageDuration) * 100;
+        setFlowPhase(currentProgress);
+
         if (stageTimerRef.current >= stageDuration) {
           stageTimerRef.current = 0;
           setCurrentStageIndex((prev) => {
@@ -205,6 +229,7 @@ export const CirculationAnimationPlayer: React.FC = () => {
   const handleSelectStage = (idx: number) => {
     setCurrentStageIndex(idx);
     stageTimerRef.current = 0;
+    setFlowPhase(0);
     if (soundEnabled && (idx === 0 || idx === 4)) {
       playHeartSound('both', speed);
     }
@@ -215,6 +240,173 @@ export const CirculationAnimationPlayer: React.FC = () => {
     if (mode === 'pequena') setCurrentStageIndex(0);
     if (mode === 'grande') setCurrentStageIndex(4);
     stageTimerRef.current = 0;
+    setFlowPhase(0);
+  };
+
+  // Helper function to calculate dimmed vs focused opacity
+  const getElementStyle = (targetComponent: string) => {
+    const isTarget = currentStage.destaqueSvg === targetComponent;
+
+    if (!focusOnlyCurrent) {
+      // Classic mode
+      return {
+        opacity: isTarget ? 1 : 0.65,
+        filter: isTarget ? 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.4))' : 'none'
+      };
+    }
+
+    // STRICT FOCUS MODE: Highlight only the active step, dim everything else to background
+    return {
+      opacity: isTarget ? 1 : 0.12,
+      transition: 'opacity 0.4s ease-in-out, filter 0.4s ease-in-out',
+      filter: isTarget ? 'drop-shadow(0 0 12px rgba(255, 255, 255, 0.5))' : 'none'
+    };
+  };
+
+  // Calculate coordinates for flowing blood drop according to current step
+  const renderCurrentStepFlow = () => {
+    const norm = Math.min(1, Math.max(0, flowPhase / 100)); // 0.0 to 1.0
+
+    // Coordinates mapping for each stage:
+    switch (currentStage.id) {
+      case 1: {
+        // Step 1: VD (347, 430) -> Pulmonary valve / root of trunk (347, 345)
+        const curY = 430 - norm * 85;
+        return (
+          <g>
+            <circle cx="347" cy={curY} r="9" fill="#38bdf8" filter="url(#glow-blue)">
+              <animate attributeName="r" values="8;11;8" dur="0.8s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="347" cy={curY + 18} r="6" fill="#0284c7" opacity="0.7" />
+            <circle cx="347" cy={curY + 34} r="4" fill="#0369a1" opacity="0.4" />
+          </g>
+        );
+      }
+      case 2: {
+        // Step 2: Trunk (347, 350) -> Lungs (240, 190 on left, 560, 190 on right)
+        const xLeft = 347 + (240 - 347) * norm;
+        const yLeft = 350 + (190 - 350) * norm;
+        const xRight = 355 + (560 - 355) * norm;
+        const yRight = 350 + (190 - 350) * norm;
+        return (
+          <g>
+            {/* Wave towards Right lung (viewer left) */}
+            <circle cx={xLeft} cy={yLeft} r="8.5" fill="#38bdf8" filter="url(#glow-blue)" />
+            <circle cx={xLeft + 12 * (1 - norm)} cy={yLeft + 18 * (1 - norm)} r="6" fill="#0284c7" opacity="0.6" />
+
+            {/* Wave towards Left lung (viewer right) */}
+            <circle cx={xRight} cy={yRight} r="8.5" fill="#38bdf8" filter="url(#glow-blue)" />
+            <circle cx={xRight - 12 * (1 - norm)} cy={yRight + 18 * (1 - norm)} r="6" fill="#0284c7" opacity="0.6" />
+          </g>
+        );
+      }
+      case 3: {
+        // Step 3: Hematosis in lungs. Blood sweeps through alveoli and shifts color from blue to purple to red!
+        const xSweepLeft = 190 + norm * 100;
+        const xSweepRight = 510 + norm * 100;
+        const color = norm < 0.4 ? '#38bdf8' : norm < 0.7 ? '#c084fc' : '#f43f5e';
+        return (
+          <g>
+            {/* Right lung sweeping wave */}
+            <circle cx={xSweepLeft} cy="170" r="10" fill={color} filter="url(#glow-magenta)">
+              <animate attributeName="r" values="9;12;9" dur="0.6s" repeatCount="indefinite" />
+            </circle>
+            <circle cx={xSweepLeft - 20} cy="155" r="7" fill={color} opacity="0.8" />
+            <circle cx={xSweepLeft - 15} cy="185" r="7" fill={color} opacity="0.8" />
+
+            {/* Left lung sweeping wave */}
+            <circle cx={xSweepRight} cy="170" r="10" fill={color} filter="url(#glow-magenta)">
+              <animate attributeName="r" values="9;12;9" dur="0.6s" repeatCount="indefinite" />
+            </circle>
+            <circle cx={xSweepRight - 20} cy="155" r="7" fill={color} opacity="0.8" />
+            <circle cx={xSweepRight - 15} cy="185" r="7" fill={color} opacity="0.8" />
+          </g>
+        );
+      }
+      case 4: {
+        // Step 4: Pulmonary veins (280, 200) -> AE (452, 310)
+        const xLeft = 280 + (430 - 280) * norm;
+        const yLeft = 200 + (300 - 200) * norm;
+        const xRight = 520 + (465 - 520) * norm;
+        const yRight = 200 + (300 - 200) * norm;
+        return (
+          <g>
+            <circle cx={xLeft} cy={yLeft} r="8.5" fill="#f43f5e" filter="url(#glow-red)" />
+            <circle cx={xLeft - 15 * (1 - norm)} cy={yLeft - 10 * (1 - norm)} r="6" fill="#e11d48" opacity="0.7" />
+
+            <circle cx={xRight} cy={yRight} r="8.5" fill="#f43f5e" filter="url(#glow-red)" />
+            <circle cx={xRight + 15 * (1 - norm)} cy={yRight - 10 * (1 - norm)} r="6" fill="#e11d48" opacity="0.7" />
+          </g>
+        );
+      }
+      case 5: {
+        // Step 5: VE (452, 430) -> Aortic Valve (452, 350)
+        const curY = 430 - norm * 80;
+        return (
+          <g>
+            <circle cx="452" cy={curY} r="9.5" fill="#f43f5e" filter="url(#glow-red)">
+              <animate attributeName="r" values="9;12;9" dur="0.7s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="452" cy={curY + 18} r="6.5" fill="#e11d48" opacity="0.7" />
+            <circle cx="452" cy={curY + 34} r="4" fill="#be123c" opacity="0.4" />
+          </g>
+        );
+      }
+      case 6: {
+        // Step 6: Aorta arch & descent -> Upper body (400, 70) and Lower body (440, 540)
+        const yHead = 280 - norm * 210;
+        const yLower = 365 + norm * 175;
+        const xLower = 460 + (440 - 460) * norm;
+        return (
+          <g>
+            {/* Wave traveling UP aorta to head */}
+            <circle cx="405" cy={yHead} r="8" fill="#f43f5e" filter="url(#glow-red)" />
+            <circle cx="415" cy={yHead + 16} r="5.5" fill="#e11d48" opacity="0.7" />
+
+            {/* Wave traveling DOWN descending aorta to organs/legs */}
+            <circle cx={xLower} cy={yLower} r="9" fill="#f43f5e" filter="url(#glow-red)" />
+            <circle cx={xLower} cy={yLower - 18} r="6" fill="#e11d48" opacity="0.7" />
+          </g>
+        );
+      }
+      case 7: {
+        // Step 7: Systemic capillary bed. Consuming O2 -> Turning into venous blood (purple -> blue)
+        const xSweepLower = 290 + norm * 220;
+        const color = norm < 0.4 ? '#f43f5e' : norm < 0.7 ? '#c084fc' : '#38bdf8';
+        return (
+          <g>
+            {/* Lower body capillary bed */}
+            <circle cx={xSweepLower} cy="575" r="10" fill={color} filter="url(#glow-magenta)">
+              <animate attributeName="r" values="9;12;9" dur="0.6s" repeatCount="indefinite" />
+            </circle>
+            <circle cx={xSweepLower - 20} cy="565" r="7" fill={color} opacity="0.8" />
+            <circle cx={xSweepLower - 15} cy="585" r="7" fill={color} opacity="0.8" />
+
+            {/* Upper body capillary bed */}
+            <circle cx={360 + norm * 80} cy="60" r="7" fill={color} filter="url(#glow-magenta)" />
+          </g>
+        );
+      }
+      case 8: {
+        // Step 8: Venae Cavae (VCS & VCI) returning blood into AD (347, 310)
+        const yVcs = 70 + norm * 210;
+        const yVci = 540 - norm * 195;
+        const xVci = 370 + (345 - 370) * norm;
+        return (
+          <g>
+            {/* VCS descending from head to AD */}
+            <circle cx="365" cy={yVcs} r="8.5" fill="#38bdf8" filter="url(#glow-blue)" />
+            <circle cx="368" cy={yVcs - 16} r="6" fill="#0284c7" opacity="0.7" />
+
+            {/* VCI ascending from lower body to AD */}
+            <circle cx={xVci} cy={yVci} r="9" fill="#38bdf8" filter="url(#glow-blue)" />
+            <circle cx={xVci} cy={yVci + 18} r="6" fill="#0284c7" opacity="0.7" />
+          </g>
+        );
+      }
+      default:
+        return null;
+    }
   };
 
   return (
@@ -225,14 +417,14 @@ export const CirculationAnimationPlayer: React.FC = () => {
           <div className="space-y-1">
             <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-rose-400 animate-ping"></span>
-              Simulador Hemodinâmico Animado em Tempo Real
+              Modo Focado: Apenas o Trajeto do Momento Ativo
             </div>
             <h2 className="text-xl sm:text-2xl font-bold font-display tracking-tight text-white flex items-center gap-2">
               <Activity className="w-6 h-6 text-rose-500" />
-              Como a Circulação Percorre o Corpo Humano
+              Animação Passo a Passo da Circulação
             </h2>
             <p className="text-xs text-slate-300 max-w-xl">
-              Observe o duplo circuito biológico (em formato de 8): o sangue venoso (azul) é oxigenado nos pulmões (hematose), volta ao coração e é impulsionado sob alta pressão como sangue arterial (vermelho) para perfundir todos os órgãos e membros.
+              Veja o sangue percorrendo <strong>exatamente a etapa daquele momento</strong> (da câmara de origem ao ponto de destino), isolando o trajeto para entender com máxima clareza cada segmento do fluxo.
             </p>
           </div>
 
@@ -248,7 +440,7 @@ export const CirculationAnimationPlayer: React.FC = () => {
               }`}
             >
               {isPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current" />}
-              <span>{isPlaying ? 'Pausar Animação' : 'Iniciar Animação'}</span>
+              <span>{isPlaying ? 'Pausar' : 'Iniciar'}</span>
             </button>
 
             {/* Restart button */}
@@ -258,6 +450,20 @@ export const CirculationAnimationPlayer: React.FC = () => {
               className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
             >
               <RotateCcw className="w-4 h-4" />
+            </button>
+
+            {/* Focus toggle button (Spotlight mode) */}
+            <button
+              onClick={() => setFocusOnlyCurrent(!focusOnlyCurrent)}
+              title="Alternar entre Foco Estrito e Visão Geral"
+              className={`px-3 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 border transition-all ${
+                focusOnlyCurrent
+                  ? 'bg-rose-500/20 border-rose-500/60 text-rose-300 ring-2 ring-rose-500/20'
+                  : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:bg-slate-750'
+              }`}
+            >
+              <Eye className="w-4 h-4 text-rose-400" />
+              <span>{focusOnlyCurrent ? 'Foco Só no Momento (Ativo)' : 'Mostrar Tudo'}</span>
             </button>
 
             {/* Sound toggle */}
@@ -274,7 +480,7 @@ export const CirculationAnimationPlayer: React.FC = () => {
               }`}
             >
               {soundEnabled ? <Volume2 className="w-4 h-4 text-rose-400" /> : <VolumeX className="w-4 h-4" />}
-              <span className="hidden sm:inline">{soundEnabled ? 'Áudio Ligado' : 'Mudo'}</span>
+              <span className="hidden sm:inline">{soundEnabled ? 'Som Ligado' : 'Mudo'}</span>
             </button>
 
             {/* Speed toggle */}
@@ -297,41 +503,41 @@ export const CirculationAnimationPlayer: React.FC = () => {
         </div>
 
         {/* Circuit Mode Filter Sub-tabs */}
-        <div className="flex items-center gap-2 mt-4 pt-3 border-t border-slate-800/80 text-xs">
-          <span className="text-slate-400 font-semibold mr-1">Foco Didático:</span>
+        <div className="flex items-center gap-2 mt-4 pt-3 border-t border-slate-800/80 text-xs overflow-x-auto scrollbar-none">
+          <span className="text-slate-400 font-semibold mr-1 shrink-0">Filtrar Circuito:</span>
           <button
             onClick={() => handleModeChange('tudo')}
-            className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${
+            className={`px-3 py-1.5 rounded-lg font-semibold whitespace-nowrap transition-all ${
               modeFilter === 'tudo'
                 ? 'bg-white text-slate-900 shadow-xs'
                 : 'bg-slate-800 text-slate-300 hover:bg-slate-750'
             }`}
           >
-            Ciclo Corporal Completo (Pequena + Grande)
+            Ciclo Corporal Completo (1 a 8)
           </button>
 
           <button
             onClick={() => handleModeChange('pequena')}
-            className={`px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 whitespace-nowrap transition-all ${
               modeFilter === 'pequena'
                 ? 'bg-blue-600 text-white shadow-xs'
                 : 'bg-slate-800 text-slate-300 hover:bg-slate-750'
             }`}
           >
             <Wind className="w-3.5 h-3.5 text-blue-300" />
-            Apenas Pequena (Pulmonar)
+            Pequena (Passos 1 a 4)
           </button>
 
           <button
             onClick={() => handleModeChange('grande')}
-            className={`px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1.5 whitespace-nowrap transition-all ${
               modeFilter === 'grande'
                 ? 'bg-rose-600 text-white shadow-xs'
                 : 'bg-slate-800 text-slate-300 hover:bg-slate-750'
             }`}
           >
             <Flame className="w-3.5 h-3.5 text-rose-300" />
-            Apenas Grande (Sistêmica)
+            Grande (Passos 5 a 8)
           </button>
         </div>
       </div>
@@ -367,7 +573,16 @@ export const CirculationAnimationPlayer: React.FC = () => {
               </div>
             </div>
 
+            {/* Origin -> Destination Tag */}
             <div className="flex items-center gap-2 flex-wrap">
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-white rounded-lg border border-slate-200 text-xs font-bold text-slate-800 shadow-2xs">
+                <span className="text-slate-500 font-normal">De:</span>
+                <span className="text-rose-700">{currentStage.origem}</span>
+                <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                <span className="text-slate-500 font-normal">Para:</span>
+                <span className="text-blue-700">{currentStage.destino}</span>
+              </div>
+
               <span
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold border ${
                   currentStage.sangue === 'venoso'
@@ -378,10 +593,10 @@ export const CirculationAnimationPlayer: React.FC = () => {
                 }`}
               >
                 {currentStage.sangue === 'venoso'
-                  ? '🔵 Sangue Venoso (CO₂)'
+                  ? '🔵 Sangue Venoso'
                   : currentStage.sangue === 'arterial'
-                  ? '🔴 Sangue Arterial (O₂)'
-                  : '🟣 Hematose / Perfusão (Troca)'}
+                  ? '🔴 Sangue Arterial'
+                  : '🟣 Troca / Hematose'}
               </span>
 
               <span className="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-xs font-mono font-semibold text-slate-700 shadow-2xs">
@@ -392,7 +607,7 @@ export const CirculationAnimationPlayer: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3 text-xs sm:text-sm">
             <div className="space-y-1">
-              <strong className="text-slate-800 font-bold block">Dinâmica de Fluxo Nesta Etapa:</strong>
+              <strong className="text-slate-800 font-bold block">Dinâmica de Fluxo Deste Momento:</strong>
               <p className="text-slate-700 leading-relaxed">{currentStage.oQueOcorre}</p>
             </div>
 
@@ -429,20 +644,20 @@ export const CirculationAnimationPlayer: React.FC = () => {
                 <div className="text-[10px] opacity-75 font-mono">#{stg.id}</div>
                 <div className="truncate text-[11px] mt-0.5">
                   {sIdx === 0
-                    ? 'VD'
+                    ? '1. VD'
                     : sIdx === 1
-                    ? 'Tr. Pulm.'
+                    ? '2. Tr. Pulm.'
                     : sIdx === 2
-                    ? 'Hematose'
+                    ? '3. Hematose'
                     : sIdx === 3
-                    ? 'V. Pulm/AE'
+                    ? '4. V. Pulm/AE'
                     : sIdx === 4
-                    ? 'VE'
+                    ? '5. VE'
                     : sIdx === 5
-                    ? 'Aorta'
+                    ? '6. Aorta'
                     : sIdx === 6
-                    ? 'Tecidos'
-                    : 'Cavas/AD'}
+                    ? '7. Tecidos'
+                    : '8. Cavas/AD'}
                 </div>
               </button>
             );
@@ -456,19 +671,21 @@ export const CirculationAnimationPlayer: React.FC = () => {
             <div className="flex items-center gap-3">
               <span className="flex items-center gap-1.5 text-blue-400 font-semibold">
                 <span className="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
-                Circuito Venoso (Desoxigenado)
+                Circuito Venoso
               </span>
               <span className="flex items-center gap-1.5 text-rose-400 font-semibold">
                 <span className="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
-                Circuito Arterial (Oxigenado)
+                Circuito Arterial
               </span>
             </div>
 
-            <div className="hidden sm:flex items-center gap-2 text-slate-400 text-[11px]">
-              <span>Velocidade: {speed}x</span>
+            <div className="flex items-center gap-2 text-slate-400 text-[11px]">
+              <span className="text-amber-400 font-mono font-semibold">
+                Etapa {currentStage.id}/8: {currentStage.origem} ➔ {currentStage.destino}
+              </span>
               <span>·</span>
               <span className="text-emerald-400 font-mono font-semibold">
-                {isPlaying ? '● Em Fluxo Contínuo' : '⏸ Pausado'}
+                {isPlaying ? '● Fluindo' : '⏸ Pausado'}
               </span>
             </div>
           </div>
@@ -482,12 +699,16 @@ export const CirculationAnimationPlayer: React.FC = () => {
             >
               <defs>
                 {/* Glow filters */}
-                <filter id="glow-blue" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
+                <filter id="glow-blue" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="5" result="blur" />
                   <feComposite in="SourceGraphic" in2="blur" operator="over" />
                 </filter>
-                <filter id="glow-red" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
+                <filter id="glow-red" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="5" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <filter id="glow-magenta" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="6" result="blur" />
                   <feComposite in="SourceGraphic" in2="blur" operator="over" />
                 </filter>
 
@@ -518,20 +739,14 @@ export const CirculationAnimationPlayer: React.FC = () => {
                 stroke="#1e293b"
                 strokeWidth="2.5"
                 strokeDasharray="4 4"
-                opacity="0.7"
+                opacity="0.5"
               />
 
               {/* ======================================================== */}
-              {/* ZONE 1: LUNGS & ALVEOLAR HEMATOSIS (TOP: Y = 130 to 220) */}
+              {/* ZONE 1: LUNGS & ALVEOLAR HEMATOSIS (TOP: Y = 120 to 220) */}
               {/* ======================================================== */}
-
-              {/* Left Lung Box (anatomical right of body = viewer left) */}
-              <g
-                className={`transition-all duration-300 ${
-                  currentStage.destaqueSvg === 'pulmoes' ? 'opacity-100 scale-[1.02]' : 'opacity-85'
-                }`}
-                style={{ transformOrigin: '240px 170px' }}
-              >
+              <g style={getElementStyle('pulmoes')}>
+                {/* Left Lung Box (anatomical right of body = viewer left) */}
                 <rect
                   x="160"
                   y="120"
@@ -542,7 +757,6 @@ export const CirculationAnimationPlayer: React.FC = () => {
                   stroke={currentStage.destaqueSvg === 'pulmoes' ? '#818cf8' : '#312e81'}
                   strokeWidth={currentStage.destaqueSvg === 'pulmoes' ? '3' : '1.5'}
                 />
-                {/* Alveolar capillary mesh effect */}
                 <path
                   d="M 180 145 Q 210 160 240 145 T 300 145 M 180 170 Q 210 185 240 170 T 300 170 M 180 195 Q 210 210 240 195 T 300 195"
                   stroke="url(#hematose-grad-left)"
@@ -559,15 +773,8 @@ export const CirculationAnimationPlayer: React.FC = () => {
                 <text x="240" y="205" fill="#38bdf8" fontSize="9" fontWeight="bold" textAnchor="middle">
                   CO₂ Sai ⬆ · O₂ Entra ⬇
                 </text>
-              </g>
 
-              {/* Right Lung Box (anatomical left of body = viewer right) */}
-              <g
-                className={`transition-all duration-300 ${
-                  currentStage.destaqueSvg === 'pulmoes' ? 'opacity-100 scale-[1.02]' : 'opacity-85'
-                }`}
-                style={{ transformOrigin: '560px 170px' }}
-              >
+                {/* Right Lung Box (anatomical left of body = viewer right) */}
                 <rect
                   x="480"
                   y="120"
@@ -578,7 +785,6 @@ export const CirculationAnimationPlayer: React.FC = () => {
                   stroke={currentStage.destaqueSvg === 'pulmoes' ? '#818cf8' : '#312e81'}
                   strokeWidth={currentStage.destaqueSvg === 'pulmoes' ? '3' : '1.5'}
                 />
-                {/* Alveolar capillary mesh effect */}
                 <path
                   d="M 500 145 Q 530 160 560 145 T 620 145 M 500 170 Q 530 185 560 170 T 620 170 M 500 195 Q 530 210 560 195 T 620 195"
                   stroke="url(#hematose-grad-right)"
@@ -595,189 +801,163 @@ export const CirculationAnimationPlayer: React.FC = () => {
                 <text x="560" y="205" fill="#38bdf8" fontSize="9" fontWeight="bold" textAnchor="middle">
                   CO₂ Sai ⬆ · O₂ Entra ⬇
                 </text>
-              </g>
 
-              {/* Respiratory Gas indicator bubbles above lungs */}
-              <g opacity={currentStage.destaqueSvg === 'pulmoes' ? '1' : '0.6'}>
-                <circle cx="200" cy="100" r="14" fill="#0284c7" />
-                <text x="200" y="104" fill="#ffffff" fontSize="9" fontWeight="bold" textAnchor="middle">
-                  O₂
-                </text>
-                <circle cx="280" cy="100" r="14" fill="#475569" />
-                <text x="280" y="104" fill="#ffffff" fontSize="9" fontWeight="bold" textAnchor="middle">
-                  CO₂
-                </text>
+                {/* Gas bubbles */}
+                <circle cx="200" cy="100" r="13" fill="#0284c7" />
+                <text x="200" y="104" fill="#ffffff" fontSize="9" fontWeight="bold" textAnchor="middle">O₂</text>
+                <circle cx="280" cy="100" r="13" fill="#475569" />
+                <text x="280" y="104" fill="#ffffff" fontSize="9" fontWeight="bold" textAnchor="middle">CO₂</text>
 
-                <circle cx="520" cy="100" r="14" fill="#475569" />
-                <text x="520" y="104" fill="#ffffff" fontSize="9" fontWeight="bold" textAnchor="middle">
-                  CO₂
-                </text>
-                <circle cx="600" cy="100" r="14" fill="#0284c7" />
-                <text x="600" y="104" fill="#ffffff" fontSize="9" fontWeight="bold" textAnchor="middle">
-                  O₂
-                </text>
+                <circle cx="520" cy="100" r="13" fill="#475569" />
+                <text x="520" y="104" fill="#ffffff" fontSize="9" fontWeight="bold" textAnchor="middle">CO₂</text>
+                <circle cx="600" cy="100" r="13" fill="#0284c7" />
+                <text x="600" y="104" fill="#ffffff" fontSize="9" fontWeight="bold" textAnchor="middle">O₂</text>
               </g>
 
               {/* ======================================================== */}
               {/* ZONE 2: THE HEART & 4 CHAMBERS (CENTER: X=400, Y=330)    */}
               {/* ======================================================== */}
-
-              {/* Heart Container Outer Silhouette */}
-              <g
-                className={`transition-transform duration-300 ${
-                  isPlaying && (currentStageIndex === 0 || currentStageIndex === 4)
-                    ? 'scale-[1.03]'
-                    : 'scale-100'
-                }`}
-                style={{ transformOrigin: '400px 360px' }}
-              >
-                {/* Pericardium / Cardiac silhouette */}
+              <g>
+                {/* Cardiac outline base */}
                 <path
                   d="M 400 270 C 310 240 260 300 280 390 C 300 460 380 500 400 510 C 420 500 500 460 520 390 C 540 300 490 240 400 270 Z"
                   fill="#111827"
                   stroke="#374151"
                   strokeWidth="3"
+                  opacity={focusOnlyCurrent ? 0.35 : 1}
                 />
+                <line x1="400" y1="270" x2="400" y2="505" stroke="#4b5563" strokeWidth="6" strokeLinecap="round" opacity={focusOnlyCurrent ? 0.35 : 1} />
+                <line x1="290" y1="350" x2="510" y2="350" stroke="#4b5563" strokeWidth="5" strokeLinecap="round" opacity={focusOnlyCurrent ? 0.35 : 1} />
 
-                {/* Interventricular and Interatrial Septa dividing the 4 chambers */}
-                <line x1="400" y1="270" x2="400" y2="505" stroke="#4b5563" strokeWidth="6" strokeLinecap="round" />
-                <line x1="290" y1="350" x2="510" y2="350" stroke="#4b5563" strokeWidth="5" strokeLinecap="round" />
+                {/* 1. RIGHT ATRIUM (AD) */}
+                <g style={getElementStyle('ad')}>
+                  <rect
+                    x="300"
+                    y="275"
+                    width="95"
+                    height="70"
+                    rx="14"
+                    className={`transition-all duration-300 cursor-pointer ${
+                      currentStage.destaqueSvg === 'ad'
+                        ? 'fill-blue-600/70 stroke-blue-400 stroke-2 filter drop-shadow-[0_0_12px_rgba(59,130,246,0.8)]'
+                        : 'fill-blue-950/70 stroke-blue-900'
+                    }`}
+                    onClick={() => handleSelectStage(7)}
+                  />
+                  <text x="347" y="305" fill="#93c5fd" fontSize="13" fontWeight="bold" textAnchor="middle">
+                    Átrio Direito
+                  </text>
+                  <text x="347" y="322" fill="#60a5fa" fontSize="10" textAnchor="middle">
+                    (AD) · Venoso
+                  </text>
+                  <text x="347" y="338" fill="#bfdbfe" fontSize="9" textAnchor="middle">
+                    ~2-6 mmHg
+                  </text>
+                </g>
 
-                {/* 1. RIGHT ATRIUM (AD) - Top Left (viewer perspective) */}
-                <rect
-                  x="300"
-                  y="275"
-                  width="95"
-                  height="70"
-                  rx="14"
-                  className={`transition-all duration-300 cursor-pointer ${
-                    currentStage.destaqueSvg === 'ad'
-                      ? 'fill-blue-600/60 stroke-blue-400 stroke-2 filter drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]'
-                      : 'fill-blue-950/70 stroke-blue-900'
-                  }`}
-                  onClick={() => handleSelectStage(7)}
-                />
-                <text x="347" y="305" fill="#93c5fd" fontSize="13" fontWeight="bold" textAnchor="middle">
-                  Átrio Direito
-                </text>
-                <text x="347" y="322" fill="#60a5fa" fontSize="10" textAnchor="middle">
-                  (AD) · Sangue Venoso
-                </text>
-                <text x="347" y="338" fill="#bfdbfe" fontSize="9" textAnchor="middle">
-                  ~2-6 mmHg
-                </text>
+                {/* 2. RIGHT VENTRICLE (VD) */}
+                <g style={getElementStyle('vd')}>
+                  <rect
+                    x="300"
+                    y="355"
+                    width="95"
+                    height="110"
+                    rx="16"
+                    className={`transition-all duration-300 cursor-pointer ${
+                      currentStage.destaqueSvg === 'vd'
+                        ? 'fill-blue-600/70 stroke-blue-400 stroke-2 filter drop-shadow-[0_0_12px_rgba(59,130,246,0.8)]'
+                        : 'fill-blue-950/70 stroke-blue-900'
+                    }`}
+                    onClick={() => handleSelectStage(0)}
+                  />
+                  <text x="347" y="395" fill="#93c5fd" fontSize="13" fontWeight="bold" textAnchor="middle">
+                    Ventrículo D.
+                  </text>
+                  <text x="347" y="415" fill="#60a5fa" fontSize="10" textAnchor="middle">
+                    (VD) · Miocárdio 3-5mm
+                  </text>
+                  <text x="347" y="435" fill="#bfdbfe" fontSize="9" textAnchor="middle">
+                    ~25/5 mmHg
+                  </text>
+                  <text x="347" y="455" fill="#38bdf8" fontSize="9" fontWeight="bold" textAnchor="middle">
+                    [Início Pequena]
+                  </text>
+                </g>
 
-                {/* 2. RIGHT VENTRICLE (VD) - Bottom Left (viewer perspective) */}
-                <rect
-                  x="300"
-                  y="355"
-                  width="95"
-                  height="110"
-                  rx="16"
-                  className={`transition-all duration-300 cursor-pointer ${
-                    currentStage.destaqueSvg === 'vd'
-                      ? 'fill-blue-600/60 stroke-blue-400 stroke-2 filter drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]'
-                      : 'fill-blue-950/70 stroke-blue-900'
-                  }`}
-                  onClick={() => handleSelectStage(0)}
-                />
-                <text x="347" y="400" fill="#93c5fd" fontSize="13" fontWeight="bold" textAnchor="middle">
-                  Ventrículo D.
-                </text>
-                <text x="347" y="418" fill="#60a5fa" fontSize="10" textAnchor="middle">
-                  (VD) · Miocárdio 3-5mm
-                </text>
-                <text x="347" y="435" fill="#bfdbfe" fontSize="9" textAnchor="middle">
-                  ~25/5 mmHg
-                </text>
-                <text x="347" y="455" fill="#38bdf8" fontSize="9" fontWeight="bold" textAnchor="middle">
-                  [Início Pequena]
-                </text>
+                {/* 3. LEFT ATRIUM (AE) */}
+                <g style={getElementStyle('ae')}>
+                  <rect
+                    x="405"
+                    y="275"
+                    width="95"
+                    height="70"
+                    rx="14"
+                    className={`transition-all duration-300 cursor-pointer ${
+                      currentStage.destaqueSvg === 'ae' || currentStage.destaqueSvg === 'veias-pulmonares'
+                        ? 'fill-rose-600/70 stroke-rose-400 stroke-2 filter drop-shadow-[0_0_12px_rgba(244,63,94,0.8)]'
+                        : 'fill-rose-950/70 stroke-rose-900'
+                    }`}
+                    onClick={() => handleSelectStage(3)}
+                  />
+                  <text x="452" y="305" fill="#fecdd3" fontSize="13" fontWeight="bold" textAnchor="middle">
+                    Átrio Esquerdo
+                  </text>
+                  <text x="452" y="322" fill="#fb7185" fontSize="10" textAnchor="middle">
+                    (AE) · Arterial
+                  </text>
+                  <text x="452" y="338" fill="#ffe4e6" fontSize="9" textAnchor="middle">
+                    ~5-10 mmHg
+                  </text>
+                </g>
 
-                {/* 3. LEFT ATRIUM (AE) - Top Right (viewer perspective) */}
-                <rect
-                  x="405"
-                  y="275"
-                  width="95"
-                  height="70"
-                  rx="14"
-                  className={`transition-all duration-300 cursor-pointer ${
-                    currentStage.destaqueSvg === 'ae' || currentStage.destaqueSvg === 'veias-pulmonares'
-                      ? 'fill-rose-600/60 stroke-rose-400 stroke-2 filter drop-shadow-[0_0_8px_rgba(244,63,94,0.6)]'
-                      : 'fill-rose-950/70 stroke-rose-900'
-                  }`}
-                  onClick={() => handleSelectStage(3)}
-                />
-                <text x="452" y="305" fill="#fecdd3" fontSize="13" fontWeight="bold" textAnchor="middle">
-                  Átrio Esquerdo
-                </text>
-                <text x="452" y="322" fill="#fb7185" fontSize="10" textAnchor="middle">
-                  (AE) · Sangue Arterial
-                </text>
-                <text x="452" y="338" fill="#ffe4e6" fontSize="9" textAnchor="middle">
-                  ~5-10 mmHg
-                </text>
+                {/* 4. LEFT VENTRICLE (VE) */}
+                <g style={getElementStyle('ve')}>
+                  <rect
+                    x="405"
+                    y="355"
+                    width="95"
+                    height="110"
+                    rx="16"
+                    className={`transition-all duration-300 cursor-pointer ${
+                      currentStage.destaqueSvg === 've'
+                        ? 'fill-rose-600/70 stroke-rose-400 stroke-2 filter drop-shadow-[0_0_12px_rgba(244,63,94,0.8)]'
+                        : 'fill-rose-950/70 stroke-rose-900'
+                    }`}
+                    onClick={() => handleSelectStage(4)}
+                  />
+                  <text x="452" y="395" fill="#fecdd3" fontSize="13" fontWeight="bold" textAnchor="middle">
+                    Ventrículo E.
+                  </text>
+                  <text x="452" y="415" fill="#fb7185" fontSize="10" textAnchor="middle">
+                    (VE) · Miocárdio 8-12mm
+                  </text>
+                  <text x="452" y="435" fill="#ffe4e6" fontSize="9" textAnchor="middle">
+                    ~120/10 mmHg
+                  </text>
+                  <text x="452" y="455" fill="#f43f5e" fontSize="9" fontWeight="bold" textAnchor="middle">
+                    [Início Grande]
+                  </text>
+                </g>
 
-                {/* 4. LEFT VENTRICLE (VE) - Bottom Right (viewer perspective) */}
-                <rect
-                  x="405"
-                  y="355"
-                  width="95"
-                  height="110"
-                  rx="16"
-                  className={`transition-all duration-300 cursor-pointer ${
-                    currentStage.destaqueSvg === 've'
-                      ? 'fill-rose-600/60 stroke-rose-400 stroke-2 filter drop-shadow-[0_0_8px_rgba(244,63,94,0.6)]'
-                      : 'fill-rose-950/70 stroke-rose-900'
-                  }`}
-                  onClick={() => handleSelectStage(4)}
-                />
-                <text x="452" y="400" fill="#fecdd3" fontSize="13" fontWeight="bold" textAnchor="middle">
-                  Ventrículo E.
-                </text>
-                <text x="452" y="418" fill="#fb7185" fontSize="10" textAnchor="middle">
-                  (VE) · Miocárdio 8-12mm
-                </text>
-                <text x="452" y="435" fill="#ffe4e6" fontSize="9" textAnchor="middle">
-                  ~120/10 mmHg
-                </text>
-                <text x="452" y="455" fill="#f43f5e" fontSize="9" fontWeight="bold" textAnchor="middle">
-                  [Início Grande]
-                </text>
-
-                {/* VALVES INDICATORS */}
-                {/* Tricuspid Valve */}
-                <circle cx="347" cy="350" r="9" fill="#1e293b" stroke="#3b82f6" strokeWidth="2" />
-                <text x="347" y="353" fill="#93c5fd" fontSize="8" fontWeight="bold" textAnchor="middle">
-                  Tri
-                </text>
-
-                {/* Mitral Valve */}
-                <circle cx="452" cy="350" r="9" fill="#1e293b" stroke="#ef4444" strokeWidth="2" />
-                <text x="452" y="353" fill="#fca5a5" fontSize="8" fontWeight="bold" textAnchor="middle">
-                  Mit
-                </text>
+                {/* Valves */}
+                <circle cx="347" cy="350" r="9" fill="#1e293b" stroke="#3b82f6" strokeWidth="2" opacity={focusOnlyCurrent ? 0.35 : 1} />
+                <circle cx="452" cy="350" r="9" fill="#1e293b" stroke="#ef4444" strokeWidth="2" opacity={focusOnlyCurrent ? 0.35 : 1} />
               </g>
 
               {/* ======================================================== */}
-              {/* ZONE 3: MAJOR VESSELS & ARCUATE CONNECTING PATHWAYS       */}
+              {/* ZONE 3: MAJOR VESSELS & CONNECTING PATHWAYS               */}
               {/* ======================================================== */}
 
-              {/* PATH A: PULMONARY TRUNK & ARTERIES (From VD -> Lungs) */}
-              {/* Emerge from VD, arch up to Left and Right Lungs */}
-              <g className={currentStage.destaqueSvg === 'tronco-pulmonar' ? 'filter drop-shadow-[0_0_8px_#3b82f6]' : ''}>
-                {/* Branch to Right Lung (viewer left) */}
+              {/* PATH A: PULMONARY TRUNK & ARTERIES */}
+              <g style={getElementStyle('tronco-pulmonar')}>
                 <path
-                  id="path-pulmonary-right"
                   d="M 347 355 C 347 250 310 210 240 190"
                   fill="none"
                   stroke="#3b82f6"
                   strokeWidth="8"
                   strokeLinecap="round"
                 />
-                {/* Branch to Left Lung (viewer right) */}
                 <path
-                  id="path-pulmonary-left"
                   d="M 355 355 C 370 230 460 210 560 190"
                   fill="none"
                   stroke="#3b82f6"
@@ -785,24 +965,20 @@ export const CirculationAnimationPlayer: React.FC = () => {
                   strokeLinecap="round"
                 />
                 <text x="385" y="240" fill="#93c5fd" fontSize="10" fontWeight="bold">
-                  Tronco Pulmonar
+                  Tronco Pulmonar ➔ Artérias Pulmonares
                 </text>
               </g>
 
-              {/* PATH B: PULMONARY VEINS (From Lungs -> Left Atrium AE) */}
-              <g className={currentStage.destaqueSvg === 'veias-pulmonares' ? 'filter drop-shadow-[0_0_8px_#ef4444]' : ''}>
-                {/* From Right Lung to AE */}
+              {/* PATH B: PULMONARY VEINS */}
+              <g style={getElementStyle('veias-pulmonares')}>
                 <path
-                  id="path-pulmonary-vein-right"
                   d="M 280 200 C 330 220 380 260 415 285"
                   fill="none"
                   stroke="#ef4444"
                   strokeWidth="7"
                   strokeLinecap="round"
                 />
-                {/* From Left Lung to AE */}
                 <path
-                  id="path-pulmonary-vein-left"
                   d="M 520 200 C 480 220 460 250 445 285"
                   fill="none"
                   stroke="#ef4444"
@@ -810,26 +986,20 @@ export const CirculationAnimationPlayer: React.FC = () => {
                   strokeLinecap="round"
                 />
                 <text x="470" y="245" fill="#fca5a5" fontSize="10" fontWeight="bold">
-                  Veias Pulmonares (4)
+                  4 Veias Pulmonares (Sangue Arterial)
                 </text>
               </g>
 
-              {/* PATH C: AORTA & SYSTEMIC ARTERIAL TREE (From VE -> Body) */}
-              <g className={currentStage.destaqueSvg === 'aorta' ? 'filter drop-shadow-[0_0_8px_#ef4444]' : ''}>
-                {/* Aorta arching up, giving branches to head and descending to lower body */}
-                {/* Upper branch: to Head & Upper Limbs */}
+              {/* PATH C: AORTA & SYSTEMIC TREE */}
+              <g style={getElementStyle('aorta')}>
                 <path
-                  id="path-aorta-head"
                   d="M 440 355 C 440 230 410 110 400 70"
                   fill="none"
                   stroke="#ef4444"
                   strokeWidth="8"
                   strokeLinecap="round"
                 />
-
-                {/* Lower branch: Aorta Descendente to Trunk & Lower Limbs */}
                 <path
-                  id="path-aorta-lower"
                   d="M 460 365 C 480 430 460 510 440 540"
                   fill="none"
                   stroke="#ef4444"
@@ -844,11 +1014,9 @@ export const CirculationAnimationPlayer: React.FC = () => {
                 </text>
               </g>
 
-              {/* PATH D: SYSTEMIC VEINS / VENAE CAVAE (From Body -> Right Atrium AD) */}
-              <g className={currentStage.destaqueSvg === 'veias-cavas' || currentStage.destaqueSvg === 'ad' ? 'filter drop-shadow-[0_0_8px_#3b82f6]' : ''}>
-                {/* Superior Vena Cava (VCS) from Head to AD */}
+              {/* PATH D: VENAE CAVAE */}
+              <g style={getElementStyle('veias-cavas')}>
                 <path
-                  id="path-vcs"
                   d="M 380 70 C 370 120 350 210 345 275"
                   fill="none"
                   stroke="#3b82f6"
@@ -859,9 +1027,7 @@ export const CirculationAnimationPlayer: React.FC = () => {
                   Veia Cava Superior
                 </text>
 
-                {/* Inferior Vena Cava (VCI) from Lower Body to AD */}
                 <path
-                  id="path-vci"
                   d="M 370 540 C 350 510 345 420 345 345"
                   fill="none"
                   stroke="#3b82f6"
@@ -874,9 +1040,9 @@ export const CirculationAnimationPlayer: React.FC = () => {
               </g>
 
               {/* ======================================================== */}
-              {/* ZONE 4: HEAD & UPPER LIMBS (TOP CAPILARY BED: Y=40 to 80) */}
+              {/* ZONE 4: HEAD & UPPER BODY CAPILLARY BED (Y = 40 to 80)   */}
               {/* ======================================================== */}
-              <g className={currentStage.destaqueSvg === 'tecidos' ? 'scale-105' : ''} style={{ transformOrigin: '400px 65px' }}>
+              <g style={getElementStyle('tecidos')}>
                 <rect
                   x="330"
                   y="40"
@@ -896,16 +1062,9 @@ export const CirculationAnimationPlayer: React.FC = () => {
               </g>
 
               {/* ======================================================== */}
-              {/* ZONE 5: LOWER BODY & LIMBS (BOTTOM BED: Y=540 to 620)    */}
+              {/* ZONE 5: LOWER BODY & LIMBS (BOTTOM BED: Y = 535 to 620)  */}
               {/* ======================================================== */}
-              <g
-                className={`transition-all duration-300 ${
-                  currentStage.destaqueSvg === 'tecidos'
-                    ? 'opacity-100 scale-[1.02] filter drop-shadow-[0_0_10px_#a855f7]'
-                    : 'opacity-85'
-                }`}
-                style={{ transformOrigin: '400px 580px' }}
-              >
+              <g style={getElementStyle('tecidos')}>
                 <rect
                   x="260"
                   y="535"
@@ -916,8 +1075,6 @@ export const CirculationAnimationPlayer: React.FC = () => {
                   stroke={currentStage.destaqueSvg === 'tecidos' ? '#c084fc' : '#4338ca'}
                   strokeWidth={currentStage.destaqueSvg === 'tecidos' ? '3' : '1.5'}
                 />
-
-                {/* Capillary mesh transition effect */}
                 <path
                   d="M 290 565 Q 400 580 510 565 M 290 590 Q 400 605 510 590"
                   stroke="url(#tissue-grad)"
@@ -925,7 +1082,6 @@ export const CirculationAnimationPlayer: React.FC = () => {
                   fill="none"
                   strokeDasharray="8 4"
                 />
-
                 <text x="400" y="555" fill="#f3e8ff" fontSize="13" fontWeight="bold" textAnchor="middle">
                   Órgãos Abdominais & Membros Inferiores
                 </text>
@@ -933,85 +1089,14 @@ export const CirculationAnimationPlayer: React.FC = () => {
                   Perfusão Tecidual · Consumo de O₂ e Produção de CO₂
                 </text>
                 <text x="400" y="608" fill="#38bdf8" fontSize="9" fontWeight="bold" textAnchor="middle">
-                  Bomba da Panturrilha + Válvulas Venosas $\rightarrow$ Retorno à VCI
+                  Bomba da Panturrilha + Válvulas Venosas ➔ Retorno à VCI
                 </text>
               </g>
 
               {/* ======================================================== */}
-              {/* ZONE 6: ANIMATED STREAMING PARTICLES (BLOOD CELLS / DROPS) */}
+              {/* ZONE 6: ANIMATED FLOW ONLY FOR THIS EXACT STEP!          */}
               {/* ======================================================== */}
-              {isPlaying && (
-                <>
-                  {/* Small circulation particles (VD -> Lungs: Blue) */}
-                  {[0, 25, 50, 75].map((offset) => {
-                    const progress = ((flowPhase + offset) % 100) / 100;
-                    // Approximate coordinate along pulmonary trunk to lungs
-                    const x = 347 + (240 - 347) * progress;
-                    const y = 355 + (190 - 355) * progress;
-                    return (
-                      <circle
-                        key={`pulm-cell-r-${offset}`}
-                        cx={x}
-                        cy={y}
-                        r="5"
-                        fill="#38bdf8"
-                        filter="url(#glow-blue)"
-                      />
-                    );
-                  })}
-
-                  {/* Lungs -> AE: Red particles */}
-                  {[10, 35, 60, 85].map((offset) => {
-                    const progress = ((flowPhase + offset) % 100) / 100;
-                    const x = 280 + (415 - 280) * progress;
-                    const y = 200 + (285 - 200) * progress;
-                    return (
-                      <circle
-                        key={`pulm-vein-r-${offset}`}
-                        cx={x}
-                        cy={y}
-                        r="5"
-                        fill="#f43f5e"
-                        filter="url(#glow-red)"
-                      />
-                    );
-                  })}
-
-                  {/* VE -> Lower Body (Aorta: Red) */}
-                  {[5, 30, 55, 80].map((offset) => {
-                    const progress = ((flowPhase + offset) % 100) / 100;
-                    const x = 460 + (440 - 460) * progress;
-                    const y = 365 + (540 - 365) * progress;
-                    return (
-                      <circle
-                        key={`aorta-cell-${offset}`}
-                        cx={x}
-                        cy={y}
-                        r="5.5"
-                        fill="#f43f5e"
-                        filter="url(#glow-red)"
-                      />
-                    );
-                  })}
-
-                  {/* Lower Body -> AD (VCI: Blue) */}
-                  {[15, 40, 65, 90].map((offset) => {
-                    const progress = ((flowPhase + offset) % 100) / 100;
-                    const x = 370 + (345 - 370) * progress;
-                    const y = 540 + (345 - 540) * progress;
-                    return (
-                      <circle
-                        key={`vci-cell-${offset}`}
-                        cx={x}
-                        cy={y}
-                        r="5.5"
-                        fill="#38bdf8"
-                        filter="url(#glow-blue)"
-                      />
-                    );
-                  })}
-                </>
-              )}
+              {isPlaying && renderCurrentStepFlow()}
             </svg>
           </div>
         </div>
@@ -1037,7 +1122,8 @@ export const CirculationAnimationPlayer: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2 text-slate-500">
-            <span>Dica: Clique diretamente nas caixas de câmaras ou na barra de etapas para navegar.</span>
+            <Info className="w-4 h-4 text-slate-400" />
+            <span>O sangue animado percorre apenas o trecho ativo (Origem ➔ Destino).</span>
           </div>
         </div>
       </div>
