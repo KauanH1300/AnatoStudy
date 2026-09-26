@@ -5,6 +5,7 @@ import { QuizView } from './components/QuizView';
 import { PracticalGuideView } from './components/PracticalGuideView';
 import { AuscultationSimulator } from './components/AuscultationSimulator';
 import { HeartInteractiveModel } from './components/HeartInteractiveModel';
+import { VesselsEncyclopediaView } from './components/VesselsEncyclopediaView';
 import { flashcardsData } from './data/flashcardsData';
 import { quizData } from './data/quizData';
 import {
@@ -21,7 +22,7 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'flashcards' | 'quiz' | 'guia' | 'ausculta' | 'atlas'>('flashcards');
+  const [activeTab, setActiveTab] = useState<'flashcards' | 'quiz' | 'guia' | 'ausculta' | 'atlas' | 'vasos'>('flashcards');
 
   // Load mastered flashcard IDs from localStorage
   const [masteredIds, setMasteredIds] = useState<Set<number>>(() => {
@@ -102,6 +103,7 @@ export default function App() {
         {activeTab === 'ausculta' && <AuscultationSimulator />}
 
         {activeTab === 'atlas' && <HeartInteractiveModel />}
+        {activeTab === 'vasos' && <VesselsEncyclopediaView />}
       </main>
 
       {/* Quiet, clean academic footer */}

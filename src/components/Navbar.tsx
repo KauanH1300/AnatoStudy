@@ -1,9 +1,9 @@
 import React from 'react';
-import { Layers, HelpCircle, BookOpen, Stethoscope, Activity } from 'lucide-react';
+import { Layers, HelpCircle, BookOpen, Stethoscope, Activity, GitBranch } from 'lucide-react';
 
 interface NavbarProps {
-  activeTab: 'flashcards' | 'quiz' | 'guia' | 'ausculta' | 'atlas';
-  setActiveTab: (tab: 'flashcards' | 'quiz' | 'guia' | 'ausculta' | 'atlas') => void;
+  activeTab: 'flashcards' | 'quiz' | 'guia' | 'ausculta' | 'atlas' | 'vasos';
+  setActiveTab: (tab: 'flashcards' | 'quiz' | 'guia' | 'ausculta' | 'atlas' | 'vasos') => void;
   masteredCount: number;
   totalCards: number;
 }
@@ -99,6 +99,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Activity className="w-4 h-4" />
               Esquema Interativo
             </button>
+
+            <button
+              onClick={() => setActiveTab('vasos')}
+              className={`flex items-center gap-2 px-3.5 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap ${
+                activeTab === 'vasos'
+                  ? 'bg-rose-50 text-rose-700 font-semibold'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              <GitBranch className="w-4 h-4" />
+              Veias & Artérias
+            </button>
           </nav>
 
           {/* Zone 3: 1-2 primary actions / metrics */}
@@ -160,12 +172,21 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
           <button
             onClick={() => setActiveTab('atlas')}
-            className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded text-xs whitespace-nowrap ${
+            className={`flex flex-col items-center gap-1 py-1 px-2 rounded text-xs whitespace-nowrap ${
               activeTab === 'atlas' ? 'text-rose-600 font-bold' : 'text-slate-500'
             }`}
           >
             <Activity className="w-4 h-4" />
             <span>Esquema</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('vasos')}
+            className={`flex flex-col items-center gap-1 py-1 px-2 rounded text-xs whitespace-nowrap ${
+              activeTab === 'vasos' ? 'text-rose-600 font-bold' : 'text-slate-500'
+            }`}
+          >
+            <GitBranch className="w-4 h-4" />
+            <span>Vasos</span>
           </button>
         </div>
       </div>
